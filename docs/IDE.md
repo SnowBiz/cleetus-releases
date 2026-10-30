@@ -5,7 +5,7 @@ Cleetus IDE combines a Code OSS editor with Cleetus Agent Command, teams, tasks,
 | Distribution | Availability |
 | --- | --- |
 | **Cleetus VS Code extension** | Stable public VSIX. Follow [Install and update](INSTALL.md). |
-| **Cleetus IDE 0.1.0-dev.1** | Unreleased local development build. The current macOS app is unsigned and unnotarized. A signed public IDE installer is **not available yet**. |
+| **Cleetus IDE 0.1.0-dev.2** | Unreleased local development build. The current macOS app is unsigned and unnotarized. A signed public IDE installer is **not available yet**. |
 
 This guide describes the current development interface. Do not treat a development app or unsigned archive as a signed public release. Public installation instructions will accompany a signed, published IDE package when one is available.
 
@@ -15,8 +15,11 @@ If you have an authorized development build:
 
 1. Open Cleetus and choose a project folder. Use the normal Explorer, editor, integrated terminal, source control, and compatible language/debug extensions alongside your agents.
 2. Connect Claude or Codex through Cleetus **Get started**. Their runtimes and accounts are separate installs; use the same [engine setup](INSTALL.md#connect-your-engines) as the extension.
-3. Open the Command Palette and run **Cleetus: Open Studio**. **Cleetus: Focus Agent Command** opens the Cleetus conversation surface. The IDE shortcut is **Ctrl+Alt+I**, or **Ctrl+Cmd+I** on macOS.
-4. Select the opened project in Studio before creating work. Its tabs are **Agent Command**, **Teams**, **Tasks**, **Workflows**, **Review & Ship**, and **Design**.
+3. Run **Cleetus: Open Development Workspace** from the Command Palette. The compact **Agent Team** sits beneath Explorer, **Agent Command** sits on the right, and the real source editor and preview share the center.
+4. **Cleetus: Focus Agent Command** focuses the right command pane. Its **Engines** action opens the existing engine setup; **Open conversation** opens Cleetus chat. The IDE shortcut is **Ctrl+Alt+I**, or **Ctrl+Cmd+I** on macOS. **Open Cleetus workspace** in engine setup returns to the development layout.
+5. Use **Cleetus: Open Studio** for the full **Agent Command**, **Teams**, **Tasks**, **Workflows**, **Review & Ship**, and **Design** screens. Studio expands the editor canvas and temporarily hides the right command pane while keeping Explorer available. Run **Cleetus: Open Development Workspace** to restore source and the current preview side by side.
+
+The native workflow strip above the editor shows recorded team members, workflow steps or tasks and their actual states. Select an entry to inspect its work in Studio. An empty workspace has no invented execution plan or progress.
 
 Cleetus provides the IDE's agent experience. The upstream vendor chat/runtime is omitted from this development distribution; Copilot is a possible future engine, not an available Cleetus engine today. Claude and Codex remain the current supported choices.
 
@@ -24,16 +27,24 @@ The IDE uses its own application identity, settings, extension directories, and 
 
 ## Start with one goal
 
+![Actual native development workspace with source, live preview, compact Agent Team and right Agent Command](screenshots/ide-native-agent-command.png)
+
+*Actual unsigned dev.2 native app in a disposable acceptance project. The displayed team is a template marked **Not created yet**; the sample task is pending. No agents were launched for this capture.*
+
 1. In **Agent Command**, choose a connected engine, a discovered model or **Engine default**, and an effort offered by that engine.
 2. Describe the outcome, relevant constraints, and how you will check the result. Submitting the goal saves a goal and a linked execution task before requesting a run.
 3. Read the native approval dialog, especially its project and working directory. Allow only the work you intend to run.
 4. Inspect actual output and tool requests. Agent progress and team communication come from observed events; a requested model setting is not proof of provider-reported execution metadata.
 
+The left team cards show real roles, model settings and state once a team exists. Before creation, they preview saved template roles with **Not created yet** and **Create this team**. The right pane shows the selected team’s topology and recorded messages, tool activity, timeline and file references. Choosing a template or opening a view starts no agents.
+
 Use a conversation for a focused question. Use a task when you want durable acceptance criteria, ownership, and a separate review decision. A stopped run retains source changes already made.
 
 ## Keep tasks reviewable
 
-![Studio task settings with local test data; provider transport is mocked](screenshots/ide-tasks.png)
+![Actual native full-canvas Studio Tasks board with one pending sample task and its inspector](screenshots/ide-tasks.png)
+
+*Actual native dev.2 capture of the same disposable project. The right command pane is folded away for Studio; Explorer and the compact team preview remain. This pending task has not run an engine or produced an approved result.*
 
 In **Tasks**, use **+ New goal** or **+ New task**. Give tasks a concrete title, description, acceptance criteria, and an appropriate parent. Select a card to read its report and ownership details. The board separates pending, running, review, and completed work.
 
@@ -120,9 +131,13 @@ Cleanup asks for explicit approval and removes only a verified clean Cleetus-own
 
 ![Cleetus Design promotional artwork, not a native IDE capture](images/cleetus-design-cowboy.png)
 
-Open **Design** in Studio to use the shared Design viewer without leaving the editor. Extract a system, inspect tokens/assets/rules, render registered components and pages, and prepare an agent refinement task with source-linked context. Opening a draft does not send it or start agents.
+For daily iteration, open a registered source file and choose **Preview current file** in Agent Command, or run **Cleetus: Preview Current File**. Cleetus opens that source in the native editor and its registered page/component preview beside it. If a choice is needed, select the item from the project’s Design catalog.
 
-Web previews use real source adapters and fixtures. Apple previews use an actual Xcode Debug story build and Apple Device Hub/Simulator for iOS or watchOS. Install the required toolchain and Simulator runtime first. Discovery is not proof of a successful build or render; inspect build logs and the actual result. Android source discovery currently has no native preview renderer.
+The web preview starts in **Fit canvas**. Choose **Desktop**, **Tablet** or **Phone** to inspect a fixed width; use **Source** to focus the implementation and **Reload** for a fresh preview. Saved source edits rebuild the live preview. Exercise form fields and buttons with controlled fixture data; their behavior comes from your actual adapter and source. Inspect visible build errors when a change cannot render.
+
+Use **Design Studio ↗** in the preview, or **Design** in Studio, for the shared Design viewer. Extract a system, inspect tokens/assets/rules, render registered components and pages, and prepare an agent refinement task with source-linked context. **Cleetus: Open Development Workspace** returns to the editor/preview split. Opening a draft does not send it or start agents.
+
+Registered Apple items use the native adapter path: the preview pane offers **Open native preview** and **Build log**, while the real interface runs externally in Apple Device Hub/Simulator for iOS or watchOS. Install Xcode, the required toolchain and Simulator runtime first. Discovery is not proof of a successful Debug story build or render; inspect its logs and native result. Android source discovery currently has no native preview renderer.
 
 [Design workflow](DESIGN.md) · [Web and Apple adapters](ADAPTERS.md) · [Product libraries](LIBRARIES.md)
 
@@ -132,4 +147,4 @@ Connect accounts locally. Secure credentials stay in the host's credential store
 
 The stable extension updater uses public release metadata, verifies VSIX size and SHA-256, and offers an explicit installation choice. It does not update the native IDE application. The IDE checks its own platform-specific public releases separately. A notarized Developer ID installation can stage a newer signed installer after verifying its checksum, publisher, bundle identity and notarization, then rechecks it before your explicit **Open installer** choice. Unsigned development builds can view published release notes but cannot use that verified installer path. No signed public native installer has been published yet. See [installation](INSTALL.md), [local service](SERVICE.md), and [licenses](LICENSES.md).
 
-This page uses approved promotional artwork only. Existing guide screenshots show illustrative extension/local-fixture data; they are not native IDE captures or evidence that your project has passed validation.
+The editor-layout and Tasks images are actual native development-app captures from a disposable project, with a not-created team template and a pending task. Other screenshots are labeled local application/transport fixtures, and the Design artwork is promotional. These images do not establish live provider execution or validation of your project.
