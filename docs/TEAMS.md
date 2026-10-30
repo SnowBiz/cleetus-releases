@@ -2,6 +2,8 @@
 
 Prebuilt teams give a shared goal to agents with defined roles, detailed system prompts, and an execution plan. They use the same Claude/Codex engines as ordinary conversations. Choose a template in **Workflows → Team templates**, inspect **View layout**, and choose **Create team** when it fits your task.
 
+In the native IDE development app, use **Cleetus: Open Studio → Teams → + New team** instead. Choose the same template, review its detailed member instructions and discovered model/effort choices, create it, then explicitly **Start team**. Creating a team or opening a Design draft does not start agents. See [IDE availability and Studio](IDE.md).
+
 ![Current workflow and team-template catalog](screenshots/workflows.png)
 
 A workflow recipe is lighter: it prepares a reusable request for one conversation and lets that engine decide how to delegate. A mixed team is scheduled by Cleetus, with explicit member identities, reports, messages, and handoffs.
@@ -46,7 +48,7 @@ Agent details in a template layout let you inspect and save its model, effort, s
 
 Use **Output** to inspect actual work, **Message** to provide direction, and approval controls to answer tool requests. A blocked member needs a concrete recovery action. **Accept & hand off** is your explicit review decision; use it after inspecting the result. Stop a team to interrupt its agents. Delivery limits prevent unlimited task/message loops.
 
-Ready teams can be reopened for editing. Running scheduling is window-local and does not automatically restart after a reload; saved records are not proof of a resumed workflow. See the [service and recovery guide](SERVICE.md) for exact handoff, failure, and cancellation behavior.
+Ready teams can be reopened for editing. In current IDE/source development builds, stale edits from another window are rejected and a live team belongs to its launching coordinator. Saved completed, cancelled, failed, and interrupted history retains output/messages; stopped-owner work becomes interrupted and queued handoffs are cancelled without replay. Historical records are read-only. The stable 1.10.2 extension does not automatically resume running scheduling after a reload; saved records are never proof of process reattachment. See [IDE tasks and recovery](IDE.md#give-a-team-a-bounded-goal) and the [service guide](SERVICE.md).
 
 ## Design squad or extraction team?
 

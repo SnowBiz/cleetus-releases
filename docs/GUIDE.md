@@ -1,5 +1,7 @@
 # Your Cleetus workspace
 
+In ordinary VS Code, run **Cleetus: Open Workspace** for the extension interface below. In the unreleased native IDE development app, run **Cleetus: Open Studio** for **Agent Command**, **Teams**, **Tasks**, **Workflows**, **Review & Ship**, and embedded **Design**. The [IDE guide](IDE.md) explains task acceptance, isolated worktrees, workflow runs, and the current release status.
+
 The shared sidebar connects Conversation, Agents & Teams, Workflows, Work tracking, Tools, Memory & Rules, Settings, and Design. Design stays in the same workspace; a second tab is an explicit choice.
 
 ![Conversation workspace](screenshots/conversation.png)
@@ -17,6 +19,10 @@ Open History to find and resume earlier conversations, with engine/native identi
 ## Pick the right workflow
 
 Use one conversation for a bounded task, a workflow recipe for a reusable request, or a [prebuilt team](TEAMS.md) for explicit roles and handoffs. Use [Design](DESIGN.md) to inspect/refine reusable components and pages before asking agents to adopt changes.
+
+In native Studio, a saved goal/task has its own acceptance criteria and review state. **Run task** asks for approval; a report moves work to review, and only your **Approve result** decision completes it. Check the working directory before execution—creating an owned worktree does not automatically redirect a primary-project task into it.
+
+Studio workflow **definitions** describe supported actions and dependencies; **runs** record actual execution and journals. They are separate from the extension's lighter conversation recipes. Saving a definition does not run it, and restarting does not replay interrupted side effects. The Recipes catalog creates saved DAGs without launching them; Automation configures explicitly approved intervals or named events and displays dispatch receipts. [Workflow and automation guide](IDE.md#define-a-workflow-then-inspect-its-runs)
 
 [Work tracking](WORK_TRACKING.md) can prepare a conversation or team with source issue details and acceptance criteria. Preparing a draft does not send it or start agents. [Tools](TOOLS.md) controls MCP and developer tooling. Memory & Rules keeps project/user instructions close to the work.
 

@@ -8,6 +8,13 @@ This is the public download and documentation home for Cleetus. Development sour
 
 **[Download Cleetus](https://github.com/SnowBiz/cleetus-releases/releases) · [Install and update](docs/INSTALL.md) · [User guide](docs/README.md)**
 
+| Product | Availability |
+| --- | --- |
+| **Cleetus VS Code extension** | Stable public VSIX for ordinary VS Code. |
+| **Cleetus IDE 0.1.0-dev.1** | Unreleased local, unsigned development app built from official Code OSS source. A signed public IDE installer is not available yet. |
+
+[Cleetus IDE and Studio](docs/IDE.md) covers its native editor, agent command surface, goals/tasks, team graphs, workflow runs, worktree review, and embedded Design. The existing extension remains maintained and independently distributed.
+
 ## Build with a crew
 
 Resume conversations, choose available models and effort, review tool requests/diffs, and give a prebuilt team a shared goal. Nine templates cover delivery, UI design, design extraction, review, debugging, security, refactoring, documentation, and a lean pair.
@@ -42,4 +49,4 @@ Apache-licensed Cleetus extension portions retain their accompanying license and
 
 [License details](docs/LICENSES.md) · [Apache-2.0](docs/licenses/Apache-2.0.txt) · [Future IDE preview terms](docs/licenses/IDE-PREVIEW-LICENSE.txt)
 
-The standalone browser developer host is a development pathway, not a packaged native IDE release. Screenshots use illustrative local data; they do not prove a connected account or completed project extraction. Cleetus is independent of Anthropic and OpenAI and uses your own provider accounts.
+The browser developer host is a separate development pathway from the native IDE. Screenshots use illustrative extension/local-fixture data; they are not native IDE captures or proof of a connected account or completed project extraction. Cleetus is independent of Anthropic and OpenAI and uses your own provider accounts.

@@ -1,5 +1,7 @@
 # Install and update Cleetus
 
+The available public release is the **Cleetus VS Code extension**. The instructions below install that extension. **Cleetus IDE 0.1.0-dev.1** is an unreleased, unsigned local development build; a signed public native installer has not been published yet. See [Cleetus IDE and Studio](IDE.md) for its current interface and limitations.
+
 You need VS Code 1.94+, Node.js 22+, npm, and access to the engine you want to use. You may use Claude, Codex, or both. The currently recorded clean-host runtime audit covers macOS ARM64; other supported runtime platforms still need local verification.
 
 ## Install the extension
@@ -41,6 +43,8 @@ For Codex, connect through browser/device sign-in. Cleetus can use a configured 
 Open a project, then choose **Cleetus: Open Workspace**. Start with a bounded task, inspect tool requests and diffs, and run relevant checks. Connect accounts locally; installation does not transfer another computer's tokens or history.
 
 ## Updates
+
+In ordinary VS Code, these update controls install the extension VSIX. In Cleetus IDE, **Check for Updates** checks the independent native release channel. A verified notarized IDE installation can stage and recheck a signed installer from the same publisher before you explicitly open it. Unsigned development builds offer release notes only; the updater never replaces the app silently or bypasses Gatekeeper. No public native installer is published yet.
 
 If you installed 1.10.0 or earlier, manually install 1.10.1 or newer once. Older builds check the former release location; they cannot discover releases after its source repository became private. Subsequent updates use this public download repository.
 
