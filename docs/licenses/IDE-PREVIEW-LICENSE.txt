@@ -1,0 +1,81 @@
+Cleetus IDE Preview License
+Version 1.0 — October 30, 2026
+Copyright (c) 2026 SnowBiz.
+
+1. Scope
+
+This license applies only to proprietary portions of Cleetus IDE builds that
+expressly identify this license in their accompanying notices (the Software).
+The Licensor is SnowBiz. It does not
+replace the Apache License 2.0 for Cleetus code or releases already provided
+under that license, or replace any third-party or open-source license.
+
+2. Free personal and commercial use
+
+The Licensor grants you a worldwide, non-exclusive, no-charge license to install
+and use the Software for personal and commercial purposes, including development
+for your employer or customers. An organization may make the Software available
+to its authorized personnel for these purposes and keep reasonable installation
+and backup copies. No paid subscription or per-seat fee is required for the
+covered preview build. This grant is perpetual for the build you received,
+subject to compliance with this license.
+
+3. Ownership and limits
+
+The Software is licensed, not sold. Rights in its proprietary portions remain
+with their respective owners. This license does not grant access to proprietary
+source code, a right to sublicense or publicly redistribute those portions, or
+a right to use Cleetus names or logos to imply endorsement. You may not remove
+applicable copyright, license, or attribution notices. These limits do not
+restrict rights granted by an applicable open-source license or rights that
+applicable law does not allow the Licensor to restrict.
+
+You retain your rights in your projects, data, and other materials. This license
+does not transfer those materials to the Licensor.
+
+4. Future versions, services, and third-party costs
+
+Future versions, editions, support, or hosted services may be offered under
+different terms or for a fee. Such terms apply only when you separately obtain
+or agree to them. They do not impose a retroactive fee on use of a preview build
+already granted under this license. No future update, support period, hosting,
+or continued availability of an external service is promised.
+
+Engine subscriptions, model/API usage, cloud accounts, and other third-party
+services are separate. Their providers' licenses, access rules, and charges
+remain applicable. The Software does not grant or resell access to them.
+
+5. Open-source and third-party components
+
+Components identified as open source or third-party software remain governed
+by their respective licenses and notices. Where this license conflicts with
+rights granted by such a license, that component's license controls. Preserve
+the accompanying LICENSE, NOTICE, and third-party attribution materials. This
+license does not withdraw rights previously granted under Apache-2.0.
+
+6. Termination
+
+Your license to the proprietary portions terminates if you materially breach
+these terms and do not remedy the breach within 30 days after written notice
+from the Licensor. On termination, stop using and delete those proprietary
+portions. Rights you hold under separate open-source licenses are unaffected.
+
+7. Warranty and liability
+
+To the extent permitted by applicable law, the Software is provided "AS IS"
+and "AS AVAILABLE," without warranties of merchantability, fitness for a
+particular purpose, title, or non-infringement. Preview software may contain
+errors. You are responsible for reviewing and testing changes to your projects.
+
+To the extent permitted by applicable law, the Licensor and contributors are
+not liable for indirect, incidental, special, consequential, or punitive damages,
+or loss of profits, data, or business arising from use or inability to use the
+Software. These terms do not exclude liability or consumer rights that cannot
+lawfully be excluded or limited.
+
+8. Acceptance
+
+By installing or using proprietary Software expressly distributed under this
+license, you accept these terms. If you do not accept them, do not install or
+use those proprietary portions. Applicable open-source license rights remain
+available independently.
