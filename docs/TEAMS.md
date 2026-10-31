@@ -2,7 +2,7 @@
 
 Prebuilt teams give a shared goal to agents with defined roles, detailed system prompts, and an execution plan. They use the same Claude/Codex engines as ordinary conversations. Choose a template in **Workflows → Team templates**, inspect **View layout**, and choose **Create team** when it fits your task.
 
-In native IDE **0.1.0-dev.4**, use the **Teams** action on the native rail, then **+ New team**, or run **Cleetus: Open Studio**. Choose the same template, review its detailed member instructions and discovered model/effort choices, create it, then explicitly **Start team**. Creating a team or opening a Design draft does not start agents. See [IDE availability and Studio](IDE.md).
+In native IDE **0.1.0**, use the **Teams** action on the native rail, then **+ New team**, or run **Cleetus: Open Studio**. Choose the same template, review its detailed member instructions and discovered model/effort choices, create it, then explicitly **Start team**. Creating a team or opening a Design draft does not start agents. See [IDE availability and Studio](IDE.md).
 
 ![Current workflow and team-template catalog](screenshots/workflows.png)
 
@@ -31,8 +31,9 @@ These are starting roles, not guaranteed outcomes or fixed vendor/model requirem
 3. Inspect the workflow mode and each member's role, task, system prompt, engine, model, effort, and MCP access.
 4. Keep engine-default models or choose available catalog models. Whole-team choices are grouped by engine/backend; individual members can override them. A supervised team requires a Claude supervisor.
 5. Set team effort and any per-agent overrides. Blank per-agent effort inherits the team setting. Extraction recommends High; the lean pair presets Low. Other templates can have their own member settings.
-6. Create the team and start its workflow. Extraction offers **Create & start extraction** or **Create without starting**.
-7. Review messages, approvals, output, reports, and actual artifacts in **Agents & Teams**.
+6. In native team setup, review the delivery limit (1–50). The default is 10; Design System Extraction presets 20. It bounds task/message handoffs.
+7. Create the team and start its workflow. Extraction offers **Create & start extraction** or **Create without starting**.
+8. Review messages, approvals, output, reports, and actual artifacts in **Agents & Teams**.
 
 ![Current extraction team setup; all specialist prompts remain editable](screenshots/extraction-team.png)
 
@@ -67,6 +68,6 @@ Use the **Design squad** to implement or refine an interface against those decis
 
 ## Collaborate across computers
 
-The 1.11.2 extension and native dev.3 build add opt-in **Collaborate on LAN**. Select an existing local team in this project. Pair with another person’s team on the same private IPv4 subnet over TLS 1.3 using a copied one-use invitation and matching eight-digit codes approved by both people. Starting a team is not required to pair it.
+Extension 1.11.2 or later and Cleetus IDE 0.1.0 support opt-in **Collaborate on LAN**. Select an existing local team in this project. Pair with another person’s team on the same private IPv4 subnet over TLS 1.3 using a copied one-use invitation and matching eight-digit codes approved by both people. Starting a team is not required to pair it.
 
 Each outgoing proposal and incoming import needs local approval. Accepted tasks become pending local tasks; approved messages stay in a separate team inbox, available through scoped agent tools rather than automatically becoming an agent prompt. Pairing grants no files, commands, provider accounts or credentials. See [network collaboration](COLLABORATION.md) for setup, scoped agent tools and reconnection behavior.

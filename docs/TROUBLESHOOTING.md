@@ -3,6 +3,7 @@
 | Symptom | What to check |
 | --- | --- |
 | New version does not appear | Reload the target VS Code window and use **Cleetus: Show Build Info**. Ensure the VSIX was installed in the profile you are using. |
+| macOS IDE pauses after an update | Check for a macOS Keychain authorization request for Cleetus, particularly after replacing an unsigned development build. Complete any required authorization locally in macOS. Do not delete credentials or disable encryption to bypass it. |
 | Claude executable unavailable | Install the release's SDK runtime with optional dependencies enabled. Ensure the runtime location/environment matches VS Code. |
 | Account label says connected but a request fails | Reconnect the engine and check actual account/model access. Provider labels are not authorization. |
 | No models or unexpected choices | Refresh the catalog, reconnect the relevant engine/backend and confirm runtime support. |

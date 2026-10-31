@@ -2,7 +2,7 @@
 
 Cleetus can connect two teams on the same local network through an encrypted TLS 1.3 channel. Each person chooses a local project and team, exchanges an invitation, compares the pairing code, and approves the connection.
 
-Available in the **1.11.2 extension** and native **0.1.0-dev.3** development build. Both computers need Cleetus, a configured team, and OpenSSL available on `PATH` (`openssl version` should succeed).
+Available in **extension 1.11.2 or later** and **Cleetus IDE 0.1.0**. Both computers need Cleetus, a configured team, and OpenSSL available on `PATH` (`openssl version` should succeed).
 
 ![Actual native dev.3 collaboration setup dialog with a local ready team](screenshots/ide-native-collaboration.png)
 

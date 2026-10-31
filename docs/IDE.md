@@ -4,10 +4,16 @@ Cleetus IDE puts a Code - OSS editor, agents and a source-linked Design studio i
 
 | Product | Availability |
 | --- | --- |
-| **VS Code extension** | [Latest public stable release](https://github.com/SnowBiz/cleetus-releases/releases/latest). [Install and update](INSTALL.md). |
-| **IDE 0.1.0-dev.4** | Local development app built from pinned official Code - OSS source. Unsigned and unnotarized; no signed public native installer is available. |
+| **VS Code extension 1.11.3** | [Latest public stable VSIX](https://github.com/SnowBiz/cleetus-releases/releases/latest). [Install and update](INSTALL.md#install-the-extension). |
+| **IDE 0.1.0** | macOS Apple Silicon: [signed and notarized DMG](https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.1.0-macos-arm64/cleetus-ide-0.1.0-macos-arm64.dmg) · [release notes and checksums](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.1.0-macos-arm64). |
 
 The native guide shows actual Cleetus IDE 0.1.0 candidate captures of an isolated CleetusGuide01 sample project: ready, unstarted members, a pending task, a saved workflow with no runs, a real local Git diff and live source previews. Models, activity and cost are not simulated as live execution. No providers were started for these captures; they do not establish live account work, customer extraction or physical two-computer LAN acceptance.
+
+## Install and open your project
+
+Download the [Apple Silicon DMG](https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.1.0-macos-arm64/cleetus-ide-0.1.0-macos-arm64.dmg) and `SHA256SUMS` from the [IDE 0.1.0 release](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.1.0-macos-arm64), compare the checksum, open the DMG, and drag **Cleetus.app** to **Applications**. Launch Cleetus and open your project folder. You do not need a separate VS Code installation.
+
+The covered Preview License allows free personal and commercial use. Engine runtimes, account access and model charges remain separate: use Node.js 22+ and npm for runtime setup, then connect Claude or Codex through **Get started**. See [complete installation and engine setup](INSTALL.md).
 
 ## Open the source and preview workspace
 
@@ -48,7 +54,7 @@ The central Agent Command brings the goal composer, plan, selected team, recorde
 
 [Review the creation dialog](screenshots/ide-native-team-create.png) · [See a ready Design squad](screenshots/ide-native-design-squad.png). Creating a team leaves its agents stopped; **Start team** is a separate action.
 
-Open **Teams → + New team** and choose a [prebuilt team](TEAMS.md#which-team-should-i-choose). Review every role, task, system prompt, engine, model, effort and MCP assignment. A blank member effort inherits the team setting; supervised teams require a Claude supervisor. Ready-member settings can be edited before launch, subject to rejecting stale edits from another window.
+Open **Teams → + New team** and choose a [prebuilt team](TEAMS.md#which-team-should-i-choose). Review every role, task, system prompt, engine, model, effort and MCP assignment. Review the delivery limit (1–50): the default is 10 and extraction presets 20. A blank member effort inherits the team setting; supervised teams require a Claude supervisor. Ready-member settings can be edited before launch, subject to rejecting stale edits from another window.
 
 Every distinct prebuilt role has its own Cleetus robot portrait, including all four Bug hunt roles and the full Design extraction crew. The catalog has 40 portraits: 33 unique prebuilt-role identities, six additional original domain specialties, and a generalist robot for unrecognized or unspecified roles. The main Cleetus navigation logo stays consistent. Model, engine and execution status remain separate live labels; the artwork does not indicate that a task has started.
 

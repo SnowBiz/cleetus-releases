@@ -10,8 +10,8 @@ This is the public download and documentation home for Cleetus. Development sour
 
 | Product | Availability |
 | --- | --- |
-| **Cleetus VS Code extension** | [Latest stable VSIX](https://github.com/SnowBiz/cleetus-releases/releases/latest) for ordinary VS Code. |
-| **Cleetus IDE 0.1.0-dev.4** | Unreleased local, unsigned and unnotarized development app built from official Code - OSS source. A signed public IDE installer is not available yet. |
+| **Cleetus VS Code extension 1.11.3** | [Latest stable VSIX](https://github.com/SnowBiz/cleetus-releases/releases/latest) for ordinary VS Code. |
+| **Cleetus IDE 0.1.0** | macOS Apple Silicon: [signed and notarized DMG](https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.1.0-macos-arm64/cleetus-ide-0.1.0-macos-arm64.dmg) · [release notes and checksums](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.1.0-macos-arm64). |
 
 [Cleetus IDE and Studio](docs/IDE.md) covers its compact source/preview editor, central Agent Command, orbital team view, tasks, workflow canvas, split/unified review, and live Design component controls. The existing extension remains maintained and independently distributed.
 
@@ -41,14 +41,18 @@ Use GitHub Issues, Jira or a custom REST tracker. Prepare tasks with acceptance 
 
 ## Install
 
-Download the stable universal VSIX and `SHA256SUMS`, verify the checksum, then choose **Extensions → Install from VSIX…** in VS Code. Install the release-pinned Claude runtime separately through npm if using Claude. The [installation guide](docs/INSTALL.md) includes normal commands and the self-contained runtime installer; no private source checkout is required.
+**Cleetus IDE:** download the [Apple Silicon DMG](https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.1.0-macos-arm64/cleetus-ide-0.1.0-macos-arm64.dmg) and `SHA256SUMS` from the [same release](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.1.0-macos-arm64), verify the checksum, open the DMG, and drag **Cleetus.app** to **Applications**. Launch Cleetus and open your project. The editor is included.
+
+**VS Code extension:** download the [latest stable universal VSIX](https://github.com/SnowBiz/cleetus-releases/releases/latest) and its `SHA256SUMS`, verify the checksum, then choose **Extensions → Install from VSIX…** in VS Code. [Version 1.11.3](https://github.com/SnowBiz/cleetus-releases/releases/tag/v1.11.3) has its own release channel.
+
+Engine setup uses Node.js 22+ and npm; the release-pinned Claude runtime and a supported Codex executable are separate installs. The [installation guide](docs/INSTALL.md) includes account setup and the self-contained runtime installer. Neither product requires private source access.
 
 Startup update checks offer an explicit download/install choice. Account access, model usage, native toolchains and third-party charges remain separate.
 
 ## Licensing and availability
 
-Apache-licensed Cleetus extension portions retain their accompanying license and notices. Future proprietary IDE previews explicitly distributed under the preview license permit personal and commercial use without a software license fee; future editions/services may charge prospectively. Existing Apache rights and already-granted preview builds are not retroactively relicensed or charged.
+Apache-licensed Cleetus extension portions retain their accompanying license and notices. Cleetus IDE 0.1.0 identifies its proprietary portions under the Preview License, which permits personal and commercial use without a software license fee; future editions/services may charge prospectively. Existing Apache rights and already-granted preview builds are not retroactively relicensed or charged.
 
-[License details](docs/LICENSES.md) · [Apache-2.0](docs/licenses/Apache-2.0.txt) · [Future IDE preview terms](docs/licenses/IDE-PREVIEW-LICENSE.txt)
+[License details](docs/LICENSES.md) · [Apache-2.0](docs/licenses/Apache-2.0.txt) · [IDE preview terms](docs/licenses/IDE-PREVIEW-LICENSE.txt)
 
 The browser developer host is a separate development pathway from the native IDE. Extension screenshots use illustrative data. The native guide shows actual Cleetus IDE 0.1.0 candidate captures of an isolated CleetusGuide01 sample project: ready, unstarted members, a pending task, a saved workflow with no runs, a real local Git diff and live source previews. Models, activity and cost are not simulated as live execution. No providers were started for these captures; they do not establish live account work, customer extraction or physical two-computer LAN acceptance. Cleetus is independent of Anthropic and OpenAI and uses your own provider accounts.

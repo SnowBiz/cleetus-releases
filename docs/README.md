@@ -2,12 +2,12 @@
 
 Cleetus brings Claude and Codex conversations, agent teams, tools, work tracking, and a Design studio into one workspace. Start with installation, then choose the guide for your task.
 
-The public stable product is the **Cleetus VS Code extension** ([latest stable release](https://github.com/SnowBiz/cleetus-releases/releases/latest)). **Cleetus IDE 0.1.0-dev.4** is an unreleased, unsigned and unnotarized local development build; no signed public IDE installer is available yet. The [IDE and Studio guide](IDE.md) describes that development interface separately.
+Choose **Cleetus IDE 0.1.0** for macOS Apple Silicon ([DMG](https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.1.0-macos-arm64/cleetus-ide-0.1.0-macos-arm64.dmg) · [release notes and checksums](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.1.0-macos-arm64)), or the **Cleetus VS Code extension 1.11.3** for ordinary VS Code ([latest stable VSIX](https://github.com/SnowBiz/cleetus-releases/releases/latest)). Their versions and updates are independent. Start with [installation](INSTALL.md), then use the [IDE and Studio guide](IDE.md) or [workspace guide](GUIDE.md).
 
 | Guide | What it covers |
 | --- | --- |
-| [Install and update](INSTALL.md) | Download a verified VSIX, install the separate engine runtime, connect accounts, and update |
-| [Cleetus IDE and Studio](IDE.md) | Native development app, goals/tasks, teams, workflow runs, owned worktrees, Design and availability |
+| [Install and update](INSTALL.md) | Install the Apple Silicon IDE or a verified VSIX, set up separate engines, and update |
+| [Cleetus IDE and Studio](IDE.md) | Native editor and Studio, goals/tasks, teams, workflow runs, owned worktrees and Design |
 | [Workspace and conversations](GUIDE.md) | Chat, history, review, navigation, models and effort |
 | [LAN collaboration](COLLABORATION.md) | Pair two local teams over TLS 1.3 and review message/task proposals |
 | [Prebuilt teams](TEAMS.md) | All nine teams, their purpose, setup and execution |
@@ -17,7 +17,7 @@ The public stable product is the **Cleetus VS Code extension** ([latest stable r
 | [Tools and integrations](TOOLS.md) | MCP assignment, local/container/hosted tooling and PR checks |
 | [Work tracking](WORK_TRACKING.md) | GitHub Issues, Jira, custom tracker APIs and agent ownership |
 | [Local service](SERVICE.md) | Background jobs, agent tools, recovery and host boundaries |
-| [Licensing and distribution](LICENSES.md) | Apache components, future IDE preview terms and provider costs |
+| [Licensing and distribution](LICENSES.md) | Apache components, free personal/commercial IDE preview terms and provider costs |
 | [Troubleshooting](TROUBLESHOOTING.md) | Installation, account, preview, service and update problems |
 
 [Download releases](https://github.com/SnowBiz/cleetus-releases/releases)

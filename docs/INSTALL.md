@@ -1,12 +1,27 @@
 # Install and update Cleetus
 
-The public stable product is the **Cleetus VS Code extension**; download its [latest stable release](https://github.com/SnowBiz/cleetus-releases/releases/latest). The instructions below install the extension. **Cleetus IDE 0.1.0-dev.4** is an unreleased, unsigned and unnotarized local development build; a signed public native installer has not been published yet. See [Cleetus IDE and Studio](IDE.md) for its current interface and limitations.
+Choose the native **Cleetus IDE 0.1.0** for macOS Apple Silicon or the **Cleetus VS Code extension 1.11.3** for ordinary VS Code. They have independent release and update channels; installing one does not require the other.
 
-You need VS Code 1.94+, Node.js 22+, npm, and access to the engine you want to use. You may use Claude, Codex, or both. The currently recorded clean-host runtime audit covers macOS ARM64; other supported runtime platforms still need local verification.
+## Install Cleetus IDE for Apple Silicon
+
+Use an Apple Silicon Mac with macOS 12 or newer.
+
+1. Open the [IDE 0.1.0 release](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.1.0-macos-arm64) and download [cleetus-ide-0.1.0-macos-arm64.dmg](https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.1.0-macos-arm64/cleetus-ide-0.1.0-macos-arm64.dmg) plus `SHA256SUMS`.
+2. Run `shasum -a 256 cleetus-ide-0.1.0-macos-arm64.dmg` and compare the complete result with that filename's entry in `SHA256SUMS`.
+3. Open the signed and notarized DMG and drag **Cleetus.app** to **Applications**.
+4. Launch **Cleetus** from Applications, then open your project folder.
+
+When replacing an unsigned development app, macOS may request authorization for Cleetus’s existing Keychain item. Complete that system prompt locally to finish startup.
+
+The IDE includes the editor, so you do not need VS Code or a source checkout. Its [Preview License](LICENSES.md) permits free personal and commercial use of the covered build. The [IDE guide](IDE.md) walks through Agent Command, teams, tasks, review and Design. Locally compiled unsigned development apps are separate from this installer.
+
+For engine setup, install **Node.js 22+** and npm, then follow the separate runtime and account instructions below. You may use Claude, Codex or both; installing the editor does not install provider accounts or grant model access.
 
 ## Install the extension
 
-1. Open [Cleetus Releases](https://github.com/SnowBiz/cleetus-releases/releases) and choose the latest stable release.
+Use **VS Code 1.94+**, Node.js 22+ and npm. The current clean-host engine-runtime audit covers macOS ARM64; other runtime platforms still need local verification.
+
+1. Open the extension's [latest stable release](https://github.com/SnowBiz/cleetus-releases/releases/latest) ([1.11.3](https://github.com/SnowBiz/cleetus-releases/releases/tag/v1.11.3)).
 2. Download `cleetus-<version>-universal.vsix` and `SHA256SUMS` from that release.
 3. Verify the filename and full SHA-256 against `SHA256SUMS`.
 4. In VS Code, open Extensions → **Install from VSIX…** and select the downloaded file. Alternatively, run `code --install-extension /path/to/cleetus-<version>-universal.vsix`.
@@ -16,7 +31,7 @@ Compute a checksum on macOS with `shasum -a 256 <file>`, on Linux with `sha256su
 
 ## Install the separate Claude runtime
 
-The Claude SDK and executable are not bundled in the VSIX. Install the version specified by the release. For the current release, run:
+The Claude SDK and executable are not bundled in the VSIX or native IDE. Install the version specified by the release. For the current release, run:
 
 ```sh
 npm install --prefix "$HOME/.cleetus/runtime" --include=optional --omit=dev --no-audit --no-fund @anthropic-ai/claude-agent-sdk@0.3.312
@@ -30,7 +45,7 @@ npm install --prefix "$env:USERPROFILE\.cleetus\runtime" --include=optional --om
 
 You can also download this public repository as a ZIP and run `node docs/install-runtime.mjs`. Keep `install-runtime.mjs` and its adjacent `runtime-package.json` together. This installer uses only Node.js built-ins and npm; it does not require private source access.
 
-Keep optional dependencies enabled: they supply the platform executable. The official Claude VS Code extension is unnecessary. A custom runtime location requires the same `CLEETUS_RUNTIME_DIR` environment variable when launching VS Code.
+Keep optional dependencies enabled: they supply the platform executable. The official Claude VS Code extension is unnecessary. A custom runtime location requires the same `CLEETUS_RUNTIME_DIR` environment variable when launching VS Code or Cleetus IDE.
 
 ## Connect your engines
 
@@ -44,15 +59,15 @@ Open a project, then choose **Cleetus: Open Workspace**. Start with a bounded ta
 
 ## Optional LAN collaboration
 
-Both computers need a build with collaboration support: extension 1.11.2 or later, or the corresponding IDE dev.3 build. Each person needs an existing local team and **OpenSSL on PATH**; `openssl version` must succeed. Both computers must share the same directly attached private IPv4 subnet. Start no network listener until you choose **Collaborate on LAN** and approve it. Follow the [pairing and proposal guide](COLLABORATION.md); there is no automatic discovery or reconnect.
+Both computers need a build with collaboration support: extension 1.11.2 or later, or Cleetus IDE 0.1.0. Each person needs an existing local team and **OpenSSL on PATH**; `openssl version` must succeed. Both computers must share the same directly attached private IPv4 subnet. Start no network listener until you choose **Collaborate on LAN** and approve it. Follow the [pairing and proposal guide](COLLABORATION.md); there is no automatic discovery or reconnect.
 
 ## Updates
 
-In ordinary VS Code, these update controls install the extension VSIX. In Cleetus IDE, **Check for Updates** checks the independent native release channel. A verified notarized IDE installation can stage and recheck a signed installer from the same publisher before you explicitly open it. Unsigned development builds offer release notes only; the updater never replaces the app silently or bypasses Gatekeeper. No public native installer is published yet.
+In ordinary VS Code, these update controls install the extension VSIX. In Cleetus IDE, **Check for Updates** checks the independent native release channel. A verified notarized IDE installation can stage and recheck a signed installer from the same publisher before you explicitly open it. Unsigned development builds offer release notes only; the updater never replaces the app silently or bypasses Gatekeeper. For manual installation, use the [IDE 0.1.0 release](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.1.0-macos-arm64).
 
 If you installed 1.10.0 or earlier, manually install 1.10.1 or newer once. Older builds check the former release location; they cannot discover releases after its source repository became private. Subsequent updates use this public download repository.
 
-Cleetus checks the public latest stable release shortly after startup, at most once per day after a successful check. Run **Cleetus: Check for Updates** to check immediately, or disable **checkForUpdates** in Settings → Extension preferences.
+The VS Code extension checks its public latest stable release shortly after startup, at most once per day after a successful check. Run **Cleetus: Check for Updates** to check immediately, or disable **checkForUpdates** in Settings → Extension preferences.
 
 Choose **Release notes** to review the release, or explicitly choose **Download & install**. Cleetus verifies the versioned VSIX's size and SHA-256 before asking VS Code to install it. Choose **Reload window** to activate the new version. It does not silently install updates. Draft/prerelease/incomplete releases and mismatched checksums are rejected.
 

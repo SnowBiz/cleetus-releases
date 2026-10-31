@@ -1,6 +1,6 @@
 # Your Cleetus workspace
 
-In ordinary VS Code, run **Cleetus: Open Workspace** for the extension interface below. In the unreleased native IDE development app, run **Cleetus: Open Studio** for **Agent Command**, **Teams**, **Tasks**, **Workflows**, **Review & Ship**, and embedded **Design**. The [IDE guide](IDE.md) explains task acceptance, isolated worktrees, workflow runs, and the current release status.
+In ordinary VS Code, run **Cleetus: Open Workspace** for the extension interface below. In Cleetus IDE 0.1.0, run **Cleetus: Open Studio** for **Agent Command**, **Teams**, **Tasks**, **Workflows**, **Review & Ship**, and embedded **Design**. The [IDE guide](IDE.md) explains task acceptance, isolated worktrees, workflow runs, and the current release status.
 
 The shared sidebar connects Conversation, Agents & Teams, Workflows, Work tracking, Tools, Memory & Rules, Settings, and Design. Design stays in the same workspace; a second tab is an explicit choice.
 
