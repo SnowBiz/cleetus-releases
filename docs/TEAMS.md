@@ -2,7 +2,7 @@
 
 Prebuilt teams give a shared goal to agents with defined roles, detailed system prompts, and an execution plan. They use the same Claude/Codex engines as ordinary conversations. Choose a template in **Workflows → Team templates**, inspect **View layout**, and choose **Create team** when it fits your task.
 
-In the native IDE development app, use **Cleetus: Open Studio → Teams → + New team** instead. Choose the same template, review its detailed member instructions and discovered model/effort choices, create it, then explicitly **Start team**. Creating a team or opening a Design draft does not start agents. See [IDE availability and Studio](IDE.md).
+In native IDE **0.1.0-dev.3**, use the **Teams** action on the native rail, then **+ New team**, or run **Cleetus: Open Studio**. Choose the same template, review its detailed member instructions and discovered model/effort choices, create it, then explicitly **Start team**. Creating a team or opening a Design draft does not start agents. See [IDE availability and Studio](IDE.md).
 
 ![Current workflow and team-template catalog](screenshots/workflows.png)
 
@@ -48,7 +48,7 @@ Agent details in a template layout let you inspect and save its model, effort, s
 
 Use **Output** to inspect actual work, **Message** to provide direction, and approval controls to answer tool requests. A blocked member needs a concrete recovery action. **Accept & hand off** is your explicit review decision; use it after inspecting the result. Stop a team to interrupt its agents. Delivery limits prevent unlimited task/message loops.
 
-Ready teams can be reopened for editing. In current IDE/source development builds, stale edits from another window are rejected and a live team belongs to its launching coordinator. Saved completed, cancelled, failed, and interrupted history retains output/messages; stopped-owner work becomes interrupted and queued handoffs are cancelled without replay. Historical records are read-only. The stable 1.10.2 extension does not automatically resume running scheduling after a reload; saved records are never proof of process reattachment. See [IDE tasks and recovery](IDE.md#give-a-team-a-bounded-goal) and the [service guide](SERVICE.md).
+Ready teams can be reopened for editing. In current IDE/source development builds, stale edits from another window are rejected and a live team belongs to its launching coordinator. Saved completed, cancelled, failed, and interrupted history retains output/messages; stopped-owner work becomes interrupted and queued handoffs are cancelled without replay. Historical records are read-only. Saved records are never proof of process reattachment. See [IDE tasks and recovery](IDE.md#give-a-team-a-bounded-goal) and the [service guide](SERVICE.md).
 
 ## Design squad or extraction team?
 
@@ -57,3 +57,10 @@ Use **Design System Extraction** to discover and curate what the product already
 Use the **Design squad** to implement or refine an interface against those decisions and approved references. A component/page studio task can prepare a focused team or Conversation draft with source, fixtures, contracts, rules, and acceptance criteria. Preparing a draft does not send it or start agents automatically.
 
 [Design extraction](DESIGN.md#extract-your-first-design-system) · [Component refinement](DESIGN.md) · [Workspace operations](GUIDE.md)
+
+
+## Collaborate across computers
+
+The 1.11.2 extension candidate and native dev.3 build add opt-in **Collaborate on LAN**. Select an existing local team in this project. Pair with another person’s team on the same private IPv4 subnet over TLS 1.3 using a copied one-use invitation and matching eight-digit codes approved by both people. Starting a team is not required to pair it.
+
+Each outgoing proposal and incoming import needs local approval. Accepted tasks become pending local tasks; approved messages stay in a separate team inbox, available through scoped agent tools rather than automatically becoming an agent prompt. Pairing grants no files, commands, provider accounts or credentials. See [network collaboration](COLLABORATION.md) for setup, scoped agent tools and reconnection behavior.
