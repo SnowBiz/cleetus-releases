@@ -40,7 +40,7 @@ Agent details in a template layout let you inspect and save its model, effort, s
 
 ## Recognize agent specialties
 
-Native agent portraits identify thirteen specialties: architect, tech lead, planner, implementer, frontend, backend, DevOps, security, design, data, support, tester and reviewer. Cleetus resolves the portrait from the agent’s declared role; an unrecognized role uses the standard Cleetus logo. The same role keeps its portrait across team cards, messages, topology views and the native agent list.
+Each of the 33 distinct roles in the prebuilt teams and workflow recipes has its own Cleetus robot portrait. This includes separate portraits for reproducer, root-cause analyst, fixer, verifier, each review specialty, and each extraction specialist. The full set has 40 artwork identities, retaining the original domain portraits plus a generalist robot for unspecified or unrecognized roles. Cleetus resolves exact prebuilt roles before broad specialty aliases, so a design lead and a design reviewer do not share an image. The same role keeps its portrait across team cards, messages, topology views, native agent lists and shared team views opened inside the IDE.
 
 Portraits describe specialties, not authority or progress. The separate engine, model, effort and status labels show the agent’s actual configuration and recorded state. Change its instructions and tool assignments through agent settings; changing a role label alone does not change its permissions.
 

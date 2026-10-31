@@ -46,7 +46,7 @@ The central Agent Command brings the goal composer, plan, selected team, recorde
 
 Open **Teams → + New team** and choose a [prebuilt team](TEAMS.md#which-team-should-i-choose). Review every role, task, system prompt, engine, model, effort and MCP assignment. A blank member effort inherits the team setting; supervised teams require a Claude supervisor. Ready-member settings can be edited before launch, subject to rejecting stale edits from another window.
 
-Persona artwork identifies an agent’s specialty: leadership, planning, frontend/backend implementation, quality and review, security, design, data, or operations. The main Cleetus navigation logo stays consistent. Model, engine and execution status remain separate live labels; the artwork does not indicate that a task has started.
+Every distinct prebuilt role has its own Cleetus robot portrait, including all four Bug hunt roles and the full Design extraction crew. The catalog has 40 portraits: 33 unique prebuilt-role identities, six additional original domain specialties, and a generalist robot for unrecognized or unspecified roles. The main Cleetus navigation logo stays consistent. Model, engine and execution status remain separate live labels; the artwork does not indicate that a task has started.
 
 The orbital view uses circular role portraits and declared supervision, pipeline and message relationships. State labels distinguish ready members from running or completed work. Motion represents recent observed messages; the diagram itself does not prove communication or execution. An uncreated template is labeled **Not created yet**.
 
