@@ -21,6 +21,8 @@ Run **Cleetus: Preview Current File**, or choose **Preview current file** in Age
 
 Use **Cleetus: Focus Agent Command** for the right dock (**Ctrl+Alt+I**, or **Ctrl+Cmd+I** on macOS). **Engines** opens account setup; **Open conversation** opens Cleetus chat. Use the native rail or **Cleetus: Open Studio** for the full Studio screens, and **Cleetus: Open Development Workspace** to return to source and preview. Studio expands into the editor canvas while retaining the compact team dock; the conversation pane is reserved for wide Agent Command layouts.
 
+The **Workspace** menu opens existing **Tools & security**, **Work tracking**, **Memory & Rules** and **Cleetus settings** in the retained shared workspace editor tab. It preserves the selected project and your Studio/Design/source tabs. These are shared workspace screens, not separate native implementations. From **Review → Pull requests**, **Configure GitHub** takes you directly to connection setup; return and choose **Refresh** to load the configured connections.
+
 The IDE keeps its own application identity, settings, extension directories and profiles. It coexists with VS Code without automatically moving settings or credentials. Install compatible extensions from Open VSX or a reviewed VSIX; availability and licensing vary. Cleetus supplies the agent interface. Claude and Codex are the supported engines; the upstream vendor chat/runtime is omitted from this build.
 
 ## Give Agent Command a goal
@@ -34,6 +36,8 @@ The central Agent Command brings the goal composer, plan, selected team, recorde
 3. Describe the outcome, constraints and acceptance checks. **Run agent** saves the goal and linked execution task before requesting a run.
 4. Review the native approval, including project and working directory, then inspect actual output, tool requests and edits.
 
+**Saved conversations** remains visible alongside team templates and created teams. Choose **Continue conversation** for the exact saved project session. Sessions created for fenced task work offer **Inspect saved output**; use the task workflow for a new execution lease. Design agent handoffs open their actual conversation instead of leaving you on the dashboard.
+
 **Plan with team** opens team setup. Opening a draft, choosing a template or viewing the dashboard starts no agents. A stopped run retains changes already made; review them before continuing.
 
 ## Give a team a bounded goal
@@ -41,6 +45,8 @@ The central Agent Command brings the goal composer, plan, selected team, recorde
 ![Native orbital Teams view with four ready members](screenshots/ide-native-teams.png)
 
 Open **Teams → + New team** and choose a [prebuilt team](TEAMS.md#which-team-should-i-choose). Review every role, task, system prompt, engine, model, effort and MCP assignment. A blank member effort inherits the team setting; supervised teams require a Claude supervisor. Ready-member settings can be edited before launch, subject to rejecting stale edits from another window.
+
+Persona artwork identifies an agent’s specialty: leadership, planning, frontend/backend implementation, quality and review, security, design, data, or operations. The main Cleetus navigation logo stays consistent. Model, engine and execution status remain separate live labels; the artwork does not indicate that a task has started.
 
 The orbital view uses circular role portraits and declared supervision, pipeline and message relationships. State labels distinguish ready members from running or completed work. Motion represents recent observed messages; the diagram itself does not prove communication or execution. An uncreated template is labeled **Not created yet**.
 

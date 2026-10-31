@@ -31,6 +31,8 @@ The receiving person selects its active peer and reviews the complete proposal i
 - An accepted **message** goes into the approved team inbox. The team's agents can read it through their scoped Cleetus tools. It is not automatically delivered as an agent prompt or relabeled as the local user's instruction.
 - A receipt distinguishes staging or acceptance from execution. Acceptance does not mean an agent started, completed work, or passed checks.
 
+If the incoming approval is declined, the proposal is rejected and the sender receives a rejection receipt. If the local task board changes while approval is open, Cleetus rejects the stale proposal before importing anything; send a fresh proposal after review. Unexpected failures remain marked for reconciliation and cannot be accepted again automatically.
+
 Pairing grants no filesystem, shell, MCP, provider-account or credential access. Incoming text stays untrusted evidence; local project instructions and existing engine/tool approvals still apply. Code changes continue through your normal version-control workflow. Files are not automatically synchronized or exported.
 
 ## Use it from agents
