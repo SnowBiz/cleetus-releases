@@ -1,6 +1,6 @@
 # Install and update Cleetus
 
-The current public stable release is the **Cleetus VS Code extension 1.11.2**. The instructions below install the extension. **Cleetus IDE 0.1.0-dev.3** is an unreleased, unsigned and unnotarized local development build; a signed public native installer has not been published yet. See [Cleetus IDE and Studio](IDE.md) for its current interface and limitations.
+The public stable product is the **Cleetus VS Code extension**; download its [latest stable release](https://github.com/SnowBiz/cleetus-releases/releases/latest). The instructions below install the extension. **Cleetus IDE 0.1.0-dev.4** is an unreleased, unsigned and unnotarized local development build; a signed public native installer has not been published yet. See [Cleetus IDE and Studio](IDE.md) for its current interface and limitations.
 
 You need VS Code 1.94+, Node.js 22+, npm, and access to the engine you want to use. You may use Claude, Codex, or both. The currently recorded clean-host runtime audit covers macOS ARM64; other supported runtime platforms still need local verification.
 

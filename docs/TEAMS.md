@@ -2,7 +2,7 @@
 
 Prebuilt teams give a shared goal to agents with defined roles, detailed system prompts, and an execution plan. They use the same Claude/Codex engines as ordinary conversations. Choose a template in **Workflows → Team templates**, inspect **View layout**, and choose **Create team** when it fits your task.
 
-In native IDE **0.1.0-dev.3**, use the **Teams** action on the native rail, then **+ New team**, or run **Cleetus: Open Studio**. Choose the same template, review its detailed member instructions and discovered model/effort choices, create it, then explicitly **Start team**. Creating a team or opening a Design draft does not start agents. See [IDE availability and Studio](IDE.md).
+In native IDE **0.1.0-dev.4**, use the **Teams** action on the native rail, then **+ New team**, or run **Cleetus: Open Studio**. Choose the same template, review its detailed member instructions and discovered model/effort choices, create it, then explicitly **Start team**. Creating a team or opening a Design draft does not start agents. See [IDE availability and Studio](IDE.md).
 
 ![Current workflow and team-template catalog](screenshots/workflows.png)
 
@@ -37,6 +37,12 @@ These are starting roles, not guaranteed outcomes or fixed vendor/model requirem
 ![Current extraction team setup; all specialist prompts remain editable](screenshots/extraction-team.png)
 
 Agent details in a template layout let you inspect and save its model, effort, system prompt, and MCP settings. Ready-team agent settings can also be edited before launch; started agents cannot be reconfigured through that pre-start editor. Refresh/reopen when another window has changed the saved settings.
+
+## Recognize agent specialties
+
+Native agent portraits identify thirteen specialties: architect, tech lead, planner, implementer, frontend, backend, DevOps, security, design, data, support, tester and reviewer. Cleetus resolves the portrait from the agent’s declared role; an unrecognized role uses the standard Cleetus logo. The same role keeps its portrait across team cards, messages, topology views and the native agent list.
+
+Portraits describe specialties, not authority or progress. The separate engine, model, effort and status labels show the agent’s actual configuration and recorded state. Change its instructions and tool assignments through agent settings; changing a role label alone does not change its permissions.
 
 ## Understand the execution mode
 

@@ -2,7 +2,7 @@
 
 Cleetus brings Claude and Codex conversations, agent teams, tools, work tracking, and a Design studio into one workspace. Start with installation, then choose the guide for your task.
 
-The public stable product is the **Cleetus VS Code extension 1.11.2**. **Cleetus IDE 0.1.0-dev.3** is an unreleased, unsigned and unnotarized local development build; no signed public IDE installer is available yet. The [IDE and Studio guide](IDE.md) describes that development interface separately.
+The public stable product is the **Cleetus VS Code extension** ([latest stable release](https://github.com/SnowBiz/cleetus-releases/releases/latest)). **Cleetus IDE 0.1.0-dev.4** is an unreleased, unsigned and unnotarized local development build; no signed public IDE installer is available yet. The [IDE and Studio guide](IDE.md) describes that development interface separately.
 
 | Guide | What it covers |
 | --- | --- |
@@ -22,4 +22,4 @@ The public stable product is the **Cleetus VS Code extension 1.11.2**. **Cleetus
 
 [Download releases](https://github.com/SnowBiz/cleetus-releases/releases)
 
-The extension screenshots use illustrative local data. The IDE guide shows actual native dev.3 captures from a disposable AccountWorkspace project with ready, unstarted members and pending tasks. Its Git diff and rendered component come from that local project. No provider was started for the captures; they do not establish live account work, customer extraction or two-computer LAN pairing. The Design cowboy banner is promotional artwork. Native previews require your actual Xcode build and Simulator runtime.
+The extension screenshots use illustrative local data. The IDE guide shows actual native dev.3 captures, with Teams refreshed from dev.4, from a disposable AccountWorkspace project with ready, unstarted members and pending tasks. Its Git diff and rendered component come from that local project. No provider was started for the captures; they do not establish live account work, customer extraction or two-computer LAN pairing. The Design cowboy banner is promotional artwork. Native previews require your actual Xcode build and Simulator runtime.

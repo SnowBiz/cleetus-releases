@@ -10,8 +10,8 @@ This is the public download and documentation home for Cleetus. Development sour
 
 | Product | Availability |
 | --- | --- |
-| **Cleetus VS Code extension** | Stable **1.11.2** VSIX for ordinary VS Code. |
-| **Cleetus IDE 0.1.0-dev.3** | Unreleased local, unsigned and unnotarized development app built from official Code - OSS source. A signed public IDE installer is not available yet. |
+| **Cleetus VS Code extension** | [Latest stable VSIX](https://github.com/SnowBiz/cleetus-releases/releases/latest) for ordinary VS Code. |
+| **Cleetus IDE 0.1.0-dev.4** | Unreleased local, unsigned and unnotarized development app built from official Code - OSS source. A signed public IDE installer is not available yet. |
 
 [Cleetus IDE and Studio](docs/IDE.md) covers its compact source/preview editor, central Agent Command, orbital team view, tasks, workflow canvas, split/unified review, and live Design component controls. The existing extension remains maintained and independently distributed.
 
@@ -51,4 +51,4 @@ Apache-licensed Cleetus extension portions retain their accompanying license and
 
 [License details](docs/LICENSES.md) · [Apache-2.0](docs/licenses/Apache-2.0.txt) · [Future IDE preview terms](docs/licenses/IDE-PREVIEW-LICENSE.txt)
 
-The browser developer host is a separate development pathway from the native IDE. Extension screenshots use illustrative data. The IDE guide includes actual native dev.3 captures of a disposable AccountWorkspace project with four ready, unstarted members and pending tasks, a real local Git diff and a source-rendered component. No provider was started for these captures, and they do not establish live account work or two-computer LAN pairing. Cleetus is independent of Anthropic and OpenAI and uses your own provider accounts.
+The browser developer host is a separate development pathway from the native IDE. Extension screenshots use illustrative data. The IDE guide includes actual native dev.3 captures, with Teams refreshed from dev.4, of a disposable AccountWorkspace project with four ready, unstarted members and pending tasks, a real local Git diff and a source-rendered component. No provider was started for these captures, and they do not establish live account work or two-computer LAN pairing. Cleetus is independent of Anthropic and OpenAI and uses your own provider accounts.

@@ -4,16 +4,16 @@ Cleetus IDE puts a Code - OSS editor, agents and a source-linked Design studio i
 
 | Product | Availability |
 | --- | --- |
-| **VS Code extension** | Public stable **1.11.2**. [Install and update](INSTALL.md). |
-| **IDE 0.1.0-dev.3** | Local development app built from pinned official Code - OSS source. Unsigned and unnotarized; no signed public native installer is available. |
+| **VS Code extension** | [Latest public stable release](https://github.com/SnowBiz/cleetus-releases/releases/latest). [Install and update](INSTALL.md). |
+| **IDE 0.1.0-dev.4** | Local development app built from pinned official Code - OSS source. Unsigned and unnotarized; no signed public native installer is available. |
 
-The images below are actual native dev.3 captures of a disposable **AccountWorkspace** project. Its four team members are ready and unstarted, tasks are pending, Review shows a real local Git edit, and Design renders a real local component. No providers were started for these captures. They demonstrate the interface and local data, not live account execution, completed customer work or pairing between two physical computers.
+The images below are actual native captures of a disposable **AccountWorkspace** project. The Teams image uses dev.4 with role-specific portraits; the remaining images use dev.3. Its four team members are ready and unstarted, tasks are pending, Review shows a real local Git edit, and Design renders a real local component. No providers were started for these captures. They demonstrate the interface and local data, not live account execution, completed customer work or pairing between two physical computers.
 
 ## Open the source and preview workspace
 
 ![Native editor with source, live preview and agent docks](screenshots/ide-native-editor.png)
 
-Open a project folder, then run **Cleetus: Open Development Workspace**. Explorer and the compact Agent Team dock sit on the left; the native source editor and registered live preview share the center; Agent Command stays on the right. The branded command bar and labeled action rail provide access to the editor, Agent Command, Teams, Tasks, Workflows, Review and Design. **More** retains other editor views, including debugging.
+Open a project folder, then run **Cleetus: Open Development Workspace**. Explorer and the compact Agent Team dock sit on the left; the native source editor and registered live preview share the center; Agent Command stays on the right. The branded command bar and labeled action rail provide access to the editor, Agent Command, Teams, Tasks, Workflows, Review and Design. **More** retains other editor views, including debugging. The native preview includes the pinned open-source JavaScript/Node debugger: set a source breakpoint, choose a Node launch configuration in Run and Debug, and inspect variables, stacks and expressions. Other languages require their compatible debug extensions.
 
 The workflow strip above the editor uses actual team members, tasks or workflow steps. Select a stage to inspect that recorded item. Existing editor tabs, split resizing, terminal, source control and compatible language extensions remain available.
 
