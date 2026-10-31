@@ -7,7 +7,7 @@ Cleetus IDE puts a Code - OSS editor, agents and a source-linked Design studio i
 | **VS Code extension** | [Latest public stable release](https://github.com/SnowBiz/cleetus-releases/releases/latest). [Install and update](INSTALL.md). |
 | **IDE 0.1.0-dev.4** | Local development app built from pinned official Code - OSS source. Unsigned and unnotarized; no signed public native installer is available. |
 
-The images below are actual native captures of a disposable **AccountWorkspace** project. The Teams image uses dev.4 with role-specific portraits; the remaining images use dev.3. Its four team members are ready and unstarted, tasks are pending, Review shows a real local Git edit, and Design renders a real local component. No providers were started for these captures. They demonstrate the interface and local data, not live account execution, completed customer work or pairing between two physical computers.
+The native guide shows actual Cleetus IDE 0.1.0 candidate captures of an isolated CleetusGuide01 sample project: ready, unstarted members, a pending task, a saved workflow with no runs, a real local Git diff and live source previews. Models, activity and cost are not simulated as live execution. No providers were started for these captures; they do not establish live account work, customer extraction or physical two-computer LAN acceptance.
 
 ## Open the source and preview workspace
 
@@ -27,7 +27,7 @@ The IDE keeps its own application identity, settings, extension directories and 
 
 ## Give Agent Command a goal
 
-![Native central Agent Command with actual project plan and ready team](screenshots/ide-native-agent-command.png)
+![Native Agent Command with an unsubmitted brief, queued plan and ready team](screenshots/ide-native-agent-command.png)
 
 The central Agent Command brings the goal composer, plan, selected team, recorded sessions, tasks, activity and reported files together. Its cards reflect saved local state. Requested models are configuration; provider-reported execution metadata remains unknown until reported. Cost and activity are not inferred from a template or a ready team.
 
@@ -42,7 +42,11 @@ The central Agent Command brings the goal composer, plan, selected team, recorde
 
 ## Give a team a bounded goal
 
-![Native orbital Teams view with four ready members](screenshots/ide-native-teams.png)
+![Native orbital Teams view with five ready, unstarted members](screenshots/ide-native-teams.png)
+
+![Themed prebuilt team catalog](screenshots/ide-native-team-template-menu.png)
+
+[Review the creation dialog](screenshots/ide-native-team-create.png) · [See a ready Design squad](screenshots/ide-native-design-squad.png). Creating a team leaves its agents stopped; **Start team** is a separate action.
 
 Open **Teams → + New team** and choose a [prebuilt team](TEAMS.md#which-team-should-i-choose). Review every role, task, system prompt, engine, model, effort and MCP assignment. A blank member effort inherits the team setting; supervised teams require a Claude supervisor. Ready-member settings can be edited before launch, subject to rejecting stale edits from another window.
 
@@ -82,7 +86,7 @@ Named events are explicit host events, not implicit file watchers. **Emit an eve
 
 ## Review the actual changes
 
-![Native Review with a real local Git change and split diff](screenshots/ide-native-review.png)
+![Native Review with an actual local owned-checkout change and unified diff](screenshots/ide-native-review.png)
 
 **Review & Ship → Owned worktrees → + New worktree** creates a checkout and branch from committed HEAD after approval. Associate it with an existing task. Uncommitted primary-checkout changes stay there. Worktrees isolate checkout files, not operating-system permissions; normal engine approvals still apply.
 
@@ -96,7 +100,7 @@ Cleanup needs explicit approval and removes only a verified clean Cleetus-owned 
 
 ## Refine a source-linked component in Design
 
-![Native Design component library, live canvas, source and properties](screenshots/ide-native-design.png)
+![Native Design page review with live desktop and phone source previews](screenshots/ide-native-design.png)
 
 Open **Design** for the component library, interactive source canvas, linked code/fixture panels and component properties. Select a registered component, inspect its implementation and fixtures, and change its exposed controls to exercise the real preview. The inspector uses registered component metadata and supported props; discovery alone does not establish a successful render.
 
