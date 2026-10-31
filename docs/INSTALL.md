@@ -1,6 +1,6 @@
 # Install and update Cleetus
 
-The current public stable release is the **Cleetus VS Code extension 1.11.1**. **1.11.2** is the current source candidate; use its release assets only after publication. The instructions below install the extension. **Cleetus IDE 0.1.0-dev.3** is an unreleased, unsigned and unnotarized local development build; a signed public native installer has not been published yet. See [Cleetus IDE and Studio](IDE.md) for its current interface and limitations.
+The current public stable release is the **Cleetus VS Code extension 1.11.2**. The instructions below install the extension. **Cleetus IDE 0.1.0-dev.3** is an unreleased, unsigned and unnotarized local development build; a signed public native installer has not been published yet. See [Cleetus IDE and Studio](IDE.md) for its current interface and limitations.
 
 You need VS Code 1.94+, Node.js 22+, npm, and access to the engine you want to use. You may use Claude, Codex, or both. The currently recorded clean-host runtime audit covers macOS ARM64; other supported runtime platforms still need local verification.
 
@@ -44,7 +44,7 @@ Open a project, then choose **Cleetus: Open Workspace**. Start with a bounded ta
 
 ## Optional LAN collaboration
 
-Both computers need a build with collaboration support: the 1.11.2 extension candidate or corresponding IDE dev.3 build. Each person needs an existing local team and **OpenSSL on PATH**; `openssl version` must succeed. Both computers must share the same directly attached private IPv4 subnet. Start no network listener until you choose **Collaborate on LAN** and approve it. Follow the [pairing and proposal guide](COLLABORATION.md); there is no automatic discovery or reconnect.
+Both computers need a build with collaboration support: extension 1.11.2 or later, or the corresponding IDE dev.3 build. Each person needs an existing local team and **OpenSSL on PATH**; `openssl version` must succeed. Both computers must share the same directly attached private IPv4 subnet. Start no network listener until you choose **Collaborate on LAN** and approve it. Follow the [pairing and proposal guide](COLLABORATION.md); there is no automatic discovery or reconnect.
 
 ## Updates
 

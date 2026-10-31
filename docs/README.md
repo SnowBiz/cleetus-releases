@@ -2,7 +2,7 @@
 
 Cleetus brings Claude and Codex conversations, agent teams, tools, work tracking, and a Design studio into one workspace. Start with installation, then choose the guide for your task.
 
-The public stable product is the **Cleetus VS Code extension 1.11.1**; **1.11.2** is the current candidate. **Cleetus IDE 0.1.0-dev.3** is an unreleased, unsigned and unnotarized local development build; no signed public IDE installer is available yet. The [IDE and Studio guide](IDE.md) describes that development interface separately.
+The public stable product is the **Cleetus VS Code extension 1.11.2**. **Cleetus IDE 0.1.0-dev.3** is an unreleased, unsigned and unnotarized local development build; no signed public IDE installer is available yet. The [IDE and Studio guide](IDE.md) describes that development interface separately.
 
 | Guide | What it covers |
 | --- | --- |

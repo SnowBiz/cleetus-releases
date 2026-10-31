@@ -4,7 +4,7 @@ Cleetus IDE puts a Code - OSS editor, agents and a source-linked Design studio i
 
 | Product | Availability |
 | --- | --- |
-| **VS Code extension** | Public stable **1.11.1**; **1.11.2** is the current candidate. [Install and update](INSTALL.md). |
+| **VS Code extension** | Public stable **1.11.2**. [Install and update](INSTALL.md). |
 | **IDE 0.1.0-dev.3** | Local development app built from pinned official Code - OSS source. Unsigned and unnotarized; no signed public native installer is available. |
 
 The images below are actual native dev.3 captures of a disposable **AccountWorkspace** project. Its four team members are ready and unstarted, tasks are pending, Review shows a real local Git edit, and Design renders a real local component. No providers were started for these captures. They demonstrate the interface and local data, not live account execution, completed customer work or pairing between two physical computers.

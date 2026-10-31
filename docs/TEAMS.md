@@ -61,6 +61,6 @@ Use the **Design squad** to implement or refine an interface against those decis
 
 ## Collaborate across computers
 
-The 1.11.2 extension candidate and native dev.3 build add opt-in **Collaborate on LAN**. Select an existing local team in this project. Pair with another person’s team on the same private IPv4 subnet over TLS 1.3 using a copied one-use invitation and matching eight-digit codes approved by both people. Starting a team is not required to pair it.
+The 1.11.2 extension and native dev.3 build add opt-in **Collaborate on LAN**. Select an existing local team in this project. Pair with another person’s team on the same private IPv4 subnet over TLS 1.3 using a copied one-use invitation and matching eight-digit codes approved by both people. Starting a team is not required to pair it.
 
 Each outgoing proposal and incoming import needs local approval. Accepted tasks become pending local tasks; approved messages stay in a separate team inbox, available through scoped agent tools rather than automatically becoming an agent prompt. Pairing grants no files, commands, provider accounts or credentials. See [network collaboration](COLLABORATION.md) for setup, scoped agent tools and reconnection behavior.

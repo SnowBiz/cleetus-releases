@@ -10,7 +10,7 @@ This is the public download and documentation home for Cleetus. Development sour
 
 | Product | Availability |
 | --- | --- |
-| **Cleetus VS Code extension** | Stable **1.11.1** VSIX for ordinary VS Code; **1.11.2** is the current candidate. |
+| **Cleetus VS Code extension** | Stable **1.11.2** VSIX for ordinary VS Code. |
 | **Cleetus IDE 0.1.0-dev.3** | Unreleased local, unsigned and unnotarized development app built from official Code - OSS source. A signed public IDE installer is not available yet. |
 
 [Cleetus IDE and Studio](docs/IDE.md) covers its compact source/preview editor, central Agent Command, orbital team view, tasks, workflow canvas, split/unified review, and live Design component controls. The existing extension remains maintained and independently distributed.
@@ -23,7 +23,7 @@ Resume conversations, choose available models and effort, review tool requests/d
 
 [Workspace guide](docs/GUIDE.md) · [Prebuilt teams](docs/TEAMS.md)
 
-The 1.11.2 candidate adds [opt-in LAN collaboration](docs/COLLABORATION.md): pair two teams on the same private IPv4 subnet over TLS 1.3, compare matching eight-digit codes, and approve both sides. Outgoing proposals and incoming imports each need local approval. Accepted tasks stay pending; approved messages go to a separate inbox.
+Cleetus 1.11.2 adds [opt-in LAN collaboration](docs/COLLABORATION.md): pair two teams on the same private IPv4 subnet over TLS 1.3, compare matching eight-digit codes, and approve both sides. Outgoing proposals and incoming imports each need local approval. Accepted tasks stay pending; approved messages go to a separate inbox.
 
 ## Design with a studio
 
