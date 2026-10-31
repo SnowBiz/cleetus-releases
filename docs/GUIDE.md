@@ -1,33 +1,61 @@
-# Your Cleetus workspace
+# Agent Command and conversations
 
-In ordinary VS Code, run **Cleetus: Open Workspace** for the extension interface below. In Cleetus IDE 0.1.0, run **Cleetus: Open Studio** for **Agent Command**, **Teams**, **Tasks**, **Workflows**, **Review & Ship**, and embedded **Design**. The [IDE guide](IDE.md) explains task acceptance, isolated worktrees, workflow runs, and the current release status.
+_Read this guide on [cleetus.dev](https://cleetus.dev/docs/agent-command/)._
 
-The shared sidebar connects Conversation, Agents & Teams, Workflows, Work tracking, Tools, Memory & Rules, Settings, and Design. Design stays in the same workspace; a second tab is an explicit choice.
+Agent Command is where work starts. You describe an outcome, pick an engine, model and effort, and follow the run: plan, active agents, live execution, tasks and the files agents report. Conversations are the same engines in a chat you can attach context to, search and resume.
 
-![Conversation workspace](screenshots/conversation.png)
+![Agent Command's goal composer with codebase, design docs and team context, model and effort pickers and Run agent](screenshots/detail-agent-command-composer.png)
 
-## Conversations and history
+## Give a goal
 
-Choose Claude or Codex, an available model, effort and permission mode. Models come from engine capabilities rather than free-form names; catalogs distinguish their engine/backend. Attach files, selections, images or editor context, then send a focused request.
+1. Connect Claude or Codex in **Get started**. See [installing engines](INSTALL.md#connect-your-engines).
+2. Describe the outcome, the constraints and how you'll check it. _"Improve the account settings layout with accessible controls, reuse the saved design system, and verify the responsive behaviour"_ beats _"fix settings"_.
+3. Choose a discovered model or **Engine default**, and an effort that engine supports. Models come from the engine's own capability list, never a free-form name.
+4. Choose **Run agent**. Cleetus saves the goal and a linked execution task, then asks before starting the run. The approval shows the project and working directory.
 
-Inspect actual tool requests and proposed diffs. Permissions may come from session rules, native engine modes, hooks or an explicit approval card. Stop interrupts execution; it does not undo earlier writes. Review the result and validate the changed project.
+**Plan with team** opens team setup instead. See [Agent teams](TEAMS.md).
 
-Open History to find and resume earlier conversations, with engine/native identity retained where supported. Sessions support search, grouping, archive and export. A stored transcript is not a resumed local process, and changing engines does not move a native session between vendors.
+![Execution plan, active agents, live execution and current tasks for a ready team](screenshots/detail-agent-command-plan.png)
 
-![History drawer](screenshots/history.png)
+_A ready team: queued members, an empty live execution panel and no tasks yet. Nothing has started._
 
-## Pick the right workflow
+## What the cards mean
 
-Use one conversation for a bounded task, a workflow recipe for a reusable request, or a [prebuilt team](TEAMS.md) for explicit roles and handoffs. Use [Design](DESIGN.md) to inspect/refine reusable components and pages before asking agents to adopt changes.
+Agent Command shows saved local state and nothing else:
 
-In native Studio, a saved goal/task has its own acceptance criteria and review state. **Run task** asks for approval; a report moves work to review, and only your **Approve result** decision completes it. Check the working directory before execution—creating an owned worktree does not automatically redirect a primary-project task into it.
+- **Requested models are configuration.** What actually ran shows up only once the engine reports it.
+- **Cost and activity are never inferred** from a template or a ready team. A ready team with no runs shows "Cost unavailable", not a guess.
+- **Agent logs** are actual execution output. **Reported files** are artifacts an agent explicitly reported, linked back to source.
 
-Studio workflow **definitions** describe supported actions and dependencies; **runs** record actual execution and journals. They are separate from the extension's lighter conversation recipes. Saving a definition does not run it, and restarting does not replay interrupted side effects. The Recipes catalog creates saved DAGs without launching them; Automation configures explicitly approved intervals or named events and displays dispatch receipts. [Workflow and automation guide](IDE.md#define-a-workflow-then-inspect-its-runs)
+Opening a draft, choosing a template or viewing the dashboard never starts an agent.
 
-[Work tracking](WORK_TRACKING.md) can prepare a conversation or team with source issue details and acceptance criteria. Preparing a draft does not send it or start agents. [Tools](TOOLS.md) controls MCP and developer tooling. Memory & Rules keeps project/user instructions close to the work.
+## Conversations
 
-## Storage and settings
+![Conversation workspace with history, chat and team view](screenshots/conversation.png)
 
-Cleetus stores its profile separately from your repository, normally under `~/.cleetus/profile`. Settings → Storage shows the actual location. Project design artifacts remain in the project's `design/` folder. Native runtime credentials retain their storage behavior.
+Open a conversation from Agent Command, the action rail or **Cleetus: Open Studio**. Choose the engine, model, effort and permission mode, then attach files, selections, images or editor context.
 
-Stop work before moving/backing up a profile. Account tokens and native secure storage are not portable merely by copying profile files. Provider/environment changes may require a reconnect or reload. Keep private transcripts, credentials and job records out of public repositories.
+- **Tool requests and diffs** appear inline. Approve, deny or edit them; see [approvals](TOOLS.md#the-permission-flow).
+- **Stop** interrupts the engine. It doesn't undo earlier writes; review the project after stopping.
+- **History** lets you search, group, bookmark, archive and export sessions. **Continue conversation** resumes the exact saved project session with its native engine identity.
+
+![History drawer with search and grouped conversations](screenshots/history.png)
+
+## How resume works
+
+Each conversation is a core **session** with an engine ID, working directory, model, effort and permission mode. Final messages and tool and permission events are appended to a JSONL transcript in your profile; transient streaming frames aren't stored.
+
+Resuming reloads that transcript and recreates the engine adapter with the engine's own session ID, so Claude or Codex continues its native session. It doesn't revive a suspended process, and changing engines never moves a session between vendors. A transcript is a record, not a running agent.
+
+Sessions created for fenced task work offer **Inspect saved output** instead of continuing. New work on that task goes through its own run flow, so its [execution lease](TASKS.md#execution-leases-and-fencing) stays valid.
+
+## Keyboard and commands
+
+| Do this                    | How                                               |
+| -------------------------- | ------------------------------------------------- |
+| Focus Agent Command        | **Ctrl+Cmd+I** on macOS, **Ctrl+Alt+I** elsewhere |
+| Open the full Studio       | **Cleetus: Open Studio**                          |
+| Back to source and preview | **Cleetus: Open Development Workspace**           |
+| Preview the current file   | **Cleetus: Preview Current File**                 |
+
+[Agent teams](TEAMS.md) · [Tasks](TASKS.md) · [Tools, MCP and approvals](TOOLS.md)

@@ -1,6 +1,8 @@
 # Install and update Cleetus
 
-Choose the native **Cleetus IDE 0.1.0** for macOS Apple Silicon or the **Cleetus VS Code extension 1.11.3** for ordinary VS Code. They have independent release and update channels; installing one does not require the other.
+_Read this guide on [cleetus.dev](https://cleetus.dev/docs/install/)._
+
+Install **Cleetus IDE 0.1.0**, a complete editor for macOS Apple Silicon that replaces VS Code. If you need to stay in VS Code, the **Cleetus VS Code extension 1.11.3** brings the same agents to it. They have independent release and update channels; installing one doesn't require the other.
 
 ## Install Cleetus IDE for Apple Silicon
 
@@ -17,7 +19,7 @@ The IDE includes the editor, so you do not need VS Code or a source checkout. It
 
 For engine setup, install **Node.js 22+** and npm, then follow the separate runtime and account instructions below. You may use Claude, Codex or both; installing the editor does not install provider accounts or grant model access.
 
-## Install the extension
+## Install the extension instead
 
 Use **VS Code 1.94+**, Node.js 22+ and npm. The current clean-host engine-runtime audit covers macOS ARM64; other runtime platforms still need local verification.
 
