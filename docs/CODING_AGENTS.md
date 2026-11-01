@@ -9,6 +9,8 @@ These connections first shipped in [Cleetus Beta 0.2.0-beta.2 for macOS Apple
 Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.2-macos-arm64).
 Use the beta release notes to check its preview boundaries. Stable IDE and VSIX
 downloads have independent versions and may not include this connection flow.
+The guided Claude Code setup below is new for **0.2.0-beta.3**; beta 2 does not
+include that guided flow. Check your installed release notes before using it.
 
 This guide applies to builds with **Cleetus: Connect coding agents** in the
 Command Palette. If that command is absent, your installed build does not include
@@ -16,9 +18,9 @@ this connection flow; check its release notes before updating. Extension and IDE
 releases remain independent. The release links in the [installation guide](INSTALL.md)
 do not by themselves establish ACP feature availability.
 
-Claude API/cloud, Codex, and the Claude Code **Terminal agents** preview retain
-their [existing setup](INSTALL.md#connect-your-engines). Connecting an ACP agent
-does not convert those engines or their saved conversations.
+Claude API/cloud and Codex retain their [existing setup](INSTALL.md#connect-your-engines).
+Claude Code uses the separate [guided setup](#connect-your-own-claude-code) below.
+Connecting an ACP agent does not convert those engines or their saved conversations.
 
 ## Install and sign in with your own CLI
 
@@ -170,27 +172,83 @@ independently and select its actual executable.
 | Cannot change or disconnect an agent | Close its live sessions, then refresh and retry. Saved history can remain. |
 | Settings changed during approval | Refresh and review the exact new launch configuration. Do not reuse the stale approval. |
 | Custom CLI produces invalid output | Confirm it implements ACP stdio and reserves stdout for protocol messages. Use its own documentation for supported logging and authentication. |
+| Claude Code sign-in does not open a browser or requests a code | Choose **Open native setup** in the Claude Code card and complete the provider's own terminal flow. Cleetus does not collect login URLs, tokens or verification codes. |
+| Claude Code is installed but its authentication is unknown | Use **Refresh status** or explicit native setup. Installed, signed in and subscription entitlement are separate observations. |
 
 This guide describes implemented connection behavior and provider documentation.
 It does not report successful real-account inference or tool execution for every
 listed CLI. Validate your own provider/version with a bounded request and inspect
 the actual output and changes. For other problems, see [troubleshooting](TROUBLESHOOTING.md).
 
-## Hosted Claude Code UI preview
+## Connect your own Claude Code
 
-Hosted Claude Code follows a separate integration from ACP. It uses your own
-unmodified interactive Claude Code installation. The ordinary **Terminal agents**
-mode keeps interaction in Claude Code and shows reported activity in Cleetus.
+In beta 3 builds, **Get started → Claude Code → Connect Claude Code** opens the shared
+**Coding agent connections** dialog. You can also run **Cleetus: Connect coding
+agents** or choose **Agents** in native Studio. The **Claude Code** card runs your
+own unmodified Claude Code installation; this is separate from ACP and from the
+Claude API/cloud SDK engine.
 
-For maintainers building and reviewing the Cleetus channel locally, compatible
-beta builds expose an opt-in **local development** experiment. This is not the
-normal setup path for a downloaded channel; production use requires the
-applicable channel approval. To test a channel you are developing:
+1. If the CLI is unavailable, choose **Installation guide** for
+   [Claude Code's official setup instructions](https://code.claude.com/docs/en/setup).
+   Install it independently, then choose **Refresh status**. Cleetus does not run
+   an installer or bundle the CLI. You can check installation and sign in before
+   opening a project.
+2. Choose **Connect**. Cleetus checks the CLI's own authentication status. If it
+   already reports a sign-in, Connect reuses it without starting another login.
+   If sign-in is needed, review the exact native CLI launch approval.
+3. **Sign in / change account** explicitly starts the CLI's `claude auth login`
+   flow. A browser may open. Claude Code owns authentication and its callback;
+   Cleetus supplies no OAuth page, captured login URL, token field or code
+   collector. Starting that process does not prove sign-in completed.
+4. If a browser does not open, cannot finish, or asks for a manual code, choose
+   **Open native setup**. This explicitly opens Claude Code's own setup in an
+   editor terminal. Complete any manual-code step there. **Cancel setup** stops
+   the setup owned by this connection.
+5. Choose **Enable hosted Claude Code** to review the separate settings opt-in,
+   then choose **Reload Cleetus** when offered. This enables the **Terminal
+   agents** engine; it does not complete authentication or enable custom channels.
+   The channel setting remains unchanged and defaults to off.
+6. Once the engine is enabled and the card reports sign-in, open your project
+   and choose **Use in Cleetus**. This selects **Terminal agents** in the composer.
+   It does not launch an agent, send a goal or perform inference. Starting work
+   remains a separate action.
+
+The card distinguishes **Installed**, **Signed in**, **Not signed in** and
+**Sign-in status unknown**. It labels the reported authentication as **Claude
+account**, **API credentials**, **Cloud provider** or **Authentication unknown**.
+A displayed plan is a sanitized value reported by the CLI, not an entitlement
+check. Your subscription is used only when Claude Code selects Claude account
+authentication; native API or cloud configuration may take precedence. Cleetus
+preserves that configuration and environment rather than stripping overrides.
+These labels do not guarantee billing, usage allowances, model access or quotas
+for parallel agents. Usage remains with the provider.
+
+While setup is active, the open dialog checks status every four seconds, with
+one polling read at a time, for at most ten minutes. Status updates preserve
+unsaved ACP connection fields. **Cancel setup** and **Open native setup** do not
+wait for an outstanding UI polling read before sending their control requests.
+Closing the dialog stops its UI polling; it does not itself cancel the separately
+bounded native setup. Reopen the dialog and choose **Cancel setup** if you want
+to stop that setup. Native setup also has a ten-minute deadline.
+
+The ordinary Terminal agents mode can still require interaction in Claude Code's
+terminal. Guided sign-in does not make every native prompt available in Cleetus.
+Existing Claude API/cloud and Codex conversations remain separate and are not
+converted into hosted Claude Code sessions.
+
+## Maintainer-only local channel preview
+
+For maintainers developing and reviewing a Cleetus channel locally, compatible
+beta builds expose an opt-in **local development** experiment. This is separate
+from guided Claude Code setup. Production channel distribution and publisher
+approval remain unconfirmed; enabling the experiment does not establish them.
+To test a channel you are developing:
 
 1. Open Cleetus **Settings → Preferences** (in native Studio, use the
    **Workspace → Settings** menu).
-2. Enable `terminalAgentsPrototype` and set `terminalAgentsChannelMode` to
-   `development`. Save preferences, then run **Developer: Reload Window**.
+2. With hosted Claude Code explicitly enabled as described above, set
+   `terminalAgentsChannelMode` to `development`. Save preferences, then run
+   **Developer: Reload Window**. Guided setup never turns this setting on for you.
 3. Select **Terminal agents** in the grouped model list and start a bounded
    conversation or a reviewed team member.
 4. When Cleetus offers **Complete native setup**, open Claude Code and complete
@@ -198,7 +256,13 @@ applicable channel approval. To test a channel you are developing:
    confirmation. These steps cannot be answered by the Cleetus channel.
 5. After the channel connects, use the Cleetus agent workspace and conversation
    dock for messages, replies and supported one-time tool decisions. A connected
-   channel and a received agent reply are shown as separate observations.
+   local transport and a reply linked to a channel message are separate
+   observations; only the latter establishes a working channel round trip.
+   **Sent to channel** means transport delivery. **Reply linked** means the agent
+   explicitly associated a reply with that message; it does not mean the task is
+   complete. Expired Cleetus approval windows and reused request IDs retain a
+   **Review in Claude Code** action. They cannot grant a new approval or prove
+   that the native prompt closed.
 6. Use **Open Claude Code** for unsupported native prompts, or reconnect an
    ordinary disconnected conversation explicitly. Task/team work must restart
    through its own authorized execution path.
@@ -206,7 +270,7 @@ applicable channel approval. To test a channel you are developing:
 This requires a Claude Code version with the documented
 [channels feature](https://code.claude.com/docs/en/channels) and any applicable
 organization permission. Custom development channels require Claude Code's own
-explicit confirmation. Both Cleetus experiment settings default to off;
-production channel allowlisting and publisher requirements are not established
-by enabling them. Existing API/cloud and Codex conversations are retained and
-are not converted between provider modes.
+explicit confirmation. Hosted mode and custom channels default to off; native
+consent and production approval are separate requirements. This preview does not
+promise that downloaded production channels can use the development path or that
+all Claude Code interactions can move into Cleetus.
