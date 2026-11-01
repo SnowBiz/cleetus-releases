@@ -5,6 +5,11 @@ Cleetus through the Agent Client Protocol (ACP). ACP connects a compatible
 coding agent to Cleetus conversations and agent workflows over its documented
 stdio interface.
 
+These connections first shipped in [Cleetus Beta 0.2.0-beta.2 for macOS Apple
+Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.2-macos-arm64).
+Use the beta release notes to check its preview boundaries. Stable IDE and VSIX
+downloads have independent versions and may not include this connection flow.
+
 This guide applies to builds with **Cleetus: Connect coding agents** in the
 Command Palette. If that command is absent, your installed build does not include
 this connection flow; check its release notes before updating. Extension and IDE
