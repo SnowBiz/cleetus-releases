@@ -1,6 +1,6 @@
 # Cleetus IDE and Studio
 
-**Release preparation:** this guide describes the proposed Cleetus IDE 0.2.0 platform. Check the [installation and release notes](INSTALL.md) for published downloads and the features in your installed build. IDE and extension releases remain independent.
+**Available now:** Cleetus IDE 0.2.0 and extension 1.12.1 are published. See [installation and release notes](INSTALL.md) for downloads, provider setup and capability limits. IDE and extension releases remain independent.
 
 _Read this guide on [cleetus.dev](https://cleetus.dev/docs/ide/)._
 
@@ -11,10 +11,9 @@ Cleetus IDE puts a Code - OSS editor, agents and a source-linked Design studio i
 | **VS Code extension** | Choose the latest stable universal VSIX whose notes include current native Claude Code setup, with matching `SHA256SUMS` in the [public releases listing](https://github.com/SnowBiz/cleetus-releases/releases). [Install and update](INSTALL.md#install-the-extension-instead). |
 | **Cleetus IDE** | Choose the latest stable macOS Apple Silicon IDE whose notes describe the current native Claude Code connection. Download its DMG and `SHA256SUMS` from that same [release listing](https://github.com/SnowBiz/cleetus-releases/releases). |
 
-IDE 0.2.0 and extension 1.12.1 are implemented candidates, not a publication
-announcement. Older SDK subscription-flow builds are retired from the recommended
-setup path. If the updated stable IDE has not been published, wait for its accepted
-release. See [installation](INSTALL.md) for the complete checks.
+IDE 0.2.0 and extension 1.12.1 are published. Older SDK subscription-flow builds
+are retired from the recommended setup path. See [installation](INSTALL.md) for
+the current downloads, checksum checks and engine setup.
 
 The screenshots show the earlier Cleetus IDE 0.1.0 interface with an isolated sample project: ready, unstarted members, a pending task, a saved workflow with no runs, a real local Git diff and live source previews. Models, activity and cost are not simulated as live execution. No providers were started for these captures; they do not establish live account work, customer extraction or physical two-computer LAN acceptance.
 
@@ -240,7 +239,7 @@ an ACP provider. Cached membership is display-only; verified entitlements need a
 fresh server response. Existing free and offline functionality remains available.
 See [your Cleetus account](ACCOUNTS.md).
 
-The candidate membership catalog names **Scout · Free**, **Wrangler · Pro** and
+The membership catalog names **Scout · Free**, **Wrangler · Pro** and
 **Foreman · Team**. All nine original teams, custom teams and existing tools stay
 free without a Cleetus account. New curated premium teams and read-only tools
 need fresh verified server access; cached labels or a local switch cannot grant
@@ -248,7 +247,7 @@ it. The account view also offers nonsecret cloud preferences for startup view,
 motion, layout and feature opt-outs, with revision-conflict review. Credentials,
 project paths and team history are not part of that sync. See
 [Membership and saved settings](MEMBERSHIP.md) for the resources, access checks
-and candidate availability.
+and availability limits.
 
 Credentials stay in the host credential store or supported provider runtime configuration; profile copies do not transfer secure login. Engine accounts and runtimes are separate from installing Cleetus. Existing permissions and host approvals apply across teams, tasks, workflows and collaboration.
 

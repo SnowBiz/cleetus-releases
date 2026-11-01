@@ -1,8 +1,6 @@
 # Install and update Cleetus
 
-**Release preparation:** Cleetus IDE 0.2.0 and extension 1.12.1 are implemented
-release candidates. Final native installer acceptance remains pending. Use the
-published release listings below to check which downloads are available.
+**Available now:** [Cleetus IDE 0.2.0 for Apple Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.2.0-macos-arm64) and the independent [VS Code extension 1.12.1](https://github.com/SnowBiz/cleetus-releases/releases/tag/v1.12.1). The Mac installer is signed and notarized; both releases include checksums.
 
 _Read this guide on [cleetus.dev](https://cleetus.dev/docs/install/)._
 
@@ -22,8 +20,7 @@ Use an Apple Silicon Mac with macOS 12 or newer.
 For a new setup, choose a release whose notes include the current native Claude
 Code connection described in [Coding-agent connections](CODING_AGENTS.md).
 Older SDK subscription-flow builds are retired from the recommended install
-path. If the updated stable IDE has not been published yet, wait for its stable
-release rather than installing an older build for that flow.
+path. Use IDE 0.2.0 or extension 1.12.1 for the current native Claude Code flow.
 
 When replacing an unsigned development app, macOS may request authorization for Cleetus’s existing Keychain item. Complete that system prompt locally to finish startup.
 
@@ -117,7 +114,7 @@ In ordinary VS Code, these update controls install the extension VSIX. In Cleetu
 
 If you installed 1.10.0 or earlier, manually install 1.10.1 or newer once. Older builds check the former release location; they cannot discover releases after its source repository became private. Subsequent updates use this public download repository.
 
-The VS Code extension checks its public latest stable release shortly after startup, at most once per day after a successful check. Run **Cleetus: Check for Updates** to check immediately, or disable **checkForUpdates** in Settings → Extension preferences.
+Update checks are enabled by default. About five seconds after startup, Cleetus checks its public release channel and prompts when a newer version is available: the IDE checks native installers, while the VS Code extension checks VSIX releases. Successful automatic checks are limited to once per day. Run **Cleetus: Check for Updates** at any time to bypass that interval, or disable **checkForUpdates** in Settings → Extension preferences. Offline checks do not block startup or install anything.
 
 Choose **Release notes** to review the release, or explicitly choose **Download & install**. Cleetus verifies the versioned VSIX's size and SHA-256 before asking VS Code to install it. Choose **Reload window** to activate the new version. It does not silently install updates. Draft/prerelease/incomplete releases and mismatched checksums are rejected.
 

@@ -1,6 +1,6 @@
 # Agent teams
 
-**Release preparation:** this guide describes the proposed Cleetus IDE 0.2.0 platform. Check the [installation and release notes](INSTALL.md) for published downloads and the features in your installed build. IDE and extension releases remain independent.
+**Available now:** Cleetus IDE 0.2.0 and extension 1.12.1 are published. See [installation and release notes](INSTALL.md) for downloads, provider setup and capability limits. IDE and extension releases remain independent.
 
 Prebuilt teams give a shared goal to agents with defined roles, detailed system
 prompts, and an execution plan. They use the same configured engines as ordinary

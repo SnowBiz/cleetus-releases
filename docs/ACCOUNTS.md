@@ -30,9 +30,9 @@ service provides **Scout · Free**, **Wrangler · Pro** and **Foreman · Team**
 membership metadata and saved preferences. A native development host has passed
 Scout sign-in and a production preference save/reload roundtrip. Paid grants and
 subscription purchases have not been checked with a live paid account. The IDE
-0.2.0 and extension 1.12.1 client additions remain release candidates;
-installed-app credential persistence and final native installer acceptance
-remain pending.
+0.2.0 and extension 1.12.1 client additions are published. Signed installer
+artifact acceptance passed; installed-app credential persistence remains a
+separate live acceptance item.
 
 All nine existing prebuilt teams, custom teams and existing tools remain free
 local functionality. Wrangler adds two curated teams and two read-only

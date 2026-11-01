@@ -8,9 +8,7 @@ This is the public download and documentation home for Cleetus. Development sour
 
 **[Find Cleetus releases](https://github.com/SnowBiz/cleetus-releases/releases) · [Install and update](docs/INSTALL.md) · [Guides](docs/README.md) · [cleetus.dev](https://cleetus.dev)**
 
-**Release preparation:** IDE 0.2.0 and extension 1.12.1 are implemented release
-candidates. Final native installer acceptance remains pending. The release
-listing, not this candidate guide, determines which downloads are available.
+**Available now:** [Cleetus IDE 0.2.0](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.2.0-macos-arm64) for macOS Apple Silicon and the independent [VS Code extension 1.12.1](https://github.com/SnowBiz/cleetus-releases/releases/tag/v1.12.1). The Mac installer is signed and notarized; both releases include checksums.
 
 | Product | Choose an accepted build |
 | --- | --- |
@@ -18,8 +16,7 @@ listing, not this candidate guide, determines which downloads are available.
 | **Cleetus VS Code extension** | Choose the latest stable universal VSIX whose notes include current native Claude Code setup, with matching `SHA256SUMS` in the [release listing](https://github.com/SnowBiz/cleetus-releases/releases). Maintained and released independently for ordinary VS Code. |
 
 Older SDK subscription-flow builds are retired from the recommended install
-path. If the updated stable build is not published yet, wait for its accepted
-release rather than installing an older build for that flow.
+path. Use the current releases above for native Claude Code setup.
 
 ![Cleetus IDE with source, a live preview and the agent team](docs/screenshots/ide-native-editor.png)
 
@@ -49,7 +46,7 @@ Use GitHub Issues, Jira or a custom REST tracker; let authorized agents take fen
 
 ## Your Cleetus account and saved settings
 
-The candidate Account view uses your system browser for Cleetus sign-in. It does
+The Account view uses your system browser for Cleetus sign-in. It does
 not sign in to Claude Code, Codex or ACP providers or supply their model access.
 
 **Scout · Free** keeps all nine original team templates, custom teams and existing

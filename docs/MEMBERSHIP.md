@@ -8,10 +8,9 @@ sign-in and a production preference roundtrip: save reduced motion on, reload it
 save it off, then reload it again. Live paid-tier grants and subscription
 purchases have not been tested.
 
-The IDE 0.2.0 and extension 1.12.1 additions described here are implemented client
-release candidates. Installed-app credential persistence and final native
-installer acceptance remain pending. Check
-[Install and update](INSTALL.md) for published downloads.
+The IDE 0.2.0 and extension 1.12.1 additions described here are published.
+Signed installer artifact acceptance passed; installed-app credential persistence
+remains a separate live acceptance item. See [Install and update](INSTALL.md).
 
 Cleetus membership adds curated resources to the existing local application.
 Your coding-agent accounts, model subscriptions, API keys and provider permissions
@@ -20,7 +19,7 @@ management.
 
 ## Tiers
 
-| Tier | Candidate resources |
+| Tier | Resources |
 | --- | --- |
 | **Scout · Free** (`free`) | All nine existing prebuilt teams, custom team creation and existing tools remain free local features. No Cleetus account is required for them. |
 | **Wrangler · Pro** (`pro`) | Scout plus **Studio refinement**, **Release readiness** and two read-only membership tools. |

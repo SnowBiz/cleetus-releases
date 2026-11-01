@@ -1,6 +1,6 @@
 # Agent Command and conversations
 
-**Release preparation:** this guide describes the proposed Cleetus IDE 0.2.0 platform. Check the [installation and release notes](INSTALL.md) for published downloads and the features in your installed build. IDE and extension releases remain independent.
+**Available now:** Cleetus IDE 0.2.0 and extension 1.12.1 are published. See [installation and release notes](INSTALL.md) for downloads, provider setup and capability limits. IDE and extension releases remain independent.
 
 _Read this guide on [cleetus.dev](https://cleetus.dev/docs/agent-command/)._
 
