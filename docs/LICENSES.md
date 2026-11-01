@@ -1,7 +1,5 @@
 # Licensing and distribution
 
-_Read this guide on [cleetus.dev](https://cleetus.dev/docs/licenses/)._
-
 Public downloads live in [Cleetus Releases](https://github.com/SnowBiz/cleetus-releases/releases). Development source is maintained separately in a private repository; installing either product does not require source access.
 
 The current Cleetus extension's Apache-licensed portions retain the accompanying [Apache License 2.0](licenses/Apache-2.0.txt) and notices. Existing Apache distributions and rights are not withdrawn by making development private. Third-party and open-source components retain their own licenses.

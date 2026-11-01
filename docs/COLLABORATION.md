@@ -1,89 +1,65 @@
-# Encrypted LAN collaboration
+# Collaborate with another Cleetus team
 
-_Read this guide on [cleetus.dev](https://cleetus.dev/docs/lan-collaboration/)._
+Cleetus can connect two teams on the same local network through an encrypted TLS 1.3 channel. Each person chooses a local project and team, exchanges an invitation, compares the pairing code, and approves the connection.
 
-Pair your Cleetus team with a teammate's team on the same network and exchange messages and task proposals between them. The channel is TLS 1.3 with a pinned, single-use identity. Every message that leaves or enters your machine needs your approval, and pairing grants the other side nothing: no files, no shell, no MCP servers and no accounts.
+Available in **extension 1.11.2 or later** and **Cleetus IDE 0.1.0**. Both computers need Cleetus, a configured team, and OpenSSL available on `PATH` (`openssl version` should succeed).
 
-![The Secure team collaboration dialog in Cleetus IDE](screenshots/detail-collaboration-dialog.png)
+![Actual native dev.3 collaboration setup dialog with a local ready team](screenshots/ide-native-collaboration.png)
 
-_The collaboration dialog: choose your local team, then either invite the other computer or join with their invitation._
+*Native setup capture from a disposable project. It does not show an approved connection between two physical computers or a running provider.*
 
-## How pairing works
+Collaboration is opt-in. Opening the dialog or reading status starts no listener. Each person controls the local project and team; starting its agents is not required to pair.
 
-![Pairing sequence: listener, invitation, pinned TLS 1.3, matching codes and two approvals](images/diagram-lan-pairing.png)
+## Pair the teams
 
-The design rests on one idea: **the invitation is the trust anchor, and the comparison code proves nobody swapped it.**
+1. Open **Agents & Teams → Collaborate on LAN** in the extension, or **Teams → Collaborate on LAN** in the IDE.
+2. Choose your local team. Its agents must belong to the project open in this window. Create a team first if the list is empty; creating it does not start agents.
+3. On the inviting computer, choose the private network interface used by the other computer, enter a recognizable label, and choose **Start private listener**. Review the host approval before allowing it.
+4. Choose **Create invitation**, then **Copy invitation**. Share this long invitation privately with the other person. It expires within ten minutes and can be used once.
+5. On the other computer, choose its own local team, paste the invitation, choose **Join for local approval**, and review its host approval.
+6. Compare the **eight-digit TLS comparison code on both computers** through a channel you trust. If they match, both people choose **Codes match · approve pairing** and approve within two minutes. Decline if the codes differ or the request is unexpected.
 
-1. **The inviting computer starts a private listener.** You approve it first. Cleetus binds one concrete private IPv4 address (RFC 1918) on an interface you choose, never a wildcard, and creates a brand-new P-256 TLS identity with OpenSSL for this session only.
-2. **It creates an invitation.** The long invitation string carries the public certificate, the private endpoint, a random 256-bit secret, an opaque shared scope and an expiry. It can be used once and expires within ten minutes.
-3. **You share it privately.** Send it over a channel you already trust. It never goes through agents.
-4. **The joining computer connects.** It trusts only the certificate in the invitation, validates the hostname `peer.cleetus.invalid` and pins the exact certificate. There is no verification bypass and no unencrypted fallback. If OpenSSL or validation fails, pairing stops.
-5. **Both screens show an eight-digit code.** It's derived from the live TLS session using the TLS exporter, so it only matches if both computers share the same session, with nobody in the middle. It isn't a password and can't replace the invitation.
-6. **You compare codes and both approve within two minutes.** Decline if they differ or you didn't expect the request.
+The copyable invitation establishes the encrypted connection. The eight-digit value binds the human comparison to this TLS connection; it is not a password or a substitute for the invitation. Team names and IDs can differ between computers; each Cleetus instance controls its own local scope.
 
-The opaque scope never contains a team ID, project path or workspace root. Each computer maps it to its own local team, so team names can differ between machines.
+## Send a proposal
 
-## Pair two teams
+Select an active paired channel and choose **Message** or **Task proposal**. Enter only the content you intend to share, choose **Send for explicit local approval**, then review the local approval dialog. Cleetus sends that exact text after approval.
 
-1. In the IDE, open **Teams → Collaborate on LAN**. Choose your local team. Its members must belong to the project open in this window, but they don't need to be running.
-2. **Inviting:** pick the private interface the other computer can reach, enter a label, choose **Start private listener** and approve. Then **Create invitation** and **Copy invitation**.
-3. **Joining:** choose your own team, paste the invitation and choose **Join for local approval**.
-4. Compare the eight-digit codes, then both choose **Codes match · approve pairing**.
+The receiving person selects its active peer and reviews the complete proposal in **Team inbox**, then chooses **Review & import pending task**, **Review & save message**, or **Reject proposal**. Acceptance opens a separate local host approval:
 
-You need OpenSSL on `PATH` (`openssl version` must succeed) and both computers on the same directly attached private IPv4 subnet. There's no discovery, relay, port forwarding, IPv6 or firewall change. Guest Wi-Fi isolation, VPNs and firewalls can block the connection.
+- An accepted **task** becomes a pending local task with external provenance. Review it in Tasks, then run or assign it through the normal workflow.
+- An accepted **message** goes into the approved team inbox. The team's agents can read it through their scoped Cleetus tools. It is not automatically delivered as an agent prompt or relabeled as the local user's instruction.
+- A receipt distinguishes staging or acceptance from execution. Acceptance does not mean an agent started, completed work, or passed checks.
 
-## Send and receive proposals
+If the incoming approval is declined, the proposal is rejected and the sender receives a rejection receipt. If the local task board changes while approval is open, Cleetus rejects the stale proposal before importing anything; send a fresh proposal after review. Unexpected failures remain marked for reconciliation and cannot be accepted again automatically.
 
-![Proposal flow: local approval to send, staging receipt, review and local approval to import, then a receipt](images/diagram-lan-proposals.png)
+Pairing grants no filesystem, shell, MCP, provider-account or credential access. Incoming text stays untrusted evidence; local project instructions and existing engine/tool approvals still apply. Code changes continue through your normal version-control workflow. Files are not automatically synchronized or exported.
 
-Select a paired channel and choose **Message** or **Task proposal**. You approve the exact text before it's sent. The recipient sees it in **Team inbox** and chooses **Review & import pending task**, **Review & save message** or **Reject proposal**, which opens a second approval on their machine.
+## Use it from agents
 
-- **An accepted task** becomes a pending local task marked with external provenance. It runs only through the recipient's normal [Tasks](TASKS.md) workflow.
-- **An accepted message** goes to the team inbox. Agents can read it through their scoped tools, but it's never delivered as a prompt or relabelled as the local user's instruction.
-- **Receipts** separate arrival from acceptance. `staged` means the message arrived; `accepted` or `rejected` reflects the recipient's decision. Neither means an agent ran the work or checks passed.
+Agents in the selected local team can use these tools after pairing:
 
-If the recipient's task board changes while the approval is open, the proposal is rejected before anything is imported; send a fresh one. If something fails mid-import, the entry becomes **uncertain** and can't be accepted again automatically. Reconcile the real outcome first.
+| Tool | Purpose |
+| --- | --- |
+| `cleetus_peer_list_peers` | List permitted peers for the authenticated local team. |
+| `cleetus_peer_propose` | Request local approval to send a message or task proposal. |
+| `cleetus_peer_read_inbox` | Read approved external messages, in bounded pages. |
+| `cleetus_peer_read_receipts` | Read acceptance and rejection receipts. |
 
-## Let agents use it
+For example: “List our paired peers, propose that the other team review this component contract, and inspect their receipt before reporting progress.” The agent cannot create invitations, approve pairings, approve imports, or choose another local team's authority.
 
-After pairing, agents in the selected team get four tools. They can't create invitations, approve pairings or imports, or act for another local team.
+## Stop or reconnect
 
-| Tool                         | What it does                                          |
-| ---------------------------- | ----------------------------------------------------- |
-| `cleetus_peer_list_peers`    | List the peers this team may use                      |
-| `cleetus_peer_propose`       | Ask you to approve sending a message or task proposal |
-| `cleetus_peer_read_inbox`    | Read approved incoming messages, in bounded pages     |
-| `cleetus_peer_read_receipts` | Read accepted and rejected receipts                   |
+Use **Revoke selected peer** to close one channel, or **Stop all collaboration** to close this Cleetus instance's listener and channels. Closing Cleetus also closes them. Closing the collaboration dialog only hides its controls; use revoke or stop to end the connection. Existing local tasks and repository changes remain.
 
-For example: _"List our paired peers, propose that their team review this component contract, and check their receipt before you report progress."_
+This first version uses session-only pairing. Disconnects, expiry, revocation and restarts require a new invitation; Cleetus does not automatically reconnect or replay requests. If delivery or an import is marked uncertain, inspect the other team's receipt and your local task board before creating another request.
 
-## Wire protocol and limits
+The approved inbox and decision history are stored in the local Cleetus profile. Channels encrypt data in transit; this does not change the profile's existing local storage protections.
 
-Each frame is a 4-byte big-endian length followed by strict, versioned JSON, up to 64 KiB, with exact per-direction sequence numbers on each socket. A proposal is one of two shapes, and unknown fields are rejected:
+## Network requirements
 
-```json
-{ "id": "review-contract-01", "kind": "task.propose", "title": "Review the card contract", "body": "…" }
-{ "id": "note-2f9", "kind": "message.propose", "body": "…" }
-```
+Both computers must be on the same directly attached private IPv4 subnet. Select a concrete private interface; public addresses, wildcard listeners and IPv6 are not supported in this version. There is no automatic discovery, relay, port forwarding or firewall-rule change. Guest Wi-Fi isolation, a VPN or a firewall can prevent the connection.
 
-IDs are 8–128 letters, digits, underscores or hyphens. Bodies are up to 16 KiB and titles up to 240 bytes. There are no fields for commands, paths, URLs or credentials, and receipts can't be forged through `send`.
+If connection fails, verify the interface, update both installations, check that the invitation is current, and confirm the computers can reach each other. Missing OpenSSL or failed certificate validation stops pairing; Cleetus does not offer an unencrypted fallback.
 
-| Limit                                               | Value          |
-| --------------------------------------------------- | -------------- |
-| Pending pairings and invitations                    | 5              |
-| Sockets and channels                                | 32             |
-| TCP admission attempts, including failed handshakes | 30 per minute  |
-| Frames per socket                                   | 120 per minute |
-| Inbox items                                         | 256            |
-| Unacknowledged sends                                | 16             |
-| Queued writes                                       | 256 KiB        |
-| Authentication deadline                             | 10 seconds     |
-| Idle timeout for an approved socket                 | 15 minutes     |
-
-## Stop, revoke and reconnect
-
-**Revoke selected peer** closes one channel; **Stop all collaboration** closes the listener and every channel. Quitting Cleetus also closes them, but closing the dialog only hides it. Pairing is session-only: after a disconnect, revoke, expiry or restart, start again with a new invitation. Cleetus never reconnects or resends by itself, and an acknowledgment timeout reports uncertain delivery and closes the channel.
-
-The approved inbox and decision history are stored in your local profile. The channel encrypts data in transit; it doesn't change how your profile is stored.
-
-[Agent teams](TEAMS.md) · [Tasks](TASKS.md) · [Security model](SECURITY_MODEL.md)
+[Teams](TEAMS.md) · [IDE workspace](IDE.md) · [Install and update](INSTALL.md)

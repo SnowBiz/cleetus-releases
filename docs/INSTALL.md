@@ -1,8 +1,6 @@
 # Install and update Cleetus
 
-_Read this guide on [cleetus.dev](https://cleetus.dev/docs/install/)._
-
-Install **Cleetus IDE 0.1.0**, a complete editor for macOS Apple Silicon that replaces VS Code. If you need to stay in VS Code, the **Cleetus VS Code extension 1.11.3** brings the same agents to it. They have independent release and update channels; installing one doesn't require the other.
+Choose the native **Cleetus IDE 0.1.0** for macOS Apple Silicon or the **Cleetus VS Code extension 1.11.3** for ordinary VS Code. They have independent release and update channels; installing one does not require the other.
 
 ## Install Cleetus IDE for Apple Silicon
 
@@ -19,7 +17,7 @@ The IDE includes the editor, so you do not need VS Code or a source checkout. It
 
 For engine setup, install **Node.js 22+** and npm, then follow the separate runtime and account instructions below. You may use Claude, Codex or both; installing the editor does not install provider accounts or grant model access.
 
-## Install the extension instead
+## Install the extension
 
 Use **VS Code 1.94+**, Node.js 22+ and npm. The current clean-host engine-runtime audit covers macOS ARM64; other runtime platforms still need local verification.
 
@@ -51,9 +49,15 @@ Keep optional dependencies enabled: they supply the platform executable. The off
 
 ## Connect your engines
 
+In builds with **Cleetus: Connect coding agents**, use the [coding-agent connection guide](CODING_AGENTS.md) for independently installed Copilot, Amazon Q / Kiro V3, Gemini CLI, OpenCode and custom ACP agents. The command opens the connection flow in either VS Code or the native IDE; the guide distinguishes CLI discovery, native sign-in and live protocol checks. The Claude and Codex setup below remains separate.
+
 ![Get started connection controls](screenshots/get-started.png)
 
-For Claude account access, choose the appropriate Claude.ai or Anthropic Console sign-in and complete the runtime's browser/terminal flow. Bedrock uses your configured AWS region/profile and native credential chain. Account access and provider terms still apply.
+For the Claude SDK engine, configure your own `ANTHROPIC_API_KEY` through the environment or Cleetus's environment-variable settings. Bedrock uses your configured AWS region/profile and native credential chain. Cleetus does not offer Claude subscription sign-in through the SDK.
+
+The **Terminal agents** preview runs your independently installed Claude Code in an editor terminal. Install it using [Anthropic's official instructions](https://code.claude.com/docs/en/setup), then enable `terminalAgentsPrototype` in Cleetus settings. Use Claude Code 2.1.295 or later. This mode does not require the SDK runtime above. Sign in and approve folder trust or tool requests directly in that terminal; Cleetus displays reported activity alongside its teams, tasks and Design tools. Account details and usage remain in Claude Code. Saved SDK conversations are retained and are not automatically converted into terminal conversations.
+
+API-helper-only and ambiguous bearer-token gateway configurations are not supported by this candidate SDK authentication guard. Use an explicit API key, a configured supported cloud provider, or the terminal preview. Provider access, billing and [Anthropic's hosting conditions](https://code.claude.com/docs/en/legal-and-compliance) still apply. This preview is not an Anthropic endorsement.
 
 For Codex, connect through browser/device sign-in. Cleetus can use a configured executable, a suitable Codex executable supplied by the official extension, or `codex` on PATH. A standalone CLI is required if no other executable is available. Bedrock support depends on runtime/account capability.
 

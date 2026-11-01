@@ -1,12 +1,10 @@
 # Cleetus IDE and Studio
 
-_Read this guide on [cleetus.dev](https://cleetus.dev/docs/ide/)._
-
-Cleetus IDE puts a Code - OSS editor, agents and a source-linked Design studio in one workspace. It's a complete editor that replaces VS Code. If you'd rather stay in VS Code, the maintained extension uses the same Cleetus application and is distributed independently.
+Cleetus IDE puts a Code - OSS editor, agents and a source-linked Design studio in one workspace. The maintained VS Code extension uses the same Cleetus application and remains independently distributed.
 
 | Product | Availability |
 | --- | --- |
-| **VS Code extension 1.11.3** | [Latest public stable VSIX](https://github.com/SnowBiz/cleetus-releases/releases/latest). [Install and update](INSTALL.md#install-the-extension-instead). |
+| **VS Code extension 1.11.3** | [Latest public stable VSIX](https://github.com/SnowBiz/cleetus-releases/releases/latest). [Install and update](INSTALL.md#install-the-extension). |
 | **IDE 0.1.0** | macOS Apple Silicon: [signed and notarized DMG](https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.1.0-macos-arm64/cleetus-ide-0.1.0-macos-arm64.dmg) · [release notes and checksums](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.1.0-macos-arm64). |
 
 The native guide shows actual Cleetus IDE 0.1.0 candidate captures of an isolated CleetusGuide01 sample project: ready, unstarted members, a pending task, a saved workflow with no runs, a real local Git diff and live source previews. Models, activity and cost are not simulated as live execution. No providers were started for these captures; they do not establish live account work, customer extraction or physical two-computer LAN acceptance.
@@ -16,6 +14,8 @@ The native guide shows actual Cleetus IDE 0.1.0 candidate captures of an isolate
 Download the [Apple Silicon DMG](https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.1.0-macos-arm64/cleetus-ide-0.1.0-macos-arm64.dmg) and `SHA256SUMS` from the [IDE 0.1.0 release](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.1.0-macos-arm64), compare the checksum, open the DMG, and drag **Cleetus.app** to **Applications**. Launch Cleetus and open your project folder. You do not need a separate VS Code installation.
 
 The covered Preview License allows free personal and commercial use. Engine runtimes, account access and model charges remain separate: use Node.js 22+ and npm for runtime setup, then connect Claude or Codex through **Get started**. See [complete installation and engine setup](INSTALL.md).
+
+In builds with **Cleetus: Connect coding agents**, run that command or choose **Agents** in Studio's top bar to connect your own Copilot, Kiro V3, Gemini CLI, OpenCode or custom ACP agent. Follow [coding-agent connections](CODING_AGENTS.md) for installation, native sign-in, launch approvals and capability limits. This feature is separate from the availability of the installer linked above.
 
 ## Open the source and preview workspace
 
@@ -31,7 +31,7 @@ Use **Cleetus: Focus Agent Command** for the right dock (**Ctrl+Alt+I**, or **Ct
 
 The **Workspace** menu opens existing **Tools & security**, **Work tracking**, **Memory & Rules** and **Cleetus settings** in the retained shared workspace editor tab. It preserves the selected project and your Studio/Design/source tabs. These are shared workspace screens, not separate native implementations. From **Review → Pull requests**, **Configure GitHub** takes you directly to connection setup; return and choose **Refresh** to load the configured connections.
 
-The IDE has its own application identity, settings, extension directories and profiles. It doesn't import VS Code settings or credentials automatically. Install your extensions from Open VSX or a reviewed VSIX; Microsoft's marketplace-only extensions aren't available, and each extension keeps its own license. Cleetus supplies the agent interface. Claude and Codex are the supported engines; the upstream vendor chat/runtime is omitted from this build.
+The IDE keeps its own application identity, settings, extension directories and profiles. It coexists with VS Code without automatically moving settings or credentials. Install compatible extensions from Open VSX or a reviewed VSIX; availability and licensing vary. Cleetus supplies the agent interface. Claude and Codex are the supported engines; the upstream vendor chat/runtime is omitted from this build.
 
 ## Give Agent Command a goal
 
@@ -47,9 +47,6 @@ The central Agent Command brings the goal composer, plan, selected team, recorde
 **Saved conversations** remains visible alongside team templates and created teams. Choose **Continue conversation** for the exact saved project session. Sessions created for fenced task work offer **Inspect saved output**; use the task workflow for a new execution lease. Design agent handoffs open their actual conversation instead of leaving you on the dashboard.
 
 **Plan with team** opens team setup. Opening a draft, choosing a template or viewing the dashboard starts no agents. A stopped run retains changes already made; review them before continuing.
-
-
-Full guide: [Agent Command and conversations](GUIDE.md)
 
 ## Give a team a bounded goal
 
@@ -69,9 +66,6 @@ Creating a team does not start it. Choose **Start team** and approve the actual 
 
 **Collaborate on LAN** pairs the selected local team with another person's team through an opt-in encrypted connection. Both people approve pairing and each proposal remains subject to local review. See [LAN collaboration](COLLABORATION.md).
 
-
-Full guide: [Agent teams](TEAMS.md) · [LAN collaboration](COLLABORATION.md)
-
 ## Keep tasks reviewable
 
 ![Native Tasks board and inspector with pending local tasks](screenshots/ide-native-tasks.png)
@@ -81,9 +75,6 @@ Use **+ New goal** or **+ New task** to record a title, description, acceptance 
 For a pending task, choose the engine/model, effort and working directory, then **Run task** and inspect the approval. Available checkouts include the current project and ready Cleetus-owned worktrees associated with that exact task. Follow the execution receipt, use **Stop execution** when needed, and inspect saved output. Creating a worktree alone does not redirect a run.
 
 Dependencies must be completed and approved before dependent work can be claimed. Ownership has an expiry and fencing generation, so replaced or expired claims cannot report new work. A report or ended turn moves work to review; inspect actual files, diffs and checks before **Approve result** or **Request changes**. Completion is your decision, not an automatic claim that checks passed.
-
-
-Full guide: [Tasks](TASKS.md)
 
 ## Define a workflow, then inspect its runs
 
@@ -101,9 +92,6 @@ Editing a definition preserves earlier runs. Failed predecessors block dependent
 
 Named events are explicit host events, not implicit file watchers. **Emit an event** needs approval. Reusing an event ID returns its existing receipts; **New event ID** requests a distinct delivery. Inspect dispatch history and the linked run. Missed intervals and overlaps are skipped; failed or uncertain dispatch stops future automation for review. Disable or remove automation to stop future dispatches.
 
-
-Full guide: [Workflows and automation](WORKFLOWS.md)
-
 ## Review the actual changes
 
 ![Native Review with an actual local owned-checkout change and unified diff](screenshots/ide-native-review.png)
@@ -117,9 +105,6 @@ Task ownership remains on the primary project's board even when execution uses i
 The **Pull requests** view uses a configured GitHub tracker to show checks, reviews and merge evidence for the current head. Missing, skipped, stale and unavailable results remain distinct from a pass. Follow the provider link for normal review and merge decisions.
 
 Cleanup needs explicit approval and removes only a verified clean Cleetus-owned checkout. Tracked, untracked and ignored files block it; the branch remains. Review does not automatically merge or cherry-pick changes.
-
-
-Full guide: [Review & Ship](REVIEW.md) · [PR evidence](WORK_TRACKING.md#pull-request-evidence)
 
 ## Refine a source-linked component in Design
 
