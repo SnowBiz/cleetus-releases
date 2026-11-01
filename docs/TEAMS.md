@@ -77,12 +77,52 @@ visible narration, including distinct Stop-only replies. Saved reply links stay
 bound to their launch, so reconnect cannot associate an old reply with a new
 message that reuses its ID. Partial narration remains marked.
 
+Beta 9 also reconciles final narration when Claude’s completion and display
+notifications arrive out of order. The same final message appears once; equal
+answers on separate turns remain separate. Saved journals are preserved.
+
 Ended or disabled conversations stay readable in the conversation dock. Their
 saved questions and permissions are history, not active decisions. **Review in
 Claude Code** focuses the exact existing ordinary agent terminal when one is
 available. It does not open a second chat or silently launch/resume an agent.
 If no live terminal exists, reconnect explicitly with fresh approval. Team and
 workflow work continues through its own ownership controls.
+
+## Work through a blocked teammate
+
+Beta 9 distinguishes an **active turn** from a saved result. A worker can report
+blocked while its supervisor or parallel peers still have active work. Those
+active agents retain their own inbox, questions, tool approvals and coordination;
+one blocked worker does not disconnect the rest of the team. Once no active turn
+remains, the team pauses for review. Cancelled, revoked or completed attempts do
+not regain authority through a saved status or by reopening the view.
+
+A teammate’s retained conversation remains readable. When it has no active turn,
+its composer and old decisions are read-only. Start fresh work through Tasks or
+Teams with current approval. This applies across hosted Claude Code, API/cloud
+Claude, Codex and connected ACP agents. Ordinary shared chat cannot take over a
+team-owned session by its saved ID. Native failures produce one coordinator
+result while preserving the failed turn and any partial output.
+
+For a paused Claude API or Codex teammate, send a bounded follow-up to that
+member and explicitly review its delivery through Teams. This admits a current
+private turn; automatic delivery stays paused while review is needed. Cancelled,
+historical or revoked runs are not restarted. A live native Claude Code teammate
+receives an inbox handoff; Cleetus does not type it into the terminal or silently
+launch another native turn.
+
+A supervisor’s explicit Remote Control disable remains an owned cleanup action
+after its turn ends. It grants no new execution rights. If enable is still
+pending, cleanup waits for it to settle and then requests off; disconnected is
+reported only after that request is acknowledged. A provider error is not proof
+that remote access was revoked; inspect the provider when confirmation is absent.
+This does not claim automatic remote shutdown on every stop or transport loss.
+
+While sending a Studio message, **Sending…** stays visible through conversation
+refreshes. You can keep writing the next draft; acceptance of the earlier message
+does not erase it. A rejected send retains its draft. An explicit retry of the
+unchanged message keeps its delivery identity; Cleetus does not silently replay
+failed or uncertain work.
 
 ## Recognize agent specialties
 

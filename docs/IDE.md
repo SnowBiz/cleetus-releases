@@ -60,6 +60,12 @@ and a late response cannot erase newer edits. Supported ACP engines can receive
 bounded screenshot input after explicit capability discovery. See the
 [coding-agent guide](CODING_AGENTS.md#review-screenshots-with-a-connected-agent).
 
+Beta 9 keeps the agent workspace composer consistent through live refreshes.
+**Sending…** means one local request is pending, so refresh cannot submit it again.
+New text written during that request stays in the composer. Read-only team
+history keeps its messages and recorded questions without presenting old approval
+buttons as active. See [blocked teammate behavior](TEAMS.md#work-through-a-blocked-teammate).
+
 **Plan with team** opens team setup. Opening a draft, choosing a template or viewing the dashboard starts no agents. A stopped run retains changes already made; review them before continuing.
 
 ## Give a team a bounded goal

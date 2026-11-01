@@ -54,3 +54,16 @@ for discovery, image limits and draft behavior. Format support is separate from
 selected-model vision, native platform rendering and visual acceptance. Agents
 still need the component usage contracts, tokens, rules and actual source; an
 attached screenshot is a reference, not a replacement for those contracts.
+
+## Coordinate refinement with the development team
+
+A Design or extraction agent follows the same current execution ownership as
+other Cleetus teammates. In Beta 9, a blocked specialist does not retire a still
+active supervisor or parallel reviewer. Inspect the specialist’s saved findings,
+answer the active agent’s question, then start any fresh work through the owning
+Tasks or Teams view. Saved results and old approvals remain read-only.
+
+Model and effort changes stay paired with the actual connected conversation.
+Changing an ACP model clears its previous explicit effort; choose only settings
+advertised for the new model. See [team coordination](TEAMS.md#work-through-a-blocked-teammate)
+and [model settings](CODING_AGENTS.md#keep-model-and-effort-settings-together).

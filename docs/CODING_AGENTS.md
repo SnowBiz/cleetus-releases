@@ -6,8 +6,8 @@ OpenCode and the additional development-build profiles listed below. ACP connect
 a compatible coding agent to Cleetus conversations and agent workflows over its
 documented stdio interface.
 
-Download the current [Cleetus Beta 0.2.0-beta.8 for macOS Apple
-Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.8-macos-arm64).
+Download the current [Cleetus Beta 0.2.0-beta.9 for macOS Apple
+Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.9-macos-arm64).
 Connections first shipped in beta 2.
 Use the beta release notes to check its preview boundaries. Stable IDE and VSIX
 downloads have independent versions and may not include this connection flow.
@@ -186,6 +186,21 @@ ACP connections have no Cleetus context-usage meter unless that exact session
 advertises the capability. Completing a turn does not trigger an unsupported
 usage request or replace the draft with an error.
 
+## Keep model and effort settings together
+
+In Beta 9, model and effort changes are applied in order to the exact ACP
+conversation. Changing a model clears the previous explicit effort; choose an
+effort advertised for the new model, or keep Engine default. Cleetus records
+acknowledged settings rather than allowing a late reply from the old model to
+replace the current choices. If a later setting fails, earlier acknowledged
+changes remain visible. This is configuration acceptance, not proof of model
+quality, account access or task completion.
+
+Discovery also belongs to the reviewed project directory. If that directory is
+removed or replaced during approval or after discovery, cached choices become
+unavailable. Refresh and review the current project before launching; an identical
+path name does not restore the old approval.
+
 ## Review screenshots with a connected agent
 
 **Beta 8** adds negotiated ACP image input in shared Cleetus chat. Choose the
@@ -275,8 +290,11 @@ These approvals cover requests the provider sends through ACP. The CLI retains
 its native access and configuration; a custom executable is not sandboxed by
 Cleetus. Use a trusted provider executable and review its own tool policy.
 Connection profiles reject known approval-bypass flags, including `--yes`,
-`--allow-all-tools` and `--dangerously-skip-permissions`, as well as credentials
-and environment overrides. Complete authentication through the provider instead.
+`--allow-all-tools`, `--no-permissions` and `--dangerously-skip-permissions`, as well as credentials
+and environment overrides. Complete authentication through the provider instead. Fast-agent’s `--no-home`
+is also refused because that program documents it as disabling ACP tool prompts;
+unrelated providers’ ordinary home-directory options are not treated as the same
+flag. These checks do not sandbox an arbitrary trusted executable.
 
 Choose **Disconnect** to disable a connection. Use **Close conversation** in the IDE agent workspace or **Close agent connection**
 in VS Code chat to retain history while closing the provider. Close all live Cleetus
@@ -289,6 +307,21 @@ If settings or the executable change while an approval is open, Cleetus rejects
 the stale request. Refresh the connection panel and review the new configuration.
 Invalid external settings edits surface an error while retaining the previous
 registered engines; repair the settings before making further connection changes.
+
+## Use cloud or local models through OpenCode
+
+The existing OpenCode connection can expose models from providers configured in
+OpenCode, including local runners. Configure the provider in OpenCode first using
+its [provider guide](https://opencode.ai/docs/providers/); keep API keys and native
+sign-in there. Cleetus does not import that credential file. OpenCode documents
+Ollama, LM Studio and OpenRouter among its provider options.
+
+Then enable **OpenCode** in Cleetus and choose **Refresh models** for that project.
+Select only a model that the approved ACP connection actually advertises; leave
+Engine default when metadata is absent. Local model availability, tool behavior,
+image support and account access still depend on that native configuration.
+The documented transport remains [`opencode acp`](https://opencode.ai/docs/acp/).
+This reuses one engine connection rather than creating fake model-specific agents.
 
 ## Connect another ACP agent
 
@@ -328,6 +361,14 @@ VT Code is maintained, but its [reviewed session implementation](https://github.
 Cleetus's supplied MCP servers/working directory and does not establish drained
 execution through its close acknowledgment. These remain deferred. A custom ACP
 profile is not a certification of lifecycle or team coordination support.
+
+Fast-agent and Mercury CLI are maintained candidates, but neither is advertised as
+a new default coding connection here. Fast-agent’s [reviewed local-shell path](https://github.com/evalstate/fast-agent/blob/3d77d78eee2f9160ca6c290ded47fc47825d2b3d/src/fast_agent/tools/shell_runtime.py#L3041)
+needs separate permission and persistent-process cleanup acceptance. Mercury’s
+[reviewed ACP runner](https://github.com/Whq02/MercuryCLI/blob/6bdac28aa95ef3133d0ecd8ee907f86ec9908d6d/src/services/acp/childSession.ts#L396)
+needs confirmed child cleanup and resumed-mode checks. Its third-party Claude
+subscription sign-in is not endorsed as an Anthropic-authorized route. A custom
+profile or successful handshake does not establish those guarantees.
 
 ## Troubleshooting
 
@@ -449,6 +490,10 @@ Cleetus can display assistant text that Claude Code makes visible through its
 native display hook, including streamed narration. It does not scrape terminal
 text, read hidden reasoning or reconstruct tool output. Incomplete or truncated
 narration remains marked; inspect Claude Code when delivery is incomplete.
+
+Beta 9 also reconciles final narration when Claude’s completion and display
+notifications arrive out of order. The same final message appears once; equal
+answers on separate turns remain separate. Saved journals are preserved.
 Narration alone does not establish channel readiness: **Reply linked** still
 requires a response correlated with a specific channel message. Neither state
 establishes task completion.
