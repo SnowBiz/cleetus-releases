@@ -6,8 +6,8 @@ OpenCode and the additional development-build profiles listed below. ACP connect
 a compatible coding agent to Cleetus conversations and agent workflows over its
 documented stdio interface.
 
-Download the current [Cleetus Beta 0.2.0-beta.6 for macOS Apple
-Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.6-macos-arm64).
+Download the current [Cleetus Beta 0.2.0-beta.7 for macOS Apple
+Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.7-macos-arm64).
 Connections first shipped in beta 2.
 Use the beta release notes to check its preview boundaries. Stable IDE and VSIX
 downloads have independent versions and may not include this connection flow.
@@ -142,6 +142,49 @@ environment, or use an absolute executable path. No shell expansion is applied:
 executable paths. Windows `.cmd`, `.bat` and `.ps1` launch wrappers are unsupported
 by this direct-executable connection path; Windows provider execution needs
 separate verification.
+
+## Docker Agent configuration and cleanup
+
+**Beta 7** adds a fifteenth opt-in ACP profile, **Docker Agent**. Install your own
+[Docker Agent](https://github.com/docker/docker-agent/blob/v1.154.0/docs/getting-started/installation/index.md)
+and complete `docker-agent setup` outside Cleetus. This profile runs exactly
+`docker-agent serve acp <local-agent-file>`; it does not bundle a CLI, start a
+package installer or accept an OCI/URL agent reference as that file.
+
+Choose a local `.yaml`, `.yml` or `.json` agent configuration on its connection
+card, check it, then connect. Review the canonical file, its SHA-256, executable
+and project before launching. Configuration contents are not copied into Cleetus
+settings. Native configuration can load hooks, MCP servers, containers or images
+and can select native update behavior. The review is not a claim that Cleetus
+has inspected every action the native agent may perform.
+
+A changed file, binary or project invalidates the reviewed launch and cached
+metadata. Cleetus requires Docker Agent to negotiate **strict** session mode;
+missing support or a later mode change stops the connection instead of falling
+back to a permissive mode. Model and effort choices still require actual metadata.
+
+Every launch, including a protocol/model check, creates a private recovery receipt
+before starting the process. Clean completion requires a negotiated session-close
+acknowledgment and confirmed cleanup of the process Cleetus owns. If either is
+uncertain, subsequent launches are blocked, including after an editor restart.
+Inspect native work and cleanup first, then choose **Review cleanup** on the
+connection card and review the exact record. Each review clears one saved launch
+at a time. Recovery clears local uncertainty;
+it does not kill a saved PID, undo native work or automatically restart an agent.
+Corrupt recovery data is preserved and fails closed rather than being discarded.
+
+## Understand an ACP turn result
+
+In Beta 7, cancellation stays **Cancelled**; token limits, request limits, refusal
+and unknown outcomes cannot become a successful workflow result. A stopped or
+unsuccessful turn discards queued follow-ups and reports them as **not sent**.
+Review the saved messages before sending again; Cleetus never silently replays
+them. A completed provider turn still does not prove that the requested tests or
+product work succeeded. Review its evidence.
+
+ACP connections have no Cleetus context-usage meter unless that exact session
+advertises the capability. Completing a turn does not trigger an unsupported
+usage request or replace the draft with an error.
 
 ## Copilot conversation actions
 

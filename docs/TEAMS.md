@@ -65,6 +65,13 @@ When Claude Code reports that its native session ended, Cleetus marks it
 disconnected and retains the conversation for review. Reconnect is explicit;
 closing or reopening a view does not replay the previous prompt.
 
+Beta 7 applies the same host lifecycle boundary to ordinary conversations and
+rejects stale native narration after authority is lost. Explicit reconnect obtains
+fresh grants; opening a view or reopening a folder does not restore an old grant.
+Cancelled or limited ACP turns do not complete workflow work successfully, and
+queued follow-ups discarded by a stop are reported as not sent. Review and resend
+any still-relevant instruction rather than expecting automatic replay.
+
 ## Recognize agent specialties
 
 Each of the 33 distinct roles in the prebuilt teams and workflow recipes has its own Cleetus robot portrait. This includes separate portraits for reproducer, root-cause analyst, fixer, verifier, each review specialty, and each extraction specialist. The full set has 40 artwork identities, retaining the original domain portraits plus a generalist robot for unspecified or unrecognized roles. Cleetus resolves exact prebuilt roles before broad specialty aliases, so a design lead and a design reviewer do not share an image. The same role keeps its portrait across team cards, messages, topology views, native agent lists and shared team views opened inside the IDE.

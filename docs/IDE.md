@@ -46,6 +46,13 @@ The central Agent Command brings the goal composer, plan, selected team, recorde
 
 **Saved conversations** remains visible alongside team templates and created teams. Choose **Continue conversation** for the exact saved project session. Sessions created for fenced task work offer **Inspect saved output**; use the task workflow for a new execution lease. Design agent handoffs open their actual conversation instead of leaving you on the dashboard.
 
+In Beta 7, ordinary agent conversations also retain the current opened-project
+and application authority. Removing or replacing the project, or closing Cleetus,
+retires the observed connection's queued messages and decisions. Reopening the
+same folder does not restore an old grant. Reconnect explicitly to obtain fresh
+approval and resume history without replaying its previous prompt. Saved output
+remains available for inspection; changes already dispatched are not rolled back.
+
 **Plan with team** opens team setup. Opening a draft, choosing a template or viewing the dashboard starts no agents. A stopped run retains changes already made; review them before continuing.
 
 ## Give a team a bounded goal

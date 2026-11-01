@@ -72,6 +72,22 @@ owner or state changes while the dialog is open, refresh and inspect the current
 record. A late response from an older reconciled operation cannot replace a
 newer claim. This does not undo any write already accepted by the remote tracker.
 
+### Valid ownership generations
+
+In Beta 7, a fencing generation must be a safe integer or a nonblank string of at
+most 500 characters. Send large numeric tokens as strings so JSON number rounding
+cannot change ownership identity. Cleetus preserves opaque strings exactly.
+Overflow, fractional or unsafe numbers, blank strings and explicit null values
+cannot become an owned receipt. If an unusable response follows a write, the
+receipt stays uncertain; inspect the remote tracker before recovery.
+
+An existing receipt with an unusable generation cannot renew or release work.
+Cleetus rejects it before a network call and preserves the stored bytes for
+inspection. Use explicit reconciliation after checking the remote lease; editing
+or reloading the local file is not a safe ownership transfer. A renewal that omits
+a replacement generation can retain the prior usable value, but explicit null
+is rejected.
+
 ### Bounded responses and ownership changes
 
 In Beta 6, tracker responses are limited to 3 MiB of UTF-8 data while they are
@@ -132,7 +148,7 @@ Replace required creation defaults with real permitted values, or leave `createP
 
 A blank `detailPath` maps the response root; for `{ "data": { ... } }`, set it to `data`. Blank `itemsPath` supports a root array. Cursor mapping supports string or numeric next cursors. With a nonstandard auth header, use `auth: "header"` and `tokenHeader: "X-API-Key"`. Optional `issueUrl` is an HTTPS UI template containing `{id}`; when absent, Open in tracker goes to the configured API base.
 
-List calls use GET with the configured query/state/cursor/limit parameters. Creation, comments, claims, renewal and release use POST JSON. Ownership paths must contain `{id}`. A claim response must expose a fencing generation/token as a string or number; subsequent requests send the saved value through `generationField`. The adapter does not guess a scheduler or worker protocol from a URL.
+List calls use GET with the configured query/state/cursor/limit parameters. Creation, comments, claims, renewal and release use POST JSON. Ownership paths must contain `{id}`. A claim response must expose a fencing generation/token as a nonblank bounded string or safe integer; subsequent requests send the saved value through `generationField`. The adapter does not guess a scheduler or worker protocol from a URL.
 
 ## Service execution
 
