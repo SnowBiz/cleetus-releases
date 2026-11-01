@@ -30,7 +30,7 @@ service provides **Scout · Free**, **Wrangler · Pro** and **Foreman · Team**
 membership metadata and saved preferences. A native development host has passed
 Scout sign-in and a production preference save/reload roundtrip. Paid grants and
 subscription purchases have not been checked with a live paid account. The IDE
-0.2.0 and extension 1.12.0 client additions remain release candidates;
+0.2.0 and extension 1.12.1 client additions remain release candidates;
 installed-app credential persistence and final native installer acceptance
 remain pending.
 
@@ -128,3 +128,15 @@ refresh credential. Missing or delayed credential records grant no access; the
 screen reports storage unavailability until the credential store can be read.
 Owner review can be necessary after damaged storage or an unconfirmed recovery
 lock. Do not delete authority records to bypass that state.
+
+## Browser return page
+
+After browser sign-in, the return page matches Cleetus’s dark styling and logo.
+It confirms that the response reached the app; finish checking your account and
+membership in Cleetus. You can close the browser tab. One-time callback parameters
+are removed from the address bar, and the page loads no external assets or trackers.
+
+![Cleetus branded browser return page with response received and next-step guidance](images/cleetus-account-return.png)
+
+_Layout shown with a local test callback. Browser receipt is separate from the
+app’s completed identity verification._

@@ -8,7 +8,7 @@ This is the public download and documentation home for Cleetus. Development sour
 
 **[Find Cleetus releases](https://github.com/SnowBiz/cleetus-releases/releases) · [Install and update](docs/INSTALL.md) · [Guides](docs/README.md) · [cleetus.dev](https://cleetus.dev)**
 
-**Release preparation:** IDE 0.2.0 and extension 1.12.0 are implemented release
+**Release preparation:** IDE 0.2.0 and extension 1.12.1 are implemented release
 candidates. Final native installer acceptance remains pending. The release
 listing, not this candidate guide, determines which downloads are available.
 

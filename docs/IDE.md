@@ -11,7 +11,7 @@ Cleetus IDE puts a Code - OSS editor, agents and a source-linked Design studio i
 | **VS Code extension** | Choose the latest stable universal VSIX whose notes include current native Claude Code setup, with matching `SHA256SUMS` in the [public releases listing](https://github.com/SnowBiz/cleetus-releases/releases). [Install and update](INSTALL.md#install-the-extension-instead). |
 | **Cleetus IDE** | Choose the latest stable macOS Apple Silicon IDE whose notes describe the current native Claude Code connection. Download its DMG and `SHA256SUMS` from that same [release listing](https://github.com/SnowBiz/cleetus-releases/releases). |
 
-IDE 0.2.0 and extension 1.12.0 are implemented candidates, not a publication
+IDE 0.2.0 and extension 1.12.1 are implemented candidates, not a publication
 announcement. Older SDK subscription-flow builds are retired from the recommended
 setup path. If the updated stable IDE has not been published, wait for its accepted
 release. See [installation](INSTALL.md) for the complete checks.

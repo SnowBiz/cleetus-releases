@@ -8,7 +8,7 @@ sign-in and a production preference roundtrip: save reduced motion on, reload it
 save it off, then reload it again. Live paid-tier grants and subscription
 purchases have not been tested.
 
-The IDE 0.2.0 and extension 1.12.0 additions described here are implemented client
+The IDE 0.2.0 and extension 1.12.1 additions described here are implemented client
 release candidates. Installed-app credential persistence and final native
 installer acceptance remain pending. Check
 [Install and update](INSTALL.md) for published downloads.

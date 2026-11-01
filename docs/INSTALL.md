@@ -1,6 +1,6 @@
 # Install and update Cleetus
 
-**Release preparation:** Cleetus IDE 0.2.0 and extension 1.12.0 are implemented
+**Release preparation:** Cleetus IDE 0.2.0 and extension 1.12.1 are implemented
 release candidates. Final native installer acceptance remains pending. Use the
 published release listings below to check which downloads are available.
 
