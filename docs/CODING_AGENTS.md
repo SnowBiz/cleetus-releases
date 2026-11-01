@@ -177,7 +177,10 @@ Hosted Claude Code follows a separate integration from ACP. It uses your own
 unmodified interactive Claude Code installation. The ordinary **Terminal agents**
 mode keeps interaction in Claude Code and shows reported activity in Cleetus.
 
-For the opt-in **local development** channel experiment in compatible beta builds:
+For maintainers building and reviewing the Cleetus channel locally, compatible
+beta builds expose an opt-in **local development** experiment. This is not the
+normal setup path for a downloaded channel; production use requires the
+applicable channel approval. To test a channel you are developing:
 
 1. Open Cleetus **Settings → Preferences** (in native Studio, use the
    **Workspace → Settings** menu).
