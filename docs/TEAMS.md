@@ -45,6 +45,9 @@ These are starting roles, not guaranteed outcomes or fixed vendor/model requirem
 7. Create the team and start its workflow. Extraction offers **Create & start extraction** or **Create without starting**.
 8. Review messages, approvals, output, reports, and actual artifacts in **Agents & Teams**.
 
+**Beta 5:** use **Refresh agent models** (or the named member’s refresh control) to discover models for that member without launching every connected provider. Passive lists retain the last approved catalog; stale explicit choices need refresh. Draft prompts and choices stay intact.
+
+
 ![Current extraction team setup; all specialist prompts remain editable](screenshots/extraction-team.png)
 
 Agent details in a template layout let you inspect and save its model, effort, system prompt, and MCP settings. Ready-team agent settings can also be edited before launch; started agents cannot be reconfigured through that pre-start editor. Refresh/reopen when another window has changed the saved settings.

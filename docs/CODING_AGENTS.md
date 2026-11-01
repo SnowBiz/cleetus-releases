@@ -6,8 +6,8 @@ OpenCode and the additional development-build profiles listed below. ACP connect
 a compatible coding agent to Cleetus conversations and agent workflows over its
 documented stdio interface.
 
-Download the current [Cleetus Beta 0.2.0-beta.4 for macOS Apple
-Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.4-macos-arm64).
+Download the current [Cleetus Beta 0.2.0-beta.5 for macOS Apple
+Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.5-macos-arm64).
 Connections first shipped in beta 2.
 Use the beta release notes to check its preview boundaries. Stable IDE and VSIX
 downloads have independent versions and may not include this connection flow.
@@ -110,6 +110,31 @@ launch. Discovery can load the provider's project configuration, startup hooks
 or MCP connections; it is not a read-only filesystem check. Cleetus sends no
 inference prompt for metadata discovery. Declining the review leaves metadata
 unknown. A changed executable, configuration or project requires fresh review.
+
+### Browse models without starting providers
+
+**Beta 5** separates passive browsing from explicit discovery. Opening Studio,
+the conversation dock, chat, Design or team settings reads the last approved
+ACP catalog without starting a provider. Choose **Refresh models** to discover
+models for the selected engine/backend. Task, team-member and workflow setup
+have refresh controls beside their own choices. Each active discovery still
+requires fresh review; approving discovery never approves a later work session.
+
+Effort choices and resume support use the same guarded project metadata.
+An effort list from one model is not offered for a different model. When a
+provider does not report the current model’s choices, keep **Engine default**;
+Cleetus does not guess. An already-live chat can show its own session’s reported
+efforts. Saved unavailable overrides stay visible until you change them, and
+team inheritance never takes an unrelated session’s settings.
+
+Catalogs expire within five minutes and are scoped to the opened project,
+connection settings and executable identity. Symlink and canonical paths to the
+same folder share its catalog; removed or retargeted paths invalidate it. Changed settings, a replaced
+binary, denial, failed cleanup or project removal invalidates them. Saved model
+choices and drafts remain visible, but stale explicit models cannot start work.
+Refresh or use **Engine default**. A cached catalog is not a connected-account,
+model-entitlement or cost claim. Earlier betas may request discovery when a
+panel opens; check your installed release notes.
 
 If installation changed the PATH, restart the editor so it receives the updated
 environment, or use an absolute executable path. No shell expansion is applied:

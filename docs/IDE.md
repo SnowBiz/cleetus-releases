@@ -94,6 +94,24 @@ sessions. Damaged records remain preserved; valid history stays readable while
 affected new execution waits for reconciliation. See [workflow execution and
 recovery](TOOLS.md#workflow-execution-and-recovery).
 
+### Review the exact execution
+
+**Beta 5** adds separate **Blueprint** and **Run history** views under
+**Definitions & runs**. Blueprint shows the current editable steps without
+historical execution states. Run history offers a recorded-run selector and
+shows the frozen definition from that execution, including its original inputs,
+dependencies, constraints and evidence. Editing a blueprint cannot change what
+an earlier run appears to have done. Completed history cannot be edited or
+restarted from that view. Missing or unknown snapshots stay explicit.
+
+For an active Claude Code step, select its node to answer supported questions,
+review a plan or allow/deny a one-time tool request in the **Workflow agent**
+inspector. Cleetus rechecks the step's private execution ownership after host
+review. After completion, the conversation is read-only. The inspector does not
+send unrelated work or resume/reconfigure the agent. **Open Claude Code** is an
+explicit fallback for sign-in, trust, MCP consent and unsupported native prompts.
+Earlier betas expose recorded references without this workflow review panel.
+
 ### Optional automation
 
 **Workflows → Automation → + Add automation** supports intervals from **60
