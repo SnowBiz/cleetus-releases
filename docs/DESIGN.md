@@ -12,6 +12,12 @@ Cleetus Design is a studio for the real interfaces your agents build. It combine
 4. Inspect detailed role prompts and MCP assignments, then create/start the team.
 5. Review artifacts and the audit: discovered source is different from built, rendered and verified coverage.
 
+Beta 6 preserves the advanced selected engine/backend, model and effort when
+preparing that team, including an explicit **Engine default**. Leaving an
+override absent keeps the extraction preset. Review the resulting member
+settings before starting; unavailable metadata is rejected without losing the
+extraction draft or starting a provider.
+
 The team discovers source; curates tokens/assets; registers composed components, contracts and stories; maps pages/platforms; writes rules; and audits the library. It uses the same agent system as ordinary development, with tool permissions and explicit handoffs.
 
 ![Design overview](screenshots/design-overview.png)

@@ -67,6 +67,24 @@ Claims are bound to the authenticated Cleetus session, not an agent-supplied act
 
 A network failure after a claim can leave ownership uncertain. Cleetus retains an uncertain receipt and blocks blind reclaim. **Ownership receipts → Reconcile locally** is a human recovery path: inspect and reconcile the remote lease first, then forget the local record. Forgetting does not release remote work. Lease conflicts can also indicate expiry or loss of ownership; stop editing and reconcile. Reload does not automatically resume a claiming agent.
 
+Reconciliation confirmation is bound to the exact receipt you reviewed. If its
+owner or state changes while the dialog is open, refresh and inspect the current
+record. A late response from an older reconciled operation cannot replace a
+newer claim. This does not undo any write already accepted by the remote tracker.
+
+### Bounded responses and ownership changes
+
+In Beta 6, tracker responses are limited to 3 MiB of UTF-8 data while they are
+read. Over-limit responses stop early; narrow the query instead of loading an
+unbounded result. An unreadable response after a write can mean the service
+accepted it. Inspect the tracker before retrying. Claim operations retain an
+uncertain receipt so they cannot silently run again.
+
+Connection edits recheck ownership receipts when the edit is saved, including
+when another agent acquired a claim while credentials were being stored. Changing
+the endpoint or disabling ownership operations waits until receipts are resolved.
+Renaming a connection keeps its existing claims.
+
 ## Custom REST adapter
 
 Custom integrations are configuration, not product-specific Cleetus code. Endpoint paths are relative to your HTTPS API root. Dot-separated mappings address nested JSON fields. Unconfigured writes stay unavailable. Example for a command-center-style API:

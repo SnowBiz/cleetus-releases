@@ -76,6 +76,11 @@ For a pending task, choose the engine/model, effort and working directory, then 
 
 Dependencies must be completed and approved before dependent work can be claimed. Ownership has an expiry and fencing generation, so replaced or expired claims cannot report new work. A report or ended turn moves work to review; inspect actual files, diffs and checks before **Approve result** or **Request changes**. Completion is your decision, not an automatic claim that checks passed.
 
+In Beta 6, task editors retain the project and revision from when you opened
+them. A background refresh cannot overwrite a newer edit on your behalf. A
+conflict keeps your draft available for comparison; changing projects requires
+returning to the original project before saving that draft.
+
 ## Define a workflow, then inspect its runs
 
 ![Native saved workflow definition on its pan and zoom canvas](screenshots/ide-native-workflows.png)
@@ -150,6 +155,11 @@ Task ownership remains on the primary project's board even when execution uses i
 The **Pull requests** view uses a configured GitHub tracker to show checks, reviews and merge evidence for the current head. Missing, skipped, stale and unavailable results remain distinct from a pass. Follow the provider link for normal review and merge decisions.
 
 Cleanup needs explicit approval and removes only a verified clean Cleetus-owned checkout. Tracked, untracked and ignored files block it; the branch remains. Review does not automatically merge or cherry-pick changes.
+
+In Beta 6, changing project or GitHub connection in **Review & Ship** clears the
+previous PR evidence. Delayed responses cannot populate the new selection or
+change its provider link. Select and refresh the PR whose current-head checks
+you want to review; missing or stale evidence remains explicit.
 
 ## Refine a source-linked component in Design
 

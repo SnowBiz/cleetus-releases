@@ -52,6 +52,19 @@ These are starting roles, not guaranteed outcomes or fixed vendor/model requirem
 
 Agent details in a template layout let you inspect and save its model, effort, system prompt, and MCP settings. Ready-team agent settings can also be edited before launch; started agents cannot be reconfigured through that pre-start editor. Refresh/reopen when another window has changed the saved settings.
 
+## Current teammate ownership
+
+Beta 6 rechecks the live project, team owner, member execution and checkout before
+launching a hosted Claude Code teammate or accepting its Cleetus tools/channel
+traffic. If that authority changes, old requests are retired and new work needs
+current approval. Normal supervisor assignments and inbox handoffs still work.
+Already dispatched changes remain real evidence to inspect; a rejected response
+is not a rollback.
+
+When Claude Code reports that its native session ended, Cleetus marks it
+disconnected and retains the conversation for review. Reconnect is explicit;
+closing or reopening a view does not replay the previous prompt.
+
 ## Recognize agent specialties
 
 Each of the 33 distinct roles in the prebuilt teams and workflow recipes has its own Cleetus robot portrait. This includes separate portraits for reproducer, root-cause analyst, fixer, verifier, each review specialty, and each extraction specialist. The full set has 40 artwork identities, retaining the original domain portraits plus a generalist robot for unspecified or unrecognized roles. Cleetus resolves exact prebuilt roles before broad specialty aliases, so a design lead and a design reviewer do not share an image. The same role keeps its portrait across team cards, messages, topology views, native agent lists and shared team views opened inside the IDE.

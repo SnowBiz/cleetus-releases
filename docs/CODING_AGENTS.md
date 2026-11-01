@@ -6,8 +6,8 @@ OpenCode and the additional development-build profiles listed below. ACP connect
 a compatible coding agent to Cleetus conversations and agent workflows over its
 documented stdio interface.
 
-Download the current [Cleetus Beta 0.2.0-beta.5 for macOS Apple
-Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.5-macos-arm64).
+Download the current [Cleetus Beta 0.2.0-beta.6 for macOS Apple
+Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.6-macos-arm64).
 Connections first shipped in beta 2.
 Use the beta release notes to check its preview boundaries. Stable IDE and VSIX
 downloads have independent versions and may not include this connection flow.
@@ -142,6 +142,20 @@ environment, or use an absolute executable path. No shell expansion is applied:
 executable paths. Windows `.cmd`, `.bat` and `.ps1` launch wrappers are unsupported
 by this direct-executable connection path; Windows provider execution needs
 separate verification.
+
+## Copilot conversation actions
+
+In Beta 6, an already-live ordinary Copilot conversation can show
+**Copilot · Compact** and **Copilot · Context** above the composer. Cleetus offers
+only commands currently advertised by that exact provider session. No metadata
+process or new work session starts when you open these controls, and your draft
+stays intact. Actions use the normal session's permission and cancellation path.
+
+If a command disappears, the provider removed it or the session disconnected.
+Reconnect explicitly when needed. These ordinary-conversation controls do not
+restart or take over task, team or workflow agents, and a generic response Retry
+does not repeat a context command. Other providers keep their own supported
+interfaces; Cleetus does not invent a universal slash-command transport.
 
 ## Use a connected agent
 
