@@ -1,35 +1,55 @@
 # Local service and agent jobs
 
-Cleetus automatically starts a separate local service process. Tracker/PR requests and heavy Design work run outside the VS Code extension host. No additional service URL, account or shared agent token is needed.
+**Release preparation:** this guide describes the proposed Cleetus IDE 0.2.0 platform. Check the [installation and release notes](INSTALL.md) for published downloads and the features in your installed build. IDE and extension releases remain independent.
 
-![Service status and jobs](screenshots/service.png)
+_Read this guide on [cleetus.dev](https://cleetus.dev/docs/service/)._
 
-Open Settings → **Cleetus service** and choose **Refresh service & jobs**. Inspect queued/running/completed/failed work or cancel a queued/running job. Two workers run concurrently by default, with same-project work serialized and a project lock protecting cross-window jobs.
+Cleetus runs heavy and long-running work, such as tracker and PR requests and Design jobs, in a separate local service process. The editor stays responsive, a crash there can't take the editor down, and agents get a durable job queue they can submit to and check on.
+
+![An agent submits a job; permissions run, the host adds identity, then a durable queue and two workers](images/diagram-service-jobs.png)
+
+## What it is
+
+- **A separate Node.js process** started automatically by Cleetus, talking to the editor over a **private inherited IPC channel**. It opens no network port and needs no URL, account or shared token.
+- **Two workers** by default. Jobs for the same project run in order, and a project lock covers other Cleetus windows on that project.
+- **Durable records** with bounded logs, kept in your profile.
+
+It runs with your user's privileges. Process separation buys responsiveness and fault isolation; it isn't an OS sandbox.
+
+![Settings → Cleetus service with service status and jobs](screenshots/service.png)
+
+Open **Settings → Cleetus service** and choose **Refresh service & jobs** to see queued, running, completed and failed work, and to cancel a queued or running job.
 
 ## Let agents use it
 
 Claude and Codex receive the same tools; connected ACP agents can receive them
 when their negotiated MCP support and explicit assignments allow it:
 
-| Tool | Purpose |
-| --- | --- |
-| `cleetus_service_capabilities` | Discover supported operations and ownership rules |
-| `cleetus_service_status` | Read service health |
-| `cleetus_job_submit` | Queue a supported Design operation and return its job ID |
-| `cleetus_job_list` | List the current session's jobs |
-| `cleetus_job_get` | Inspect an owned job's progress/result/error |
-| `cleetus_job_cancel` | Cancel an owned job |
+| Tool                           | What it does                                          |
+| ------------------------------ | ----------------------------------------------------- |
+| `cleetus_service_capabilities` | Supported operations and ownership rules              |
+| `cleetus_service_status`       | Service health                                        |
+| `cleetus_job_submit`           | Queue a supported Design operation; returns a job ID  |
+| `cleetus_job_list`             | This session's jobs                                   |
+| `cleetus_job_get`              | Progress, result or error for a job this session owns |
+| `cleetus_job_cancel`           | Cancel a job this session owns                        |
 
-Supported operations include extraction, site capture, source rendering, component extraction/creation/checking, capture, comparison and mock cropping. The host supplies the authenticated session and project; agents cannot choose another owner or inspect another session's job by guessing its ID. Normal tool permissions/hooks and the Design-tools setting remain effective.
+Supported operations include extraction, site capture, source rendering, component extraction, creation and checking, capture, comparison and mock cropping. Try: _"Run a background component extraction for `src/components`, tell me the job ID, and summarize the result when it finishes."_
 
-Ask an agent to perform a background extraction, report its job ID and review the result. Job submission does not implicitly start a model/team. Design's **Extract from codebase** still provides the full reviewed extraction-team workflow.
+## Ownership
+
+The host, not the agent, supplies the session and project for every job. An agent can't name another owner, and it can't read or cancel another session's job by guessing its ID. Your management view is limited to jobs for currently authorized open projects;
+cancellation needs host review and another ownership check. Agents never get
+that broader management authority.
+
+Submitting and cancelling go through the normal [permission flow](TOOLS.md#the-permission-flow), and turning off the Design tools setting blocks submissions. Job arguments still run real adapters, so source execution, network access and native builds behave as they would anywhere else.
 
 ## Recovery
 
 Jobs retain durable state and bounded logs under the Cleetus profile.
-Cancellation preserves writes already made. Released beta 3 reports interrupted
-work after a stopped service without automatic replay. Beta 4 builds add the more precise cleanup states below; they are not part
-of released beta 3.
+Cancellation preserves writes already made. A stopped service retains
+interrupted or uncertain work without automatically replaying it. Use the exact
+cleanup states below to decide what needs inspection.
 
 - A queued job can become **cancelled** immediately because no worker launched.
 - Cancelling a running job first records **cancellation-requested**. The project
@@ -50,7 +70,7 @@ if confirmation fails, the uncertainty record remains.
 
 Damaged saved Design JSON is preserved and blocks replacement extraction writes.
 A damaged session-history index is also preserved rather than replaced with an
-empty index. These development-build recovery errors require repair or a
+empty index. These recovery errors require repair or a
 reviewed restoration; Cleetus does not silently delete or rebuild the originals.
 See [workflow and saved-data recovery](TOOLS.md#workflow-execution-and-recovery).
 Remote write timeouts still need provider reconciliation because an operation
@@ -61,6 +81,4 @@ cleanup of its owned service/jobs; use the recorded state to distinguish
 confirmed cleanup from uncertainty. The service is local user code, not an OS
 sandbox or remote multi-user control plane.
 
-## Other hosts
-
-Cleetus has a shared application and explicit host adapters so an independent client can reuse sessions, engine integrations and service tools. The current standalone browser developer host has partial UI parity. It is not a packaged/signed native IDE release, and no native IDE installer is implied by this guide.
+[Cleetus Design](DESIGN.md) · [Work tracking](WORK_TRACKING.md) · [Architecture](ARCHITECTURE.md)

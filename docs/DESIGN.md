@@ -1,18 +1,28 @@
 # Cleetus Design
 
-![Cleetus Design promotional banner](images/cleetus-design-cowboy.png)
+**Release preparation:** this guide describes the proposed Cleetus IDE 0.2.0 platform. Check the [installation and release notes](INSTALL.md) for published downloads and the features in your installed build. IDE and extension releases remain independent.
 
-Cleetus Design is a studio for the real interfaces your agents build. It combines repository-owned design systems, real source previews, component contracts, page composition, reference assets, and rules.
+_Read this guide on [cleetus.dev](https://cleetus.dev/docs/design/)._
+
+Cleetus Design is a studio for the interfaces your agents actually build. It keeps a design system in your repository (tokens, components with contracts and stories, pages, assets and rules), renders the real source live, and turns a refinement into a focused brief an agent can act on.
+
+![Design reviewing a page from live source at phone and desktop widths, with design guidance alongside](screenshots/ide-native-design.png)
+
+## How it fits together
+
+![Six specialists write a reviewable design system into your repository, which powers live previews and focused agent work](images/diagram-design-extraction.png)
+
+The design system lives in your project's `design/` folder as ordinary files you review and commit. The studio reads it, renders registered source through a [preview adapter](ADAPTERS.md), and gives agents the same files as context. Nothing is locked in a Cleetus database.
 
 ## Extract a design system
 
-1. Open Design → Overview and select the project.
-2. Choose **Extract from codebase**. Review the six-specialist extraction team and scope.
-3. Keep recommended defaults or override available models and effort for the team or individual agents.
-4. Inspect detailed role prompts and MCP assignments, then create/start the team.
-5. Review artifacts and the audit: discovered source is different from built, rendered and verified coverage.
+1. Open **Design → Overview** and select the project.
+2. Choose **Extract from codebase**. Cleetus fills the repository and scope into a **Design System Extraction** team.
+3. Keep the recommended models and effort (High), or override them for the team or for individual specialists.
+4. Review each specialist's prompt and MCP access, then **Create & start extraction**, or create it without starting.
+5. Read the auditor's report. It separates what was **discovered** in source from what was **built, rendered and verified**.
 
-Beta 6 preserves the advanced selected engine/backend, model and effort when
+Cleetus preserves the advanced selected engine/backend, model and effort when
 preparing that team, including an explicit **Engine default**. Leaving an
 override absent keeps the extraction preset. Review the resulting member
 settings before starting; unavailable metadata is rejected without losing the
@@ -20,29 +30,34 @@ extraction draft or starting a provider.
 
 The team discovers source; curates tokens/assets; registers composed components, contracts and stories; maps pages/platforms; writes rules; and audits the library. It uses the same agent system as ordinary development, with tool permissions and explicit handoffs.
 
-![Design overview](screenshots/design-overview.png)
+The six specialists run as a pipeline: a discovery lead finds the source, tokens and assets capture the visual language, a component curator registers composed components with contracts and stories, a page and platform builder maps pages and platforms, a rules librarian writes how things compose, and an auditor reports what's real. It's the same team engine as any other, with the same approvals and handoffs.
+
+![Design overview with extraction status and coverage](screenshots/design-overview.png)
 
 ## Components are building blocks
 
-A component can be a navigation system, editor, form flow or card composition, as well as a primitive control. Component Studio renders registered project source with fixture props, variants, states, device widths and theme/background controls. Inspect usage, tokens, code and contracts before changing the public API.
+A component can be a navigation system, an editor, a form flow or a card composition, not just a button. Component Studio renders the registered source with fixture props, variants, states, device widths and theme and background controls. Before changing a public API, check its usage, tokens, code and contract.
 
-![Component Studio](screenshots/design-components.png)
+![Component Studio rendering a registered component with its controls](screenshots/design-components.png)
 
-Prepare an agent task from a selected component. Give it the implementation, contract, fixture, rules, consumers and acceptance checks. Review a live preview and impacted pages before adopting it. A pixel match does not prove behavior, accessibility or application correctness.
+To change one, **prepare an agent task** from it. The brief includes the implementation, contract, fixture, rules, consumers and acceptance checks. Preparing a draft never sends it or starts agents. Review the live preview and every affected page before adopting the change. A pixel match proves neither behaviour nor accessibility.
 
-## Pages, assets, tokens and rules
+## Pages, tokens, assets and rules
 
-Click a page card to inspect its current registered source, device previews, composition and related components. Long pages belong in a scrollable review viewport rather than stretching the whole gallery. Browser previews do not require a PNG for every change; optional snapshots remain useful for comparison/export.
+- **Pages** open with their current source, device previews, composition and related components. Long pages scroll inside their review viewport.
+- **Tokens** keep the project's visual language, with semantic aliases.
+- **Assets** keep their source and provenance, plus an explicit draft, approved or retired decision. Approve canonical mocks and logos you want agents to use as references.
+- **Rules** explain intended composition and platform differences, in words agents read before they build.
 
-![Page gallery](screenshots/design-pages.png)
+![Page gallery with live page previews](screenshots/design-pages.png)
 
-Tokens preserve the project's visual language. Assets retain source/provenance and explicit draft/approved/retired decisions. Approve canonical mocks/logos when you want agents to use them as references. Rules explain intended composition and platform differences.
+## Product libraries
 
 Working previews need project dependencies, controlled fixtures and a registered adapter. Source discovery alone cannot invent authenticated data or native screen hosts. Use [preview adapters](ADAPTERS.md) and [product libraries](LIBRARIES.md) for a complete multi-platform workflow.
 
 ## Visual context for connected agents
 
-Beta 8 connects approved Design references to an agent's actual image-input
+Approved Design references use an agent's actual image-input
 capability. Image-capable ACP conversations can receive up to four PNG/JPEG images
 totaling 512 KiB; unsupported formats or larger references remain file/text
 context with an explicit explanation. Cleetus verifies approved bytes and path
@@ -58,7 +73,7 @@ attached screenshot is a reference, not a replacement for those contracts.
 ## Coordinate refinement with the development team
 
 A Design or extraction agent follows the same current execution ownership as
-other Cleetus teammates. In Beta 9, a blocked specialist does not retire a still
+other Cleetus teammates. A blocked specialist does not retire a still
 active supervisor or parallel reviewer. Inspect the specialist’s saved findings,
 answer the active agent’s question, then start any fresh work through the owning
 Tasks or Teams view. Saved results and old approvals remain read-only.
@@ -67,3 +82,26 @@ Model and effort changes stay paired with the actual connected conversation.
 Changing an ACP model clears its previous explicit effort; choose only settings
 advertised for the new model. See [team coordination](TEAMS.md#work-through-a-blocked-teammate)
 and [model settings](CODING_AGENTS.md#keep-model-and-effort-settings-together).
+
+### Continue the refinement in its owning workflow
+
+Keep followup refinement with the task or team that owns the
+work. Inspect the saved component findings, actual source and preview first.
+For a task, return to **Tasks** for a new reviewed execution. For a settled native
+Design teammate, queue a bounded handoff in **Teams**, then use
+**Reconnect teammate** to review that exact request against the saved conversation
+and delivery budget. See [the continuation steps](TEAMS.md#reconnect-a-native-teammate-for-a-queued-handoff).
+
+The previous connection is retired before the fresh one starts. Only the new
+approved handoff is sent; old questions and results remain history. Preparing a
+Design draft, reopening a preview or reconnecting an ordinary chat does not
+resume a task or team. A locally admitted handoff is not evidence that the
+component changed correctly: inspect consumers, real previews and relevant checks.
+
+Link the design systems of several repositories that make up one product, such as responsive web, iOS and watchOS. See [Product libraries](LIBRARIES.md).
+
+## Agents and Design
+
+Agents use Design through the [local service](SERVICE.md): extraction, site capture, source rendering, component extraction, creation and checking, capture, comparison and mock cropping all run as background jobs, with the same approvals as any tool. The **Design tools** setting turns this off for agents and the UI alike.
+
+[Live previews](ADAPTERS.md) · [Agent teams](TEAMS.md) · [Local service](SERVICE.md)

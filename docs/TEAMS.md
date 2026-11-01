@@ -1,4 +1,6 @@
-# Choose and run a prebuilt team
+# Agent teams
+
+**Release preparation:** this guide describes the proposed Cleetus IDE 0.2.0 platform. Check the [installation and release notes](INSTALL.md) for published downloads and the features in your installed build. IDE and extension releases remain independent.
 
 Prebuilt teams give a shared goal to agents with defined roles, detailed system
 prompts, and an execution plan. They use the same configured engines as ordinary
@@ -6,35 +8,47 @@ conversations, including [connected ACP agents](CODING_AGENTS.md) where offered.
 Choose a template in **Workflows → Team templates**, inspect **View layout**,
 and choose **Create team** when it fits your task.
 
-In native IDE **0.1.0**, use the **Teams** action on the native rail, then **+ New team**, or run **Cleetus: Open Studio**. Choose the same template, review its detailed member instructions and discovered model/effort choices, create it, then explicitly **Start team**. Creating a team or opening a Design draft does not start agents. See [IDE availability and Studio](IDE.md).
+_Read this guide on [cleetus.dev](https://cleetus.dev/docs/teams/)._
 
-![Current workflow and team-template catalog](screenshots/workflows.png)
+Cleetus schedules team members, carries their messages and handoffs, and stops
+when a limit is reached. Each member has its own model, effort and MCP
+assignments; Claude, Codex and supported connected ACP agents can participate.
+
+![The orbital Teams view: a tech lead supervising a planner, implementer, reviewer and tester](screenshots/detail-teams-topology.png)
 
 A mixed team is scheduled by Cleetus, with explicit member identities, reports,
 messages and handoffs. In native Studio, workflow recipes can instead create a
 saved definition with explicit steps and dependencies; creating it does not run
-it. Beta 4 builds keep each workflow agent step in its own private
+it. Each workflow agent step stays in its own private
 session owned by its workflow execution, so ordinary chat cannot alter its
 prompt queue or resume that work independently. See [workflow execution and
 recovery](TOOLS.md#workflow-execution-and-recovery).
 
+## Three ways to run a team
+
+![Pipeline, parallel and supervised execution](images/diagram-team-modes.png)
+
+- **Pipeline.** Stages run in order. A stage hands off when its turn ends successfully **and** it calls `team_report` with `completed`. If a turn ends without a report, the pipeline pauses for your **Accept & hand off**. A `blocked` or `failed` report, a runtime error or a disconnect stops automatic progress.
+- **Parallel.** Members run independently in the **same working tree**. Split file ownership in the goal, or give members separate [worktrees](REVIEW.md).
+- **Supervised.** Only the supervisor starts. It assigns work, starts members, reviews their results and reports back. Use Claude or a connected coordination-capable ACP supervisor where supported.
+
 ## Which team should I choose?
 
-| Team | Choose it when… | Members and execution | Example goal |
-| --- | --- | --- | --- |
-| **Software development team** | Building a feature across planning, implementation, review, and tests. | Supervised: Claude tech lead directs a Claude planner, Codex implementer, Claude reviewer, and Codex tester. | “Add account notification preferences, preserve existing defaults, and test save/error behavior.” |
-| **Design squad** | Implementing or refining UI using the saved design system and approved references. | Supervised: Claude design lead directs a Codex UI builder and Claude design reviewer. | “Refine the account settings block, reuse its tokens, and review all consumers at mobile and desktop widths.” |
-| **Design System Extraction** | Building or hardening the design library from existing source or a permitted website. | Pipeline: Claude discovery lead → Claude tokens/assets → Codex component curator → Codex page/platform builder → Claude rules librarian → Claude auditor. | “Extract this repository's design system, register real previews, and report unresolved runtime coverage.” |
-| **Code review squad** | Reviewing an existing change from several perspectives without assigning a feature build. | Parallel: Claude correctness/security reviewers and Codex test/maintainability reviewers. | “Review the current diff for authorization defects, regressions, missing tests, and maintainability concerns.” |
-| **Bug hunt** | Reproducing and fixing a concrete defect with an independent verification stage. | Pipeline: Codex reproducer → Claude root-cause analyst → Codex fixer → Claude verifier. | “Reproduce the lost form state after navigation, fix its cause, and verify the original reproduction.” |
-| **Security audit** | Investigating the code's security risks and producing a prioritized report. | Pipeline: Claude threat modeler → Codex code auditor → Claude security reporter. | “Audit file uploads and tenant boundaries; include concrete code evidence and remediation priorities.” |
-| **Refactor crew** | Improving structure while preserving behavior. | Pipeline: Claude analyst → Codex refactorer → Claude regression checker. | “Separate persistence from UI logic without changing behavior; demonstrate existing checks still pass.” |
-| **Docs and research** | Investigating repository behavior, writing documentation, and checking its claims. | Pipeline: Claude researcher → Claude writer → Codex fact checker. | “Document installation and provider configuration with commands checked against this repository.” |
-| **Lean pair (cost-efficient)** | A small, well-defined implementation with a separate review. | Pipeline: Codex implementer → Claude reviewer; Low effort preset. | “Add the missing empty-state message and review the diff for regressions.” |
+| Team                      | Mode       | Members                                                                             | Reach for it when                               |
+| ------------------------- | ---------- | ----------------------------------------------------------------------------------- | ----------------------------------------------- |
+| Software development team | Supervised | Claude tech lead → Claude planner, Codex implementer, Claude reviewer, Codex tester | A feature across plan, build, review and tests  |
+| Design squad              | Supervised | Claude design lead → Codex UI builder, Claude design reviewer                       | UI work against your saved design system        |
+| Design System Extraction  | Pipeline   | Six specialists, Claude and Codex                                                   | Building the design library from existing code  |
+| Code review squad         | Parallel   | Claude correctness and security, Codex tests and maintainability                    | Reviewing an existing diff from several angles  |
+| Bug hunt                  | Pipeline   | Codex reproducer → Claude root-cause analyst → Codex fixer → Claude verifier        | A concrete defect with independent verification |
+| Security audit            | Pipeline   | Claude threat modeler → Codex code auditor → Claude reporter                        | A prioritized, evidence-backed risk report      |
+| Refactor crew             | Pipeline   | Claude analyst → Codex refactorer → Claude regression checker                       | Restructuring without behaviour change          |
+| Docs and research         | Pipeline   | Claude researcher → Claude writer → Codex fact checker                              | Docs whose claims are checked against the repo  |
+| Lean pair                 | Pipeline   | Codex implementer → Claude reviewer, Low effort                                     | Small, well-defined changes                     |
 
-These are starting roles, not guaranteed outcomes or fixed vendor/model requirements. Inspect the actual template before starting; saved template edits can change its settings. Security reviews are code investigations, not certifications. Detailed roles and tool permissions remain important even when all members use the same engine.
+These are starting points. Every role, prompt, engine, model, effort and MCP assignment is editable before launch, and a security audit is a code investigation, not a certification.
 
-## Configure and start
+## Create and start a team
 
 1. Open the target project and connect the engines you intend to use.
 2. Select the template and write a concrete goal: desired behavior, scope, constraints, and acceptance checks.
@@ -45,16 +59,24 @@ These are starting roles, not guaranteed outcomes or fixed vendor/model requirem
 7. Create the team and start its workflow. Extraction offers **Create & start extraction** or **Create without starting**.
 8. Review messages, approvals, output, reports, and actual artifacts in **Agents & Teams**.
 
-**Beta 5:** use **Refresh agent models** (or the named member’s refresh control) to discover models for that member without launching every connected provider. Passive lists retain the last approved catalog; stale explicit choices need refresh. Draft prompts and choices stay intact.
+Use **Refresh agent models** (or the named member’s refresh control) to discover models for that member without launching every connected provider. Passive lists retain the last approved catalog; stale explicit choices need refresh. Draft prompts and choices stay intact.
 
 
 ![Current extraction team setup; all specialist prompts remain editable](screenshots/extraction-team.png)
 
-Agent details in a template layout let you inspect and save its model, effort, system prompt, and MCP settings. Ready-team agent settings can also be edited before launch; started agents cannot be reconfigured through that pre-start editor. Refresh/reopen when another window has changed the saved settings.
+![Create team: template, execution mode, effort, delivery limit and each agent's role, provider, model, effort and assigned task](screenshots/detail-team-create-roles.png)
+
+1. **Teams → + New team**, then choose a template or start blank.
+2. Write a concrete goal with the behaviour you want, its scope, constraints and acceptance checks.
+3. Review every member: role, assigned task, system prompt, engine, model, effort and MCP access. A blank member effort inherits the team's.
+4. Set the **delivery limit**, 1–50 handoffs and messages (default 10; extraction presets 20).
+5. **Create** saves the team without starting anything. **Start team** is separate, and shows you the exact configuration to approve.
+
+![Member settings: discovered model, effort, additional instructions and MCP access](screenshots/detail-teams-member-settings.png)
 
 ## Current teammate ownership
 
-Beta 6 rechecks the live project, team owner, member execution and checkout before
+Cleetus rechecks the live project, team owner, member execution and checkout before
 launching a hosted Claude Code teammate or accepting its Cleetus tools/channel
 traffic. If that authority changes, old requests are retired and new work needs
 current approval. Normal supervisor assignments and inbox handoffs still work.
@@ -65,19 +87,19 @@ When Claude Code reports that its native session ended, Cleetus marks it
 disconnected and retains the conversation for review. Reconnect is explicit;
 closing or reopening a view does not replay the previous prompt.
 
-Beta 7 applies the same host lifecycle boundary to ordinary conversations and
+Cleetus applies the same host lifecycle boundary to ordinary conversations and
 rejects stale native narration after authority is lost. Explicit reconnect obtains
 fresh grants; opening a view or reopening a folder does not restore an old grant.
 Cancelled or limited ACP turns do not complete workflow work successfully, and
 queued follow-ups discarded by a stop are reported as not sent. Review and resend
 any still-relevant instruction rather than expecting automatic replay.
 
-In Beta 8, hosted Claude Code history keeps the observed order of messages and
+Hosted Claude Code history keeps the observed order of messages and
 visible narration, including distinct Stop-only replies. Saved reply links stay
 bound to their launch, so reconnect cannot associate an old reply with a new
 message that reuses its ID. Partial narration remains marked.
 
-Beta 9 also reconciles final narration when Claude’s completion and display
+Cleetus reconciles final narration when Claude’s completion and display
 notifications arrive out of order. The same final message appears once; equal
 answers on separate turns remain separate. Saved journals are preserved.
 
@@ -90,7 +112,7 @@ workflow work continues through its own ownership controls.
 
 ## Work through a blocked teammate
 
-Beta 9 distinguishes an **active turn** from a saved result. A worker can report
+Cleetus distinguishes an **active turn** from a saved result. A worker can report
 blocked while its supervisor or parallel peers still have active work. Those
 active agents retain their own inbox, questions, tool approvals and coordination;
 one blocked worker does not disconnect the rest of the team. Once no active turn
@@ -124,35 +146,101 @@ does not erase it. A rejected send retains its draft. An explicit retry of the
 unchanged message keeps its delivery identity; Cleetus does not silently replay
 failed or uncertain work.
 
+## Reconnect a native teammate for a queued handoff
+
+Use **Reconnect teammate** for a settled hosted Claude Code
+teammate with a queued handoff in the current owned team. Use this when the
+previous assignment has ended and you want to approve a new bounded request.
+An active teammate keeps its existing inbox and native terminal.
+
+1. Open **Teams**, select the member and inspect its saved output and report.
+2. Send a specific new handoff to that member with the desired result, scope and
+   checks. Queuing it does not start a new native turn, even if the old connection
+   has closed.
+3. Choose **Reconnect teammate** in the member's agent workspace or terminal
+   details. Review the exact queued message, project and saved conversation.
+4. Approve only that handoff. Cleetus retires the previous connection and opens
+   a fresh one to the same saved history and native Claude conversation. It sends
+   the newly approved handoff, not the original assignment or your unsent draft.
+5. Complete any native setup in **Open Claude Code**, then inspect new output,
+   reports, edits and checks before accepting the result.
+
+The button stays **Reconnecting teammate…** while review and local admission are
+pending. Repeated requests for the same handoff share that review; a different
+concurrent request must wait. This explicit attempt uses **one delivery unit**.
+A delivered handoff means local terminal admission, not a provider reply or task
+success. Failed admission records a failure; inspect it before trying new work.
+Cleetus does not silently retry or replay an uncertain handoff.
+
+The action is unavailable for active attempts, historical or cancelled teams,
+revoked ownership and exhausted delivery budgets. Changed messages, members,
+projects or saved revisions invalidate the review. Reopening history never
+restores old tool, hook or channel access. This action does not enable channels
+or establish production channel approval; native sign-in, consent and tool rules
+remain with Claude Code.
+
+### Pending requests belong to their original turn
+
+Cleetus keeps each pending tool request and approval tied to the turn
+that admitted it. An old tool call or late **Allow** decision from an ended ACP,
+Claude API/cloud or Codex turn cannot become valid when a newly reviewed
+followup starts. Current work can proceed while the old request is denied. Already
+performed edits or commands are not rolled back; review their saved evidence.
+
 ## Recognize agent specialties
 
-Each of the 33 distinct roles in the prebuilt teams and workflow recipes has its own Cleetus robot portrait. This includes separate portraits for reproducer, root-cause analyst, fixer, verifier, each review specialty, and each extraction specialist. The full set has 40 artwork identities, retaining the original domain portraits plus a generalist robot for unspecified or unrecognized roles. Cleetus resolves exact prebuilt roles before broad specialty aliases, so a design lead and a design reviewer do not share an image. The same role keeps its portrait across team cards, messages, topology views, native agent lists and shared team views opened inside the IDE.
+Ready members can be edited until launch. If another window changed the saved team, your stale edit is rejected rather than overwriting theirs.
 
-Portraits describe specialties, not authority or progress. The separate engine, model, effort and status labels show the agent’s actual configuration and recorded state. Change its instructions and tool assignments through agent settings; changing a role label alone does not change its permissions.
+## Handoff tools
 
-## Understand the execution mode
+Every member gets four tools, bound to its identity by the engine adapter:
+
+| Tool                                           | What it does                                                                          |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `team_roster({})`                              | The goal, members, engines, roles, task IDs and status                                |
+| `team_send({to, body, kind?, correlationId?})` | Queue a message or handoff to another member                                          |
+| `team_inbox({})`                               | The last 50 messages addressed to this member                                         |
+| `team_report({outcome, summary})`              | Report `completed`, `blocked` or `failed`, with artifacts and real validation results |
 
 - **Pipeline:** stages run in order. An explicit completed report hands results to the next stage. An ended turn without that report pauses for review.
 - **Parallel:** members run independently in the same working tree. Divide file ownership or use separate worktrees where necessary.
 - **Supervised:** only the configured supervisor starts initially. It assigns work, starts members, reviews results, and reports back. Use its message controls to give direction.
 
-![Current team layout and communication panel](screenshots/teams.png)
+```json
+{
+  "to": "recipient-member-uuid",
+  "kind": "handoff",
+  "body": "Implemented src/api.ts. npm test passes. Review validation and authorization before accepting."
+}
+```
 
-Use **Output** to inspect actual work, **Message** to provide direction, and approval controls to answer tool requests. A blocked member needs a concrete recovery action. **Accept & hand off** is your explicit review decision; use it after inspecting the result. Stop a team to interrupt its agents. Delivery limits prevent unlimited task/message loops.
+The sender is set by the adapter, never by the model: supplying `from`, addressing another team or citing an unknown correlation ID is rejected. Messages are context; they can't override your instructions, project rules or backend policy.
 
-Ready teams can be reopened for editing. In Beta 4 builds, stale edits from another window are rejected and a live team belongs to its launching coordinator. Saved completed, cancelled, failed, and interrupted history retains output/messages; stopped-owner work becomes interrupted and queued handoffs are cancelled without replay. Historical records are read-only. Saved records are never proof of process reattachment. See [IDE tasks and recovery](IDE.md#give-a-team-a-bounded-goal) and the [service guide](SERVICE.md).
+## How messages move
 
-## Design squad or extraction team?
+Ready teams can be reopened for editing. Stale edits from another window are rejected and a live team belongs to its launching coordinator. Saved completed, cancelled, failed, and interrupted history retains output/messages; stopped-owner work becomes interrupted and queued handoffs are cancelled without replay. Historical records are read-only. Saved records are never proof of process reattachment. See [IDE tasks and recovery](IDE.md#give-a-team-a-bounded-goal) and the [service guide](SERVICE.md).
 
-Use **Design System Extraction** to discover and curate what the product already has: tokens, assets, composed components, pages, platform fixtures, contracts, and rules. Starting from Design fills the repository/scope into normal team setup. Its **View design system** action returns to that project's saved artifacts.
+Each message is a versioned envelope with a UUID, a team-local sequence number, sender, recipient, kind and body. It moves `queued → delivering → delivered`, or ends `failed` or `cancelled`. A delivery receipt is written only after the engine accepts the input.
 
-Use the **Design squad** to implement or refine an interface against those decisions and approved references. A component/page studio task can prepare a focused team or Conversation draft with source, fixtures, contracts, rules, and acceptance criteria. Preparing a draft does not send it or start agents automatically.
+- Pipelines hold messages for future stages until that stage runs.
+- Busy members get new messages after their current turn.
+- Automatic delivery pauses when the team is blocked, awaiting review or at its delivery limit. You can inspect queued context and deliver it yourself.
+
+| Limit                   | Value                             |
+| ----------------------- | --------------------------------- |
+| Members per team        | 8                                 |
+| Delivery limit          | 1–50 turns, including first turns |
+| Message and report size | 16,000 characters                 |
+| History                 | 1,000 messages                    |
+
+## Portraits
 
 [Design extraction](DESIGN.md#extract-a-design-system) · [Component refinement](DESIGN.md) · [Workspace operations](GUIDE.md)
 
+Each of the 33 distinct prebuilt roles has its own Cleetus portrait, and unrecognized roles get a generalist. Portraits describe a specialty. They don't grant permissions or show progress; the engine, model, effort and status labels next to them do.
 
-## Collaborate across computers
+## After a restart
 
-Extension 1.11.2 or later and Cleetus IDE 0.1.0 support opt-in **Collaborate on LAN**. Select an existing local team in this project. Pair with another person’s team on the same private IPv4 subnet over TLS 1.3 using a copied one-use invitation and matching eight-digit codes approved by both people. Starting a team is not required to pair it.
+Completed, cancelled, failed and interrupted runs keep their output and messages, read-only. Work owned by a stopped coordinator becomes **interrupted**, and queued handoffs are cancelled rather than replayed. Saved history never means an agent process was reattached.
 
-Each outgoing proposal and incoming import needs local approval. Accepted tasks become pending local tasks; approved messages stay in a separate team inbox, available through scoped agent tools rather than automatically becoming an agent prompt. Pairing grants no files, commands, provider accounts or credentials. See [network collaboration](COLLABORATION.md) for setup, scoped agent tools and reconnection behavior.
+[Tasks](TASKS.md) · [Encrypted LAN collaboration](COLLABORATION.md) · [Tools, MCP and approvals](TOOLS.md)

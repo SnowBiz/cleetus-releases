@@ -1,24 +1,16 @@
 # Connect coding agents
 
+**Release preparation:** this guide describes the proposed Cleetus IDE 0.2.0 platform. Check the [installation and release notes](INSTALL.md) for published downloads and the features in your installed build. IDE and extension releases remain independent.
+
 Connect your own installed coding agent to Cleetus through the Agent Client
 Protocol (ACP). The catalog includes GitHub Copilot, Amazon Q / Kiro, Gemini CLI,
-OpenCode and the additional development-build profiles listed below. ACP connects
+OpenCode and the additional profiles listed below. ACP connects
 a compatible coding agent to Cleetus conversations and agent workflows over its
 documented stdio interface.
 
-Download the current [Cleetus Beta 0.2.0-beta.9 for macOS Apple
-Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.9-macos-arm64).
-Connections first shipped in beta 2.
-Use the beta release notes to check its preview boundaries. Stable IDE and VSIX
-downloads have independent versions and may not include this connection flow.
-The guided Claude Code setup below is new for **0.2.0-beta.3**; beta 2 does not
-include that guided flow. Check your installed release notes before using it.
-
-The expanded catalog of fourteen profiles, approval before metadata launches,
-structured native questions/plan review and recovery improvements in this guide
-ship in **Beta 4**. Released beta 3 does not
-include these additions. A documented launch profile is not a claim that every
-provider has passed real-account inference or all optional feature checks.
+Use the [installation guide](INSTALL.md) for accepted downloads. A documented
+launch profile does not establish real-account inference or every optional
+provider capability. Install and sign in with each provider independently.
 
 This guide applies to builds with **Cleetus: Connect coding agents** in the
 Command Palette. If that command is absent, your installed build does not include
@@ -26,9 +18,15 @@ this connection flow; check its release notes before updating. Extension and IDE
 releases remain independent. The release links in the [installation guide](INSTALL.md)
 do not by themselves establish ACP feature availability.
 
-Claude API/cloud and Codex retain their [existing setup](INSTALL.md#connect-your-engines).
+Your [Cleetus account](ACCOUNTS.md) is separate from coding-agent access and
+billing. Claude API/cloud and Codex retain their [existing setup](INSTALL.md#connect-your-engines).
 Claude Code uses the separate [guided setup](#connect-your-own-claude-code) below.
 Connecting an ACP agent does not convert those engines or their saved conversations.
+
+The catalog has sixteen opt-in ACP profiles, including Kilo Code. The guide also
+explains reviewed native teammate reconnects and pending-request ownership.
+The setup and continuation steps below distinguish opening an existing native
+terminal from approving a new connection or handoff.
 
 ## Install and sign in with your own CLI
 
@@ -44,7 +42,7 @@ the provider.
 | Gemini CLI | [Gemini CLI installation](https://geminicli.com/docs/get-started/installation/) | `gemini --acp` | Start `gemini` and follow its sign-in flow |
 | OpenCode | [OpenCode setup](https://opencode.ai/docs/) | `opencode acp` | `opencode auth login` |
 
-Beta 4 builds add these profiles using the same connection flow:
+These profiles use the same connection flow:
 
 | Connection | Official installation | ACP launch used by Cleetus | Native sign-in or setup |
 | --- | --- | --- | --- |
@@ -104,7 +102,7 @@ CLI. **Check protocol** and model discovery can start an ACP process and may
 encounter authentication requirements. A successful handshake does not establish
 that inference, a particular model, or a provider tool call will succeed.
 
-In Beta 4 builds, protocol checks and model discovery require a
+Protocol checks and model discovery require a
 separate host review of the exact executable, arguments and project before
 launch. Discovery can load the provider's project configuration, startup hooks
 or MCP connections; it is not a read-only filesystem check. Cleetus sends no
@@ -113,7 +111,7 @@ unknown. A changed executable, configuration or project requires fresh review.
 
 ### Browse models without starting providers
 
-**Beta 5** separates passive browsing from explicit discovery. Opening Studio,
+Passive browsing is separate from explicit discovery. Opening Studio,
 the conversation dock, chat, Design or team settings reads the last approved
 ACP catalog without starting a provider. Choose **Refresh models** to discover
 models for the selected engine/backend. Task, team-member and workflow setup
@@ -133,8 +131,8 @@ same folder share its catalog; removed or retargeted paths invalidate it. Change
 binary, denial, failed cleanup or project removal invalidates them. Saved model
 choices and drafts remain visible, but stale explicit models cannot start work.
 Refresh or use **Engine default**. A cached catalog is not a connected-account,
-model-entitlement or cost claim. Earlier betas may request discovery when a
-panel opens; check your installed release notes.
+model-entitlement or cost claim. Older builds may request discovery when a panel opens; check your installed
+release notes.
 
 If installation changed the PATH, restart the editor so it receives the updated
 environment, or use an absolute executable path. No shell expansion is applied:
@@ -143,9 +141,35 @@ executable paths. Windows `.cmd`, `.bat` and `.ps1` launch wrappers are unsuppor
 by this direct-executable connection path; Windows provider execution needs
 separate verification.
 
+## Connect Kilo Code
+
+Connect **Kilo Code** using your independently installed CLI.
+Install it using [Kilo's official CLI guide](https://kilo.ai/docs/code-with-ai/platforms/cli),
+then complete `kilo auth login` in its own terminal flow. In Cleetus, open
+**Agents**, refresh installed agents and choose **Connect** on the Kilo card.
+Review the executable and project before enabling it. It starts disabled.
+
+Cleetus launches exactly `kilo acp`; login remains a separate explicit action.
+Keep those arguments unchanged. Use **Refresh models** to discover the configured
+provider's current models and effort, then choose **Engine default** or an
+advertised choice. Installed, signed in, model access and successful work are
+separate observations. Cleetus does not copy Kilo credentials or configure its
+provider on your behalf.
+
+Kilo retains its native permission rules. Some actions can run without an ACP
+approval request; startup can load native plugins and MCP tools, and background
+work can outlive a conversation. Cleetus relays the one-time permission requests
+Kilo sends, rather than intercepting every native action. Review Kilo's own
+configuration and any remaining work when closing it.
+
+This profile was checked against [Kilo CLI v7.8.18](https://github.com/Kilo-Org/kilocode/releases/tag/v7.8.18),
+with an [MIT-licensed implementation](https://github.com/Kilo-Org/kilocode/blob/b81761530650f8ec7b071441f4f54d2514f1a244/LICENSE).
+Controlled protocol fixtures cover client compatibility; they are not a live
+Kilo sign-in, inference test or certification of provider cleanup.
+
 ## Docker Agent configuration and cleanup
 
-**Beta 7** adds a fifteenth opt-in ACP profile, **Docker Agent**. Install your own
+**Docker Agent** uses an explicit local agent configuration. Install your own
 [Docker Agent](https://github.com/docker/docker-agent/blob/v1.154.0/docs/getting-started/installation/index.md)
 and complete `docker-agent setup` outside Cleetus. This profile runs exactly
 `docker-agent serve acp <local-agent-file>`; it does not bundle a CLI, start a
@@ -175,7 +199,7 @@ Corrupt recovery data is preserved and fails closed rather than being discarded.
 
 ## Understand an ACP turn result
 
-In Beta 7, cancellation stays **Cancelled**; token limits, request limits, refusal
+Cancellation stays **Cancelled**; token limits, request limits, refusal
 and unknown outcomes cannot become a successful workflow result. A stopped or
 unsuccessful turn discards queued follow-ups and reports them as **not sent**.
 Review the saved messages before sending again; Cleetus never silently replays
@@ -188,7 +212,7 @@ usage request or replace the draft with an error.
 
 ## Keep model and effort settings together
 
-In Beta 9, model and effort changes are applied in order to the exact ACP
+Model and effort changes are applied in order to the exact ACP
 conversation. Changing a model clears the previous explicit effort; choose an
 effort advertised for the new model, or keep Engine default. Cleetus records
 acknowledged settings rather than allowing a late reply from the old model to
@@ -203,7 +227,7 @@ path name does not restore the old approval.
 
 ## Review screenshots with a connected agent
 
-**Beta 8** adds negotiated ACP image input in shared Cleetus chat. Choose the
+Shared Cleetus chat supports negotiated ACP image input. Choose the
 agent, then use **Refresh models** to review discovery for that connection.
 **Attach image** becomes available only when the approved metadata, or the exact
 live conversation, reports image input. Opening chat does not start discovery.
@@ -237,7 +261,7 @@ Cleetus does not invent an unsupported channel image transport.
 
 ## Copilot conversation actions
 
-In Beta 6, an already-live ordinary Copilot conversation can show
+An already-live ordinary Copilot conversation can show
 **Copilot · Compact** and **Copilot · Context** above the composer. Cleetus offers
 only commands currently advertised by that exact provider session. No metadata
 process or new work session starts when you open these controls, and your draft
@@ -266,7 +290,7 @@ unknown when the provider does not report them. This ACP connection does not
 supply a subscription usage or cost meter.
 
 ACP does not guarantee feature parity between agents. Resume depends on the
-running provider's advertised support. Beta 8 provides the bounded negotiated image input above. Session forks, rewind,
+running provider's advertised support. Use the bounded negotiated image input above. Session forks, rewind,
 client-side file access and client terminal tools remain unavailable.
 MCP support depends on the provider's negotiated capabilities and your explicit
 assignments. An agent can still have its own native tools and configuration.
@@ -308,6 +332,13 @@ the stale request. Refresh the connection panel and review the new configuration
 Invalid external settings edits surface an error while retaining the previous
 registered engines; repair the settings before making further connection changes.
 
+Cleetus asks an ACP provider to close its session when that exact
+connection advertises session-close support. Cleetus waits for a bounded reply,
+then cleans up the child process it owns even if the optional close request
+fails or times out. A reply or process exit does not certify cleanup of native
+plugins, containers or background work. Docker Agent retains its stricter
+[cleanup receipt and review](#docker-agent-configuration-and-cleanup) requirements.
+
 ## Use cloud or local models through OpenCode
 
 The existing OpenCode connection can expose models from providers configured in
@@ -336,8 +367,7 @@ Expand **Custom ACP connection** and use the provider's documented stdio server:
 
 Choose **Review and connect** and inspect the exact launch approval. Custom ids
 start with `acp-` and use lowercase alphanumeric segments separated by hyphens.
-Beta 4 builds allow up to 32 saved connection profiles; released
-beta 3 allows 16. Arguments are limited to 32 strings, 4096 bytes each and 16 KiB
+Cleetus accepts up to 32 saved connection profiles. Arguments are limited to 32 strings, 4096 bytes each and 16 KiB
 in total.
 
 Custom connections support ACP stdio only. An arbitrary terminal CLI, MCP server,
@@ -394,7 +424,7 @@ the actual output and changes. For other problems, see [troubleshooting](TROUBLE
 
 ## Connect your own Claude Code
 
-In beta 3 builds, **Get started → Claude Code → Connect Claude Code** opens the shared
+**Get started → Claude Code → Connect Claude Code** opens the shared
 **Coding agent connections** dialog. You can also run **Cleetus: Connect coding
 agents** or choose **Agents** in native Studio. The **Claude Code** card runs your
 own unmodified Claude Code installation; this is separate from ACP and from the
@@ -450,6 +480,28 @@ converted into hosted Claude Code sessions. The development-only structured
 interaction flow below adds two supported native prompts; it does not replace
 all native setup or tool interfaces.
 
+### Continue an ordinary Claude Code conversation
+
+**Complete native setup**, **Open Claude Code** and
+**Review in Claude Code** focus the exact existing terminal when it is available.
+Use it for sign-in, folder trust, channel consent or an unsupported native prompt.
+A setup-pending connection is not a reason to launch another Claude Code process.
+
+When an ordinary connection has retired, choose **Reconnect conversation** in
+Studio and review the saved conversation and project. Reconnect opens a fresh
+connection to its history without sending the composer draft or replaying its
+previous prompt. While the review is pending, **Reconnecting…** stays disabled
+through refreshes and your draft remains available. Repeated requests for the
+same conversation share the pending review. If the existing transport connects
+while you are reviewing, Cleetus keeps that connection instead of replacing it.
+A changed project or connection requires a fresh decision.
+
+Task and team conversations remain owned by those workflows. Use the owning
+Tasks view or [reviewed teammate reconnect](TEAMS.md#reconnect-a-native-teammate-for-a-queued-handoff)
+for new work; ordinary conversation reconnect cannot take them over. Native
+setup and a connected transport still do not establish a correlated reply,
+provider access or successful completion.
+
 ## Maintainer-only local channel preview
 
 For maintainers developing and reviewing a Cleetus channel locally, compatible
@@ -483,15 +535,16 @@ To test a channel you are developing:
 
 ### Visible narration, questions and plan review
 
-This section describes the current local development preview, not released beta
-3. It requires the native setup and channel consent above.
+This section describes the local development preview. It requires the native
+setup and channel consent above; the platform release does not establish
+production channel approval.
 
 Cleetus can display assistant text that Claude Code makes visible through its
 native display hook, including streamed narration. It does not scrape terminal
 text, read hidden reasoning or reconstruct tool output. Incomplete or truncated
 narration remains marked; inspect Claude Code when delivery is incomplete.
 
-Beta 9 also reconciles final narration when Claude’s completion and display
+Cleetus reconciles final narration when Claude’s completion and display
 notifications arrive out of order. The same final message appears once; equal
 answers on separate turns remain separate. Saved journals are preserved.
 Narration alone does not establish channel readiness: **Reply linked** still
@@ -526,7 +579,7 @@ all Claude Code interactions can move into Cleetus.
 
 ### Reviewed installed-channel deployment
 
-For administrators and maintainers, Beta 4 also has a separate
+For administrators and maintainers, Cleetus also has a separate
 **plugin** channel mode. It uses the ordinary `--channels plugin:<exact-id>`
 path and an already installed, enabled Cleetus channel. It never uses the
 local-development flag as a production fallback or installs a plugin for you.

@@ -1,32 +1,39 @@
-# Tools, MCP and developer checks
+# Tools, MCP and approvals
 
-## MCP connections
+**Release preparation:** this guide describes the proposed Cleetus IDE 0.2.0 platform. Check the [installation and release notes](INSTALL.md) for published downloads and the features in your installed build. IDE and extension releases remain independent.
 
-Tools presents configured MCP servers with their status and engine availability. A configured connection and an engine-reported live connection are different states. Assign servers to individual team members from agent details, so each role receives the tools it needs.
+_Read this guide on [cleetus.dev](https://cleetus.dev/docs/tools/)._
 
-![Shared MCP management](screenshots/mcp.png)
+Agents work through tools: file edits, commands, MCP servers, Cleetus's own tools and your developer tooling. This guide covers how tools reach each agent, and how Cleetus handles requests sent through its approval and tool interfaces.
 
-External servers retain their own credentials and permissions. Assignment controls exposure; it does not sandbox the server. Claude CLI plugins/hooks and Cleetus plugins are distinct integration mechanisms.
+## The permission flow
 
-## Developer-tool catalog
+![Hooks, then session rules, then your approval card](images/diagram-approvals.png)
 
-Start from a catalog preset or define a custom tool. The model supports local CLI executables, containerized tools, and hosted APIs. Presets include SonarQube, Snyk, and a configurable Wiz API starter. Keep credentials in environment/secure references, and inspect the selected executable, arguments and working directory.
+When an engine sends a supported permission request to Cleetus:
 
-![Developer-tool catalog](screenshots/dev-tools.png)
+1. **Hooks.** Trusted plugins' `permission.decide` hooks can allow or deny without asking you.
+2. **Session rules.** If you chose **always allow** for this tool earlier in the session, it's allowed. That memory lives only for the session.
+3. **You.** Otherwise a team's handler or your approval card decides: **allow once**, **always allow** or **deny**. Diff review can hand the engine an edited input.
 
-A configured command does not run automatically. Reading SonarQube's latest published analysis does not start a fresh scan. Changes to connected tools/instructions may require reconnecting the engine.
+The decision goes back to the engine. Two rules always hold: when a turn ends, anything still pending is **denied**, and **Stop** interrupts work but never rolls back files already written.
 
-## Visual PR flow
+The engine's own permission mode and persistent rules also apply. Persistent allow and deny rules are the engine runtime's settings; managed policy isn't editable from Cleetus. Native rules can allow actions without a Cleetus prompt. ACP connections relay
+only requests the provider sends and return one-time decisions; known bypass
+flags are rejected in connection profiles. Native Claude Code keeps its own
+trust, consent and tool policy. See [connection permissions](CODING_AGENTS.md#review-permissions-and-connection-changes).
 
-Connect a GitHub repository in [Work tracking](WORK_TRACKING.md) and open Pull requests. The flow separates source, tooling checks, review, and merge evidence. Generic GitHub check runs/status contexts can report SonarQube or any other integrated tool.
+## MCP servers
 
-![Visual PR tooling evidence](screenshots/pull-request-flow.png)
+![Tools & integrations: MCP servers with status and per-agent assignment](screenshots/mcp.png)
 
-Evidence is tied to the current PR head commit. Missing expected results, skipped/neutral checks, pending runs, unavailable review data, and a changed head remain visible instead of becoming a pass. Configure exact expected check names when needed. GitHub remains authoritative for branch policies and merge permission; this view does not merge the PR or certify all repository rules.
+**Tools** lists your configured MCP servers with their status and which engines can use them. A configured connection and an engine-reported live connection are different states, and Cleetus shows both.
+
+Assign servers **per team member** from the member's settings, so each role gets only what it needs. Assignment controls exposure; it doesn't sandbox the server, which keeps its own credentials and permissions. MCP environment fields can hold secrets, and the MCP config file is written with mode `0600`.
 
 ## Review native questions and plans
 
-Beta 4 builds can show structured Claude Code questions and plan
+The local channel preview can show structured Claude Code questions and plan
 reviews in the agent workspace and dock, after the maintainer-only local channel
 setup. Questions support single choice, multiple choices and non-secret Other
 answers, with nothing preselected. Sending answers or approving a plan requires
@@ -36,14 +43,10 @@ calls or change permission rules. The Cleetus window expires after 110 seconds;
 
 Visible assistant narration is separate from terminal output, hidden reasoning
 and a reply linked to a channel message. Authentication, folder trust and native
-channel consent stay with the provider. Released beta 3 does not include these
-structured interactions. See [coding agent connections](CODING_AGENTS.md#visible-narration-questions-and-plan-review)
+channel consent stay with the provider. See [coding agent connections](CODING_AGENTS.md#visible-narration-questions-and-plan-review)
 for the preview boundaries and controls.
 
 ## Workflow execution and recovery
-
-The following repairs are Beta 4 preview behavior. They do
-not change the feature set of the released beta 3 build.
 
 Workflow agent steps use private sessions owned by their workflow execution.
 Ordinary chat cannot queue a new prompt into a step or resume it as an
@@ -79,3 +82,33 @@ A revoked grant or lost workflow owner cannot dispatch a waiting tool. If an
 already-started handler loses authority, Cleetus withholds its result; that does
 not undo effects already made. Closing the Core bridge also closes its pending
 connections. Authentication and permissions remain separate from chat text.
+
+## Cleetus's own tools
+
+Cleetus exposes its tools to Claude and Codex identically, as one local MCP server per session:
+
+- **Team tools:** `team_roster`, `team_send`, `team_inbox`, `team_report`. See [Agent teams](TEAMS.md#handoff-tools).
+- **Work tracking:** `work_tracker_*`. See [Work tracking](WORK_TRACKING.md#agent-tools).
+- **Service jobs:** `cleetus_job_*`. See [Local service](SERVICE.md).
+- **Peer collaboration:** `cleetus_peer_*`. See [LAN collaboration](COLLABORATION.md#let-agents-use-it).
+
+The bridge listens on `127.0.0.1` only, rejects browser origins and requires a token that exists only while the session is open. Team capabilities are bound to each member's identity and revoked when the team is cancelled. Engines may prefix the tool names through MCP.
+
+## Developer tooling
+
+![Developer-tool catalog with SonarQube, Snyk, Wiz and custom tools](screenshots/dev-tools.png)
+
+Start from a catalog preset (SonarQube, Snyk or a configurable Wiz API starter) or define your own: a local CLI, a container or a hosted API.
+
+- Commands run as an executable plus an argument array, **never through a shell**. Check the executable, arguments and working directory you configure.
+- Keep tokens in environment variables or secure references. The host reads them, and they're never copied into the UI.
+- Configured commands don't run on their own. Reading SonarQube's latest published analysis doesn't start a new scan.
+- Changing connected tools or instructions may need an engine reconnect.
+
+To see tooling results on a pull request, have the tool report to GitHub as a check, then use [PR evidence](WORK_TRACKING.md#pull-request-evidence).
+
+## Plugins and hooks
+
+Cleetus plugins can add tools, slash commands, panels, hooks and even engines. They start disabled and declare permissions, but they run as ordinary Node.js in the host, so treat them as trusted local code. See [Plugins and hooks](PLUGINS.md).
+
+[Security model](SECURITY_MODEL.md) · [Plugins and hooks](PLUGINS.md)

@@ -1,27 +1,43 @@
 # Install and update Cleetus
 
-Choose the native **Cleetus IDE 0.1.0** for macOS Apple Silicon or the **Cleetus VS Code extension 1.11.3** for ordinary VS Code. They have independent release and update channels; installing one does not require the other.
+**Release preparation:** Cleetus IDE 0.2.0 and extension 1.12.0 are implemented
+release candidates. Final native installer acceptance remains pending. Use the
+published release listings below to check which downloads are available.
+
+_Read this guide on [cleetus.dev](https://cleetus.dev/docs/install/)._
+
+Cleetus IDE includes the complete editor. If you need to stay in VS Code, use
+the independently distributed extension. They have independent release and
+update channels; installing one doesn't require the other.
 
 ## Install Cleetus IDE for Apple Silicon
 
 Use an Apple Silicon Mac with macOS 12 or newer.
 
-1. Open the [IDE 0.1.0 release](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.1.0-macos-arm64) and download [cleetus-ide-0.1.0-macos-arm64.dmg](https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.1.0-macos-arm64/cleetus-ide-0.1.0-macos-arm64.dmg) plus `SHA256SUMS`.
-2. Run `shasum -a 256 cleetus-ide-0.1.0-macos-arm64.dmg` and compare the complete result with that filename's entry in `SHA256SUMS`.
+1. Open the [public releases listing](https://github.com/SnowBiz/cleetus-releases/releases), choose the latest stable **Cleetus IDE** release for Apple Silicon and download its `.dmg` plus `SHA256SUMS`.
+2. Run `shasum -a 256 cleetus-ide-<version>-macos-arm64.dmg`, replacing `<version>` with the downloaded version, and compare the complete result with that filename's entry in `SHA256SUMS` from the same release.
 3. Open the signed and notarized DMG and drag **Cleetus.app** to **Applications**.
 4. Launch **Cleetus** from Applications, then open your project folder.
+
+For a new setup, choose a release whose notes include the current native Claude
+Code connection described in [Coding-agent connections](CODING_AGENTS.md).
+Older SDK subscription-flow builds are retired from the recommended install
+path. If the updated stable IDE has not been published yet, wait for its stable
+release rather than installing an older build for that flow.
 
 When replacing an unsigned development app, macOS may request authorization for Cleetus’s existing Keychain item. Complete that system prompt locally to finish startup.
 
 The IDE includes the editor, so you do not need VS Code or a source checkout. Its [Preview License](LICENSES.md) permits free personal and commercial use of the covered build. The [IDE guide](IDE.md) walks through Agent Command, teams, tasks, review and Design. Locally compiled unsigned development apps are separate from this installer.
 
-For engine setup, install **Node.js 22+** and npm, then follow the separate runtime and account instructions below. You may use Claude, Codex or both; installing the editor does not install provider accounts or grant model access.
+For engine setup, install **Node.js 22+** and npm where your selected runtime
+requires them, then follow the provider instructions below. You can use native
+Claude Code, Codex, supported ACP agents or optional Claude API/cloud access; installing the editor does not install provider accounts or grant model access.
 
-## Install the extension
+## Install the extension instead
 
 Use **VS Code 1.94+**, Node.js 22+ and npm. The current clean-host engine-runtime audit covers macOS ARM64; other runtime platforms still need local verification.
 
-1. Open the extension's [latest stable release](https://github.com/SnowBiz/cleetus-releases/releases/latest) ([1.11.3](https://github.com/SnowBiz/cleetus-releases/releases/tag/v1.11.3)).
+1. Open the extension's independent [latest stable release](https://github.com/SnowBiz/cleetus-releases/releases/latest) and review its release notes.
 2. Download `cleetus-<version>-universal.vsix` and `SHA256SUMS` from that release.
 3. Verify the filename and full SHA-256 against `SHA256SUMS`.
 4. In VS Code, open Extensions → **Install from VSIX…** and select the downloaded file. Alternatively, run `code --install-extension /path/to/cleetus-<version>-universal.vsix`.
@@ -31,7 +47,10 @@ Compute a checksum on macOS with `shasum -a 256 <file>`, on Linux with `sha256su
 
 ## Install the separate Claude runtime
 
-The Claude SDK and executable are not bundled in the VSIX or native IDE. Install the version specified by the release. For the current release, run:
+This section is only for the optional **Claude API/cloud** engine. Native
+Claude Code and ACP connections use their own installed CLIs and do not need
+this SDK package. The SDK is not bundled in the VSIX or IDE. Use the pin matching
+your release; the published runtime instructions use:
 
 ```sh
 npm install --prefix "$HOME/.cleetus/runtime" --include=optional --omit=dev --no-audit --no-fund @anthropic-ai/claude-agent-sdk@0.3.312
@@ -43,25 +62,50 @@ PowerShell:
 npm install --prefix "$env:USERPROFILE\.cleetus\runtime" --include=optional --omit=dev --no-audit --no-fund @anthropic-ai/claude-agent-sdk@0.3.312
 ```
 
-You can also download this public repository as a ZIP and run `node docs/install-runtime.mjs`. Keep `install-runtime.mjs` and its adjacent `runtime-package.json` together. This installer uses only Node.js built-ins and npm; it does not require private source access.
+You can also download the public release repository as a ZIP and run `node docs/install-runtime.mjs`. Keep `install-runtime.mjs` and its adjacent `runtime-package.json` together. This installer uses only Node.js built-ins and npm; it does not require private source access.
 
 Keep optional dependencies enabled: they supply the platform executable. The official Claude VS Code extension is unnecessary. A custom runtime location requires the same `CLEETUS_RUNTIME_DIR` environment variable when launching VS Code or Cleetus IDE.
 
 ## Connect your engines
 
-In builds with **Cleetus: Connect coding agents**, use the [coding-agent connection guide](CODING_AGENTS.md) for independently installed Copilot, Amazon Q / Kiro V3, Gemini CLI, OpenCode and custom ACP agents. The command opens the connection flow in either VS Code or the native IDE; the guide distinguishes CLI discovery, native sign-in and live protocol checks. The Claude and Codex setup below remains separate.
+Start with the [coding-agent connection guide](CODING_AGENTS.md). **Get started**
+and **Agents** connect independently installed runtimes; installation does not
+transfer provider credentials or grant model access.
 
 ![Get started connection controls](screenshots/get-started.png)
 
-For the Claude SDK engine, configure your own `ANTHROPIC_API_KEY` through the environment or Cleetus's environment-variable settings. Bedrock uses your configured AWS region/profile and native credential chain. Cleetus does not offer Claude subscription sign-in through the SDK.
+- **Claude Code:** install your own CLI using [Anthropic's instructions](https://code.claude.com/docs/en/setup),
+  then use the [guided Claude Code card](CODING_AGENTS.md#connect-your-own-claude-code).
+  Sign-in, folder trust and initial MCP/channel consent stay in Claude Code's own
+  browser or terminal flow. Enabling hosted Claude Code is a separate reviewed
+  setting; channels remain off by default. Saved SDK conversations stay separate.
+- **Copilot, Amazon Q / Kiro V3, Gemini, OpenCode, Kilo and other ACP agents:**
+  install and sign in with the provider's native CLI, then connect its exact
+  documented executable and arguments. Model access remains provider-owned.
+- **Codex:** use its supported browser/device sign-in. Cleetus can use a configured
+  executable, a suitable executable supplied by the official extension, or
+  `codex` on PATH. A standalone CLI is needed if none is available.
+- **Claude API/cloud:** use your own `ANTHROPIC_API_KEY` or supported cloud
+  credential chain, such as a configured AWS region/profile for Bedrock.
+  **Consumer Claude subscription sign-in through the SDK is not offered.**
+  API-helper-only and ambiguous bearer-token gateway configurations are refused;
+  enabling or disabling native Claude Code does not change that policy.
 
-The **Terminal agents** preview runs your independently installed Claude Code in an editor terminal. Install it using [Anthropic's official instructions](https://code.claude.com/docs/en/setup), then enable `terminalAgentsPrototype` in Cleetus settings. Use Claude Code 2.1.295 or later. This mode does not require the SDK runtime above. Sign in and approve folder trust or tool requests directly in that terminal; Cleetus displays reported activity alongside its teams, tasks and Design tools. Account details and usage remain in Claude Code. Saved SDK conversations are retained and are not automatically converted into terminal conversations.
+Provider access, billing and [Anthropic's hosting conditions](https://code.claude.com/docs/en/legal-and-compliance)
+still apply. Native channels remain a maintainer-controlled preview; a Cleetus
+release is not an Anthropic endorsement or production channel approval.
 
-API-helper-only and ambiguous bearer-token gateway configurations are not supported by this candidate SDK authentication guard. Use an explicit API key, a configured supported cloud provider, or the terminal preview. Provider access, billing and [Anthropic's hosting conditions](https://code.claude.com/docs/en/legal-and-compliance) still apply. This preview is not an Anthropic endorsement.
+Open a project, then choose **Cleetus: Open Workspace** or **Cleetus: Open Studio**.
+Start with a bounded task, inspect tool requests and diffs, and run relevant checks.
 
-For Codex, connect through browser/device sign-in. Cleetus can use a configured executable, a suitable Codex executable supplied by the official extension, or `codex` on PATH. A standalone CLI is required if no other executable is available. Bedrock support depends on runtime/account capability.
+## Your Cleetus account
 
-Open a project, then choose **Cleetus: Open Workspace**. Start with a bounded task, inspect tool requests and diffs, and run relevant checks. Connect accounts locally; installation does not transfer another computer's tokens or history.
+Choose **Account** in Studio or the native title bar, or run **Cleetus: Account and
+Membership** in VS Code. Your system browser handles Cleetus sign-in. The host
+keeps refresh credentials in secure storage; cached membership is display-only
+and cannot grant paid access. Existing free and offline features stay available.
+This account does not sign you in to a coding-agent provider or supply model
+subscriptions. See [your Cleetus account](ACCOUNTS.md).
 
 ## Optional LAN collaboration
 
@@ -69,7 +113,7 @@ Both computers need a build with collaboration support: extension 1.11.2 or late
 
 ## Updates
 
-In ordinary VS Code, these update controls install the extension VSIX. In Cleetus IDE, **Check for Updates** checks the independent native release channel. A verified notarized IDE installation can stage and recheck a signed installer from the same publisher before you explicitly open it. Unsigned development builds offer release notes only; the updater never replaces the app silently or bypasses Gatekeeper. For manual installation, use the [IDE 0.1.0 release](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.1.0-macos-arm64).
+In ordinary VS Code, these update controls install the extension VSIX. In Cleetus IDE, **Check for Updates** checks the independent native release channel. A verified notarized IDE installation can stage and recheck a signed installer from the same publisher before you explicitly open it. Unsigned development builds offer release notes only; the updater never replaces the app silently or bypasses Gatekeeper. For manual installation, choose the latest stable IDE in the [public releases listing](https://github.com/SnowBiz/cleetus-releases/releases) and verify its installer against that release's `SHA256SUMS`.
 
 If you installed 1.10.0 or earlier, manually install 1.10.1 or newer once. Older builds check the former release location; they cannot discover releases after its source repository became private. Subsequent updates use this public download repository.
 
