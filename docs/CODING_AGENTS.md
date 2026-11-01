@@ -170,3 +170,35 @@ This guide describes implemented connection behavior and provider documentation.
 It does not report successful real-account inference or tool execution for every
 listed CLI. Validate your own provider/version with a bounded request and inspect
 the actual output and changes. For other problems, see [troubleshooting](TROUBLESHOOTING.md).
+
+## Hosted Claude Code UI preview
+
+Hosted Claude Code follows a separate integration from ACP. It uses your own
+unmodified interactive Claude Code installation. The ordinary **Terminal agents**
+mode keeps interaction in Claude Code and shows reported activity in Cleetus.
+
+For the opt-in **local development** channel experiment in compatible beta builds:
+
+1. Open Cleetus **Settings → Preferences** (in native Studio, use the
+   **Workspace → Settings** menu).
+2. Enable `terminalAgentsPrototype` and set `terminalAgentsChannelMode` to
+   `development`. Save preferences, then run **Developer: Reload Window**.
+3. Select **Terminal agents** in the grouped model list and start a bounded
+   conversation or a reviewed team member.
+4. When Cleetus offers **Complete native setup**, open Claude Code and complete
+   its own sign-in, folder trust, initial MCP consent and development-channel
+   confirmation. These steps cannot be answered by the Cleetus channel.
+5. After the channel connects, use the Cleetus agent workspace and conversation
+   dock for messages, replies and supported one-time tool decisions. A connected
+   channel and a received agent reply are shown as separate observations.
+6. Use **Open Claude Code** for unsupported native prompts, or reconnect an
+   ordinary disconnected conversation explicitly. Task/team work must restart
+   through its own authorized execution path.
+
+This requires a Claude Code version with the documented
+[channels feature](https://code.claude.com/docs/en/channels) and any applicable
+organization permission. Custom development channels require Claude Code's own
+explicit confirmation. Both Cleetus experiment settings default to off;
+production channel allowlisting and publisher requirements are not established
+by enabling them. Existing API/cloud and Codex conversations are retained and
+are not converted between provider modes.
