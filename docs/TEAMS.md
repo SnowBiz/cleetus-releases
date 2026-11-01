@@ -13,7 +13,7 @@ In native IDE **0.1.0**, use the **Teams** action on the native rail, then **+ N
 A mixed team is scheduled by Cleetus, with explicit member identities, reports,
 messages and handoffs. In native Studio, workflow recipes can instead create a
 saved definition with explicit steps and dependencies; creating it does not run
-it. Current development builds keep each workflow agent step in its own private
+it. Beta 4 builds keep each workflow agent step in its own private
 session owned by its workflow execution, so ordinary chat cannot alter its
 prompt queue or resume that work independently. See [workflow execution and
 recovery](TOOLS.md#workflow-execution-and-recovery).
@@ -65,7 +65,7 @@ Portraits describe specialties, not authority or progress. The separate engine, 
 
 Use **Output** to inspect actual work, **Message** to provide direction, and approval controls to answer tool requests. A blocked member needs a concrete recovery action. **Accept & hand off** is your explicit review decision; use it after inspecting the result. Stop a team to interrupt its agents. Delivery limits prevent unlimited task/message loops.
 
-Ready teams can be reopened for editing. In current IDE/source development builds, stale edits from another window are rejected and a live team belongs to its launching coordinator. Saved completed, cancelled, failed, and interrupted history retains output/messages; stopped-owner work becomes interrupted and queued handoffs are cancelled without replay. Historical records are read-only. Saved records are never proof of process reattachment. See [IDE tasks and recovery](IDE.md#give-a-team-a-bounded-goal) and the [service guide](SERVICE.md).
+Ready teams can be reopened for editing. In Beta 4 builds, stale edits from another window are rejected and a live team belongs to its launching coordinator. Saved completed, cancelled, failed, and interrupted history retains output/messages; stopped-owner work becomes interrupted and queued handoffs are cancelled without replay. Historical records are read-only. Saved records are never proof of process reattachment. See [IDE tasks and recovery](IDE.md#give-a-team-a-bounded-goal) and the [service guide](SERVICE.md).
 
 ## Design squad or extraction team?
 

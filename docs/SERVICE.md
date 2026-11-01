@@ -28,8 +28,7 @@ Ask an agent to perform a background extraction, report its job ID and review th
 
 Jobs retain durable state and bounded logs under the Cleetus profile.
 Cancellation preserves writes already made. Released beta 3 reports interrupted
-work after a stopped service without automatic replay. Current development /
-upcoming-beta builds add the more precise cleanup states below; they are not part
+work after a stopped service without automatic replay. Beta 4 builds add the more precise cleanup states below; they are not part
 of released beta 3.
 
 - A queued job can become **cancelled** immediately because no worker launched.

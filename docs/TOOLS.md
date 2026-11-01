@@ -26,7 +26,7 @@ Evidence is tied to the current PR head commit. Missing expected results, skippe
 
 ## Review native questions and plans
 
-Current development builds can show structured Claude Code questions and plan
+Beta 4 builds can show structured Claude Code questions and plan
 reviews in the agent workspace and dock, after the maintainer-only local channel
 setup. Questions support single choice, multiple choices and non-secret Other
 answers, with nothing preselected. Sending answers or approving a plan requires
@@ -42,7 +42,7 @@ for the preview boundaries and controls.
 
 ## Workflow execution and recovery
 
-The following repairs are current development / upcoming-beta behavior. They do
+The following repairs are Beta 4 preview behavior. They do
 not change the feature set of the released beta 3 build.
 
 Workflow agent steps use private sessions owned by their workflow execution.

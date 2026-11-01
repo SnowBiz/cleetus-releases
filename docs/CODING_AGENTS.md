@@ -6,8 +6,9 @@ OpenCode and the additional development-build profiles listed below. ACP connect
 a compatible coding agent to Cleetus conversations and agent workflows over its
 documented stdio interface.
 
-These connections first shipped in [Cleetus Beta 0.2.0-beta.2 for macOS Apple
-Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.2-macos-arm64).
+Download the current [Cleetus Beta 0.2.0-beta.4 for macOS Apple
+Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.4-macos-arm64).
+Connections first shipped in beta 2.
 Use the beta release notes to check its preview boundaries. Stable IDE and VSIX
 downloads have independent versions and may not include this connection flow.
 The guided Claude Code setup below is new for **0.2.0-beta.3**; beta 2 does not
@@ -15,7 +16,7 @@ include that guided flow. Check your installed release notes before using it.
 
 The expanded catalog of fourteen profiles, approval before metadata launches,
 structured native questions/plan review and recovery improvements in this guide
-are **current development / upcoming-beta behavior**. Released beta 3 does not
+ship in **Beta 4**. Released beta 3 does not
 include these additions. A documented launch profile is not a claim that every
 provider has passed real-account inference or all optional feature checks.
 
@@ -43,7 +44,7 @@ the provider.
 | Gemini CLI | [Gemini CLI installation](https://geminicli.com/docs/get-started/installation/) | `gemini --acp` | Start `gemini` and follow its sign-in flow |
 | OpenCode | [OpenCode setup](https://opencode.ai/docs/) | `opencode acp` | `opencode auth login` |
 
-Current development builds add these profiles using the same connection flow:
+Beta 4 builds add these profiles using the same connection flow:
 
 | Connection | Official installation | ACP launch used by Cleetus | Native sign-in or setup |
 | --- | --- | --- | --- |
@@ -103,7 +104,7 @@ CLI. **Check protocol** and model discovery can start an ACP process and may
 encounter authentication requirements. A successful handshake does not establish
 that inference, a particular model, or a provider tool call will succeed.
 
-In current development builds, protocol checks and model discovery require a
+In Beta 4 builds, protocol checks and model discovery require a
 separate host review of the exact executable, arguments and project before
 launch. Discovery can load the provider's project configuration, startup hooks
 or MCP connections; it is not a read-only filesystem check. Cleetus sends no
@@ -186,7 +187,7 @@ Expand **Custom ACP connection** and use the provider's documented stdio server:
 
 Choose **Review and connect** and inspect the exact launch approval. Custom ids
 start with `acp-` and use lowercase alphanumeric segments separated by hyphens.
-Current development builds allow up to 32 saved connection profiles; released
+Beta 4 builds allow up to 32 saved connection profiles; released
 beta 3 allows 16. Arguments are limited to 32 strings, 4096 bytes each and 16 KiB
 in total.
 
@@ -354,7 +355,7 @@ all Claude Code interactions can move into Cleetus.
 
 ### Reviewed installed-channel deployment
 
-For administrators and maintainers, the development build also has a separate
+For administrators and maintainers, Beta 4 also has a separate
 **plugin** channel mode. It uses the ordinary `--channels plugin:<exact-id>`
 path and an already installed, enabled Cleetus channel. It never uses the
 local-development flag as a production fallback or installs a plugin for you.
