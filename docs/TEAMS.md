@@ -72,6 +72,18 @@ Cancelled or limited ACP turns do not complete workflow work successfully, and
 queued follow-ups discarded by a stop are reported as not sent. Review and resend
 any still-relevant instruction rather than expecting automatic replay.
 
+In Beta 8, hosted Claude Code history keeps the observed order of messages and
+visible narration, including distinct Stop-only replies. Saved reply links stay
+bound to their launch, so reconnect cannot associate an old reply with a new
+message that reuses its ID. Partial narration remains marked.
+
+Ended or disabled conversations stay readable in the conversation dock. Their
+saved questions and permissions are history, not active decisions. **Review in
+Claude Code** focuses the exact existing ordinary agent terminal when one is
+available. It does not open a second chat or silently launch/resume an agent.
+If no live terminal exists, reconnect explicitly with fresh approval. Team and
+workflow work continues through its own ownership controls.
+
 ## Recognize agent specialties
 
 Each of the 33 distinct roles in the prebuilt teams and workflow recipes has its own Cleetus robot portrait. This includes separate portraits for reproducer, root-cause analyst, fixer, verifier, each review specialty, and each extraction specialist. The full set has 40 artwork identities, retaining the original domain portraits plus a generalist robot for unspecified or unrecognized roles. Cleetus resolves exact prebuilt roles before broad specialty aliases, so a design lead and a design reviewer do not share an image. The same role keeps its portrait across team cards, messages, topology views, native agent lists and shared team views opened inside the IDE.

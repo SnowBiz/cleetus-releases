@@ -39,3 +39,18 @@ Click a page card to inspect its current registered source, device previews, com
 Tokens preserve the project's visual language. Assets retain source/provenance and explicit draft/approved/retired decisions. Approve canonical mocks/logos when you want agents to use them as references. Rules explain intended composition and platform differences.
 
 Working previews need project dependencies, controlled fixtures and a registered adapter. Source discovery alone cannot invent authenticated data or native screen hosts. Use [preview adapters](ADAPTERS.md) and [product libraries](LIBRARIES.md) for a complete multi-platform workflow.
+
+## Visual context for connected agents
+
+Beta 8 connects approved Design references to an agent's actual image-input
+capability. Image-capable ACP conversations can receive up to four PNG/JPEG images
+totaling 512 KiB; unsupported formats or larger references remain file/text
+context with an explicit explanation. Cleetus verifies approved bytes and path
+identity before automatic attachment. Modified or redirected files are not
+silently presented as approved visuals. Save a replacement through the asset workflow and approve that new version.
+
+Use [coding agent connections](CODING_AGENTS.md#review-screenshots-with-a-connected-agent)
+for discovery, image limits and draft behavior. Format support is separate from
+selected-model vision, native platform rendering and visual acceptance. Agents
+still need the component usage contracts, tokens, rules and actual source; an
+attached screenshot is a reference, not a replacement for those contracts.

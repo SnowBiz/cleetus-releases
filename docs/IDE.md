@@ -53,6 +53,13 @@ same folder does not restore an old grant. Reconnect explicitly to obtain fresh
 approval and resume history without replaying its previous prompt. Saved output
 remains available for inspection; changes already dispatched are not rolled back.
 
+Beta 8 retains ended conversation history in the dock and focuses the exact live
+Claude terminal for native fallback. Shared chat keeps a submitted draft through
+launch approval and local preflight; rejection preserves text and image chips,
+and a late response cannot erase newer edits. Supported ACP engines can receive
+bounded screenshot input after explicit capability discovery. See the
+[coding-agent guide](CODING_AGENTS.md#review-screenshots-with-a-connected-agent).
+
 **Plan with team** opens team setup. Opening a draft, choosing a template or viewing the dashboard starts no agents. A stopped run retains changes already made; review them before continuing.
 
 ## Give a team a bounded goal

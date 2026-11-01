@@ -6,8 +6,8 @@ OpenCode and the additional development-build profiles listed below. ACP connect
 a compatible coding agent to Cleetus conversations and agent workflows over its
 documented stdio interface.
 
-Download the current [Cleetus Beta 0.2.0-beta.7 for macOS Apple
-Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.7-macos-arm64).
+Download the current [Cleetus Beta 0.2.0-beta.8 for macOS Apple
+Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.8-macos-arm64).
 Connections first shipped in beta 2.
 Use the beta release notes to check its preview boundaries. Stable IDE and VSIX
 downloads have independent versions and may not include this connection flow.
@@ -186,6 +186,40 @@ ACP connections have no Cleetus context-usage meter unless that exact session
 advertises the capability. Completing a turn does not trigger an unsupported
 usage request or replace the draft with an error.
 
+## Review screenshots with a connected agent
+
+**Beta 8** adds negotiated ACP image input in shared Cleetus chat. Choose the
+agent, then use **Refresh models** to review discovery for that connection.
+**Attach image** becomes available only when the approved metadata, or the exact
+live conversation, reports image input. Opening chat does not start discovery.
+
+Attach up to **four PNG or JPEG images totaling 512 KiB**, write your request and
+send. Cleetus validates the format, bytes and full request size. Unsupported,
+invalid or oversized input is rejected locally; the composer retains a rejected
+message draft. Larger screenshots need a smaller export. Input-format support
+does not prove that the selected model has vision or that your account can use it.
+Check the provider's own model capabilities.
+
+For a saved disconnected ACP conversation, choose **Reconnect agent**. Review the
+fresh native launch approval; reconnect sends no draft or inference prompt. The
+provider must support resuming that conversation. Denial or unsupported resume
+keeps the draft; start a new conversation explicitly when needed.
+
+A submitted draft remains in the composer while launch approval and local
+preparation are pending. Denial or preflight rejection preserves its text and
+attachments. A late acceptance does not overwrite text you edited meanwhile.
+Acceptance means the request was prepared or queued locally; it is separate from
+provider delivery, a linked reply and successful task completion. Failed work is
+never automatically replayed.
+
+Approved Design references use this same live capability and image budget.
+Cleetus checks the approved file's hash and path identity before attaching bytes.
+A text-only connection still receives the source reference and guidance, with an
+explicit note that image bytes were not attached. That reference does not imply
+that the agent saw the mock. Claude API/cloud and Codex keep their existing image
+interfaces. Hosted Claude Code image input remains in its native interface;
+Cleetus does not invent an unsupported channel image transport.
+
 ## Copilot conversation actions
 
 In Beta 6, an already-live ordinary Copilot conversation can show
@@ -217,8 +251,8 @@ unknown when the provider does not report them. This ACP connection does not
 supply a subscription usage or cost meter.
 
 ACP does not guarantee feature parity between agents. Resume depends on the
-running provider's advertised support. This connection does not provide image
-input, session forks, rewind, client-side file access or client terminal tools.
+running provider's advertised support. Beta 8 provides the bounded negotiated image input above. Session forks, rewind,
+client-side file access and client terminal tools remain unavailable.
 MCP support depends on the provider's negotiated capabilities and your explicit
 assignments. An agent can still have its own native tools and configuration.
 In particular,
@@ -284,6 +318,16 @@ the project or project-local links to external programs. Relative or empty PATH
 entries are ignored. Shells, shell builtins and command/package wrappers such as
 `sh`, `env` and `npx` are not accepted as agent executables. Install the agent
 independently and select its actual executable.
+
+## Why some agents are not in the catalog
+
+Cleetus checks more than an ACP handshake before adding a default connection.
+The [current OpenHands CLI repository](https://github.com/OpenHands/OpenHands-CLI/blob/283c6ac3610f4299f405f7389f65766dcb83e12a/README.md) declares that active maintenance ended;
+Agent Canvas consumes other agents rather than replacing it as an ACP server.
+VT Code is maintained, but its [reviewed session implementation](https://github.com/vinhnx/VTCode/blob/07377ab34da87004ae39080e5640af7cb3676626/crates/codegen/vtcode-acp/src/zed/agent/session_state.rs) does not preserve
+Cleetus's supplied MCP servers/working directory and does not establish drained
+execution through its close acknowledgment. These remain deferred. A custom ACP
+profile is not a certification of lifecycle or team coordination support.
 
 ## Troubleshooting
 
