@@ -72,3 +72,10 @@ locked Design tokens and components remain protected during extraction.
 For the actual automation events and their scope, see
 [workflow automation](IDE.md#optional-automation). For worker cancellation and
 cleanup uncertainty, see [service recovery](SERVICE.md#recovery).
+
+Local MCP grants are checked again while reading a request, after asynchronous
+policy hooks, immediately before tool dispatch and before returning a result.
+A revoked grant or lost workflow owner cannot dispatch a waiting tool. If an
+already-started handler loses authority, Cleetus withholds its result; that does
+not undo effects already made. Closing the Core bridge also closes its pending
+connections. Authentication and permissions remain separate from chat text.
