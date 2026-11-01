@@ -8,7 +8,8 @@ Open Settings → **Cleetus service** and choose **Refresh service & jobs**. Ins
 
 ## Let agents use it
 
-Claude and Codex receive the same tools:
+Claude and Codex receive the same tools; connected ACP agents can receive them
+when their negotiated MCP support and explicit assignments allow it:
 
 | Tool | Purpose |
 | --- | --- |
@@ -25,9 +26,41 @@ Ask an agent to perform a background extraction, report its job ID and review th
 
 ## Recovery
 
-Jobs retain durable state and bounded logs under the Cleetus profile. Cancellation preserves writes already made. On restart, unfinished records owned by a stopped service become interrupted, rather than replaying automatically. Inspect repository changes before retrying. Remote write timeouts need provider reconciliation because an operation may already have succeeded.
+Jobs retain durable state and bounded logs under the Cleetus profile.
+Cancellation preserves writes already made. Released beta 3 reports interrupted
+work after a stopped service without automatic replay. Current development /
+upcoming-beta builds add the more precise cleanup states below; they are not part
+of released beta 3.
 
-Reload VS Code if the service is unavailable. Closing the extension stops its owned service/jobs. The service is local user code, not an OS sandbox or remote multi-user control plane.
+- A queued job can become **cancelled** immediately because no worker launched.
+- Cancelling a running job first records **cancellation-requested**. The project
+  stays occupied until its owned worker and process-group cleanup are confirmed.
+  The service requests termination, then uses bounded forced cleanup if needed;
+  only confirmation allows the job to become **cancelled**.
+- If termination cannot be confirmed, **cleanup-required** retains an explicit
+  uncertain result and blocks new service jobs for that project. A previously
+  running or cancelling job left by a stopped service also requires this review;
+  a never-launched queued job becomes **interrupted**. Cleetus neither replays
+  the work nor kills an arbitrary process from a saved PID after restart.
+
+For **cleanup-required**, inspect the retained job/error, confirm its owned work
+has stopped and reconcile repository changes before manual recovery. The fence
+is not removed automatically. A late worker reply cannot turn a cancellation
+request into a successful result. Closing the host awaits bounded owned cleanup;
+if confirmation fails, the uncertainty record remains.
+
+Damaged saved Design JSON is preserved and blocks replacement extraction writes.
+A damaged session-history index is also preserved rather than replaced with an
+empty index. These development-build recovery errors require repair or a
+reviewed restoration; Cleetus does not silently delete or rebuild the originals.
+See [workflow and saved-data recovery](TOOLS.md#workflow-execution-and-recovery).
+Remote write timeouts still need provider reconciliation because an operation
+may already have succeeded.
+
+Reload VS Code if the service is unavailable. Closing the extension requests
+cleanup of its owned service/jobs; use the recorded state to distinguish
+confirmed cleanup from uncertainty. The service is local user code, not an OS
+sandbox or remote multi-user control plane.
 
 ## Other hosts
 

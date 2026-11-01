@@ -1,12 +1,22 @@
 # Choose and run a prebuilt team
 
-Prebuilt teams give a shared goal to agents with defined roles, detailed system prompts, and an execution plan. They use the same Claude/Codex engines as ordinary conversations. Choose a template in **Workflows → Team templates**, inspect **View layout**, and choose **Create team** when it fits your task.
+Prebuilt teams give a shared goal to agents with defined roles, detailed system
+prompts, and an execution plan. They use the same configured engines as ordinary
+conversations, including [connected ACP agents](CODING_AGENTS.md) where offered.
+Choose a template in **Workflows → Team templates**, inspect **View layout**,
+and choose **Create team** when it fits your task.
 
 In native IDE **0.1.0**, use the **Teams** action on the native rail, then **+ New team**, or run **Cleetus: Open Studio**. Choose the same template, review its detailed member instructions and discovered model/effort choices, create it, then explicitly **Start team**. Creating a team or opening a Design draft does not start agents. See [IDE availability and Studio](IDE.md).
 
 ![Current workflow and team-template catalog](screenshots/workflows.png)
 
-A workflow recipe is lighter: it prepares a reusable request for one conversation and lets that engine decide how to delegate. A mixed team is scheduled by Cleetus, with explicit member identities, reports, messages, and handoffs.
+A mixed team is scheduled by Cleetus, with explicit member identities, reports,
+messages and handoffs. In native Studio, workflow recipes can instead create a
+saved definition with explicit steps and dependencies; creating it does not run
+it. Current development builds keep each workflow agent step in its own private
+session owned by its workflow execution, so ordinary chat cannot alter its
+prompt queue or resume that work independently. See [workflow execution and
+recovery](TOOLS.md#workflow-execution-and-recovery).
 
 ## Which team should I choose?
 
@@ -29,7 +39,7 @@ These are starting roles, not guaranteed outcomes or fixed vendor/model requirem
 1. Open the target project and connect the engines you intend to use.
 2. Select the template and write a concrete goal: desired behavior, scope, constraints, and acceptance checks.
 3. Inspect the workflow mode and each member's role, task, system prompt, engine, model, effort, and MCP access.
-4. Keep engine-default models or choose available catalog models. Whole-team choices are grouped by engine/backend; individual members can override them. A supervised team requires a Claude supervisor.
+4. Keep engine-default models or choose available catalog models. Whole-team choices are grouped by engine/backend; individual members can override them. A supervised team requires a coordination-capable supervisor: Claude or a connected ACP engine where supported. Codex can participate as a member.
 5. Set team effort and any per-agent overrides. Blank per-agent effort inherits the team setting. Extraction recommends High; the lean pair presets Low. Other templates can have their own member settings.
 6. In native team setup, review the delivery limit (1–50). The default is 10; Design System Extraction presets 20. It bounds task/message handoffs.
 7. Create the team and start its workflow. Extraction offers **Create & start extraction** or **Create without starting**.
@@ -49,7 +59,7 @@ Portraits describe specialties, not authority or progress. The separate engine, 
 
 - **Pipeline:** stages run in order. An explicit completed report hands results to the next stage. An ended turn without that report pauses for review.
 - **Parallel:** members run independently in the same working tree. Divide file ownership or use separate worktrees where necessary.
-- **Supervised:** only the Claude supervisor starts initially. It assigns work, starts members, reviews results, and reports back. Use its message controls to give direction.
+- **Supervised:** only the configured supervisor starts initially. It assigns work, starts members, reviews results, and reports back. Use its message controls to give direction.
 
 ![Current team layout and communication panel](screenshots/teams.png)
 
@@ -63,7 +73,7 @@ Use **Design System Extraction** to discover and curate what the product already
 
 Use the **Design squad** to implement or refine an interface against those decisions and approved references. A component/page studio task can prepare a focused team or Conversation draft with source, fixtures, contracts, rules, and acceptance criteria. Preparing a draft does not send it or start agents automatically.
 
-[Design extraction](DESIGN.md#extract-your-first-design-system) · [Component refinement](DESIGN.md) · [Workspace operations](GUIDE.md)
+[Design extraction](DESIGN.md#extract-a-design-system) · [Component refinement](DESIGN.md) · [Workspace operations](GUIDE.md)
 
 
 ## Collaborate across computers

@@ -86,11 +86,39 @@ The canvas displays the real definition and actual selected-run states. Drag to 
 
 Editing a definition preserves earlier runs. Failed predecessors block dependent steps. Current agent and Design actions do not automatically retry side effects. Cancellation requests a stop; work that has not settled remains uncertain. Interrupted runs are not replayed on restart.
 
+Current development / upcoming-beta builds add private agent sessions owned by
+their workflow execution, safe references to a step's actual child
+jobs/sessions, and recovery warnings for unreadable run records. These additions
+are not in released beta 3. Ordinary chat cannot inject work into those private
+sessions. Damaged records remain preserved; valid history stays readable while
+affected new execution waits for reconciliation. See [workflow execution and
+recovery](TOOLS.md#workflow-execution-and-recovery).
+
 ### Optional automation
 
-**Workflows → Automation → + Add automation** supports intervals from **60 seconds to 7 days**, or named events **project.changed**, **task.reviewed** and **manual**. New automation starts disabled. Enabling or changing it requires human approval of the exact definition revision and trigger; editing the workflow invalidates that authorization.
+**Workflows → Automation → + Add automation** supports intervals from **60
+seconds to 7 days**, or named events **project.changed**, **task.reviewed** and
+**manual**. New automation starts disabled. Enabling or changing it requires
+human approval of the exact definition revision and trigger; editing the
+authorized workflow invalidates that authorization. In current development
+builds, editing an unrelated definition does not revoke it.
 
-Named events are explicit host events, not implicit file watchers. **Emit an event** needs approval. Reusing an event ID returns its existing receipts; **New event ID** requests a distinct delivery. Inspect dispatch history and the linked run. Missed intervals and overlaps are skipped; failed or uncertain dispatch stops future automation for review. Disable or remove automation to stop future dispatches.
+Released beta 3 supports explicit host events through **Emit an event**, which
+needs approval. Current development builds also produce **task.reviewed** after
+a task review is committed, and **project.changed** from saved files reported by
+the editor host. The latter is a host save notification, not a recursive disk
+watcher: unsupported hosts or changes made without a host save notification do
+not produce it. Saves are debounced for one second and have a ten-second
+per-project cooldown. Events are suppressed while a workflow is active;
+generated Design-system files and `.git`, `node_modules` and `.cleetus` paths
+are excluded. Suppressed events are not queued for later replay. These lifecycle
+producers are not included in released beta 3.
+
+**Emit an event** remains available for an explicitly reviewed delivery. Reusing
+an event ID returns its existing receipts; **New event ID** requests a distinct
+delivery. Inspect dispatch history and the linked run. Missed intervals and
+overlaps are skipped; failed or uncertain dispatch stops future automation for
+review. Disable or remove automation to stop future dispatches.
 
 ## Review the actual changes
 

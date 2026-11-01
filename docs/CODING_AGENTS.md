@@ -1,9 +1,10 @@
 # Connect coding agents
 
-Use your own installed GitHub Copilot, Amazon Q / Kiro, Gemini CLI or OpenCode in
-Cleetus through the Agent Client Protocol (ACP). ACP connects a compatible
-coding agent to Cleetus conversations and agent workflows over its documented
-stdio interface.
+Connect your own installed coding agent to Cleetus through the Agent Client
+Protocol (ACP). The catalog includes GitHub Copilot, Amazon Q / Kiro, Gemini CLI,
+OpenCode and the additional development-build profiles listed below. ACP connects
+a compatible coding agent to Cleetus conversations and agent workflows over its
+documented stdio interface.
 
 These connections first shipped in [Cleetus Beta 0.2.0-beta.2 for macOS Apple
 Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-beta-v0.2.0-beta.2-macos-arm64).
@@ -11,6 +12,12 @@ Use the beta release notes to check its preview boundaries. Stable IDE and VSIX
 downloads have independent versions and may not include this connection flow.
 The guided Claude Code setup below is new for **0.2.0-beta.3**; beta 2 does not
 include that guided flow. Check your installed release notes before using it.
+
+The expanded catalog of fourteen profiles, approval before metadata launches,
+structured native questions/plan review and recovery improvements in this guide
+are **current development / upcoming-beta behavior**. Released beta 3 does not
+include these additions. A documented launch profile is not a claim that every
+provider has passed real-account inference or all optional feature checks.
 
 This guide applies to builds with **Cleetus: Connect coding agents** in the
 Command Palette. If that command is absent, your installed build does not include
@@ -35,6 +42,28 @@ the provider.
 | Amazon Q / Kiro | [Kiro installation](https://kiro.dev/docs/getting-started/installation/) | `kiro-cli acp --agent-engine=v3` | `kiro-cli login` |
 | Gemini CLI | [Gemini CLI installation](https://geminicli.com/docs/get-started/installation/) | `gemini --acp` | Start `gemini` and follow its sign-in flow |
 | OpenCode | [OpenCode setup](https://opencode.ai/docs/) | `opencode acp` | `opencode auth login` |
+
+Current development builds add these profiles using the same connection flow:
+
+| Connection | Official installation | ACP launch used by Cleetus | Native sign-in or setup |
+| --- | --- | --- | --- |
+| Cursor | [Cursor CLI installation](https://cursor.com/docs/cli/installation) | `agent acp` | `agent login` |
+| Auggie CLI | [Auggie installation](https://docs.augmentcode.com/cli/setup-auggie/install-auggie-cli) | `auggie --acp` | `auggie auth login` |
+| Mistral Vibe | [Vibe installation/setup](https://docs.mistral.ai/vibe/code/cli/install-setup) | `vibe-acp` | `vibe --setup`, a separate executable |
+| Factory Droid | [Droid setup](https://docs.factory.com/ide-integrations) | `droid exec --output-format acp` | Start `droid` and complete its native setup |
+| Goose | [Goose installation](https://goose-docs.ai/docs/getting-started/installation/) | `goose acp` | `goose configure` |
+| Kimi Code CLI | [Kimi installation](https://github.com/MoonshotAI/kimi-code) | `kimi acp` | `kimi login` |
+| Cline | [Cline CLI setup](https://docs.cline.bot/usage/cli-overview) | `cline --acp` | `cline auth` |
+| Junie | [Junie CLI setup](https://junie.jetbrains.com/docs/junie-cli.html) | `junie --acp true` | Start `junie` and complete its welcome authentication |
+| Qwen Code | [Qwen Code setup](https://github.com/QwenLM/qwen-code#installation) | `qwen --acp` | Start `qwen`, then use `/auth` |
+| Qoder CLI | [Qoder installation](https://docs.qoder.com/cli/installation) | `qoder --acp` | Start `qoder` and complete its native authentication |
+
+These commands refer to independently installed executables. The new profiles
+keep their exact documented ACP arguments; choose models and effort through
+negotiated session controls. Do not substitute a package launcher or add flags
+to change authentication, transport or approval policy. Cursor's executable is
+named `agent`; review its absolute path rather than assuming the name identifies
+the vendor. Mistral's setup needs the full `vibe` CLI as well as `vibe-acp`.
 
 The ACP column is a launch reference. An ACP command waits for protocol messages
 from its client; it is not the CLI's ordinary interactive chat or login command.
@@ -74,6 +103,13 @@ CLI. **Check protocol** and model discovery can start an ACP process and may
 encounter authentication requirements. A successful handshake does not establish
 that inference, a particular model, or a provider tool call will succeed.
 
+In current development builds, protocol checks and model discovery require a
+separate host review of the exact executable, arguments and project before
+launch. Discovery can load the provider's project configuration, startup hooks
+or MCP connections; it is not a read-only filesystem check. Cleetus sends no
+inference prompt for metadata discovery. Declining the review leaves metadata
+unknown. A changed executable, configuration or project requires fresh review.
+
 If installation changed the PATH, restart the editor so it receives the updated
 environment, or use an absolute executable path. No shell expansion is applied:
 `~`, environment assignments, pipelines and combined command strings are not
@@ -102,6 +138,13 @@ running provider's advertised support. This connection does not provide image
 input, session forks, rewind, client-side file access or client terminal tools.
 MCP support depends on the provider's negotiated capabilities and your explicit
 assignments. An agent can still have its own native tools and configuration.
+In particular,
+[Cursor's question/plan extensions](https://cursor.com/docs/cli/acp) are not
+implemented by this ACP client, and [Qoder's client filesystem/terminal
+callbacks](https://docs.qoder.com/cli/acp) remain unavailable. A provider can
+advertise features that this client does not offer. Goose's native keyring may
+require OS interaction. Review provider startup configuration before connecting
+or approving metadata discovery; native hooks and tools remain provider-owned.
 
 ## Review permissions and connection changes
 
@@ -143,8 +186,9 @@ Expand **Custom ACP connection** and use the provider's documented stdio server:
 
 Choose **Review and connect** and inspect the exact launch approval. Custom ids
 start with `acp-` and use lowercase alphanumeric segments separated by hyphens.
-Up to 16 connection profiles can be saved. Arguments are limited to 32 strings,
-4096 bytes each and 16 KiB in total.
+Current development builds allow up to 32 saved connection profiles; released
+beta 3 allows 16. Arguments are limited to 32 strings, 4096 bytes each and 16 KiB
+in total.
 
 Custom connections support ACP stdio only. An arbitrary terminal CLI, MCP server,
 interactive text stream or shell script does not become an integrated coding
@@ -234,7 +278,9 @@ to stop that setup. Native setup also has a ten-minute deadline.
 The ordinary Terminal agents mode can still require interaction in Claude Code's
 terminal. Guided sign-in does not make every native prompt available in Cleetus.
 Existing Claude API/cloud and Codex conversations remain separate and are not
-converted into hosted Claude Code sessions.
+converted into hosted Claude Code sessions. The development-only structured
+interaction flow below adds two supported native prompts; it does not replace
+all native setup or tool interfaces.
 
 ## Maintainer-only local channel preview
 
@@ -267,6 +313,37 @@ To test a channel you are developing:
    ordinary disconnected conversation explicitly. Task/team work must restart
    through its own authorized execution path.
 
+### Visible narration, questions and plan review
+
+This section describes the current local development preview, not released beta
+3. It requires the native setup and channel consent above.
+
+Cleetus can display assistant text that Claude Code makes visible through its
+native display hook, including streamed narration. It does not scrape terminal
+text, read hidden reasoning or reconstruct tool output. Incomplete or truncated
+narration remains marked; inspect Claude Code when delivery is incomplete.
+Narration alone does not establish channel readiness: **Reply linked** still
+requires a response correlated with a specific channel message. Neither state
+establishes task completion.
+
+Two structured native tools can appear in the agent workspace and dock:
+
+- **Questions** (`AskUserQuestion`): choose the requested single or multiple
+  options, or write a non-secret Other answer. No option is preselected. Answer
+  every question, choose **Send answers**, then review the exact questions,
+  answers, agent and project in the host's **Allow / Deny** dialog.
+- **Plan review** (`ExitPlanMode`): inspect the plan, choose **Approve plan**, then
+  review that exact plan in the host dialog. This does not approve ordinary
+  tools, save permission rules or change the agent's permission mode.
+
+**Decline** rejects the request. **Review in Claude Code** explicitly hands it
+back to the provider. A Cleetus interaction expires after 110 seconds; stale,
+duplicate, cancelled or expired requests cannot grant a fresh response. An
+expired window does not prove the provider's prompt closed. Keep passwords,
+API keys, sign-in codes, folder trust and initial MCP/channel consent in the
+provider's own setup. Unsupported native prompts also remain there. These two
+Claude Code tools do not add support for other vendors' private ACP extensions.
+
 This requires a Claude Code version with the documented
 [channels feature](https://code.claude.com/docs/en/channels) and any applicable
 organization permission. Custom development channels require Claude Code's own
@@ -274,3 +351,42 @@ explicit confirmation. Hosted mode and custom channels default to off; native
 consent and production approval are separate requirements. This preview does not
 promise that downloaded production channels can use the development path or that
 all Claude Code interactions can move into Cleetus.
+
+### Reviewed installed-channel deployment
+
+For administrators and maintainers, the development build also has a separate
+**plugin** channel mode. It uses the ordinary `--channels plugin:<exact-id>`
+path and an already installed, enabled Cleetus channel. It never uses the
+local-development flag as a production fallback or installs a plugin for you.
+
+Before selecting it, obtain the reviewed channel artifact and its independently
+trusted `artifact.json` SHA-256. Complete the provider's normal installation,
+enablement and applicable organization/public approval process. Then set these
+Cleetus preferences and reload:
+
+- `terminalAgentsChannelMode`: `plugin`.
+- `terminalAgentsChannelPlugin`: an object with exactly `directory` (canonical
+  installed directory), `manifestHash` (reviewed SHA-256), and `pluginId` (the exact
+  installed `cleetus-ui@marketplace` identity).
+- `terminalAgentsChannelNode`: the absolute canonical path to your independently
+  installed Node executable.
+
+Every launch and resume verifies the exact artifact contents and fresh CLI
+installation metadata, including identity, loaded path, version, scope and
+project. Failed checks prevent that launch. Only the current private Cleetus
+channel grant and Node binding are added to its terminal; provider authentication
+variables remain inherited. **Installed** and **enabled** describe installation
+metadata, not Anthropic approval. Claude Code still enforces its policy and
+native consent, and Cleetus reports readiness only after a linked reply.
+
+This path has local fixture and packaging validation. Production public-channel
+approval and a live administrator-approved installation have not been verified
+for Cleetus. Keep channel mode **off** unless you are developing the channel or
+have completed the applicable reviewed deployment prerequisites.
+
+Native connection checks, sign-in subprocesses and ACP launches preserve the
+host's original launch environment before Cleetus applies SDK-specific provider
+settings. They do not copy credentials into connection profiles, terminal
+options, MCP configuration or logs. Shell profiles and editor terminal-specific
+environment settings can still differ; use **Open native setup** to inspect the
+provider's own current sign-in when needed.
