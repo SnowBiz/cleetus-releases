@@ -8,6 +8,8 @@ Cleetus IDE includes the complete editor. If you need to stay in VS Code, use
 the independently distributed extension. They have independent release and
 update channels; installing one doesn't require the other.
 
+For a terminal workspace or a headless Linux host, follow the separate [Cleetus CLI guide](CLI.md). CLI packages require Node.js 22+ and have their own `cli-v` release channel; they do not include an editor or a Node runtime.
+
 ## Install Cleetus IDE for Apple Silicon
 
 Use an Apple Silicon Mac with macOS 12 or newer.

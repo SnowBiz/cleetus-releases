@@ -11,3 +11,8 @@ Cleetus IDE 0.1.0 identifies its proprietary portions under the [Cleetus IDE Pre
 That preview license applies only to proprietary portions expressly identified with it. It does not replace Apache-2.0, publish proprietary source, or authorize public redistribution of proprietary portions. The current browser developer host is not a packaged native IDE release.
 
 Read the LICENSE/NOTICE and any product-specific license files included in your download. The Claude SDK/executable is installed separately, not bundled in the VSIX or native IDE. Engine subscriptions, model/API usage, AWS/cloud services and other third-party charges remain separate. A free Cleetus license does not grant provider access or make model usage free.
+
+
+## Cleetus CLI
+
+The CLI package contains existing shared Cleetus components under Apache-2.0 and retains their notices. It excludes the native IDE Preview Studio. Node.js, provider runtimes and externally installed packages have their own licenses; installing Cleetus grants no provider access or redistribution rights. See the [CLI guide](CLI.md).

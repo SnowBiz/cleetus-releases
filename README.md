@@ -13,6 +13,7 @@ This is the public download and documentation home for Cleetus. Development sour
 | Product | Choose an accepted build |
 | --- | --- |
 | **Cleetus IDE** | In the [public releases listing](https://github.com/SnowBiz/cleetus-releases/releases), choose the latest stable macOS Apple Silicon IDE whose notes include the current native Claude Code connection. Download its DMG and `SHA256SUMS` from that same release. The complete editor replaces VS Code. |
+| **Cleetus CLI** | Choose the independent `cli-v` channel and follow the [CLI guide](docs/CLI.md). JavaScript package for Node.js 22+; no embedded runtime or editor. |
 | **Cleetus VS Code extension** | Choose the latest stable universal VSIX whose notes include current native Claude Code setup, with matching `SHA256SUMS` in the [release listing](https://github.com/SnowBiz/cleetus-releases/releases). Maintained and released independently for ordinary VS Code. |
 
 Older SDK subscription-flow builds are retired from the recommended install
@@ -90,3 +91,6 @@ Apache-licensed Cleetus extension portions keep their accompanying license and n
 [License details](docs/LICENSES.md) · [Apache-2.0](docs/licenses/Apache-2.0.txt) · [IDE preview terms](docs/licenses/IDE-PREVIEW-LICENSE.txt)
 
 The native captures show the earlier Cleetus IDE 0.1.0 interface with an isolated CleetusGuide01 sample project: ready, unstarted members, a pending task, a saved workflow with no runs, a real local Git diff and live source previews. No providers were started for them, and they don't demonstrate live account work, customer extraction or a physical two-computer LAN session. Cleetus is independent of Anthropic and OpenAI and uses your own provider accounts.
+
+
+[Install and operate Cleetus CLI](docs/CLI.md).

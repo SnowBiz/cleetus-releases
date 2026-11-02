@@ -23,6 +23,16 @@ The catalog looks in bounded, known locations. It never scans your whole home di
 
 Your Cleetus profile starts independently. It doesn't silently import an existing `~/.claude` directory.
 
+## Inspect context provenance
+
+In the native IDE, open a task’s **Inspect project context**, or choose **Inspect context** in an agent workspace. Cleetus shows the known instruction sources, scope, content revision and an approximate token estimate. The estimate uses UTF-8 bytes divided by four; it is not the provider’s tokenizer or a billable token count.
+
+When available for a session, the exact Cleetus appended instructions have their own configured-at-launch revision. Discovered files stay separate: this view does not prove that the provider loaded them, chose them over other rules, or followed them. Provider-managed instructions, imports, connectors, retrieval and compaction can add context outside this snapshot.
+
+Different instruction files in the same scope are flagged for **potential overlap**. That is a review prompt, not a proven contradiction or automatic precedence decision. Duplicate contents remain attributable to each source. Refreshing the view recalculates revisions; changing or removing a source invalidates the manifest rather than keeping stale contents.
+
+The bounded snapshot does not copy file contents, transcript or environment values into its result, and it does not edit instructions. Links, hardlinks, oversized or unreadable files remain unavailable. Open **Memory & Rules** to inspect the real source under its existing permissions. Agents can request the same read-only metadata with `cleetus_context_manifest`; the authenticated session supplies the project, and model arguments cannot choose another path or session.
+
 ## Edit safely
 
 Choose a file and pick a mode:

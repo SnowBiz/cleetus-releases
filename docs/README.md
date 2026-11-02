@@ -9,6 +9,7 @@ Cleetus is an agentic development environment: a Code - OSS editor with Claude a
 | [Cleetus account](ACCOUNTS.md) | Sign in, manage membership and understand verified features |
 | [Membership and saved settings](MEMBERSHIP.md) | Candidate Scout, Wrangler and Foreman resources, access checks and nonsecret cloud preferences |
 | [Install and update](INSTALL.md) | Install the Apple Silicon IDE or a verified VSIX, set up separate engines, and update |
+| [Cleetus CLI](CLI.md) | Terminal workspace, Linux headless host, installation, secure storage and service operations |
 | [Cleetus IDE and Studio](IDE.md) | Native editor and Studio, goals/tasks, teams, workflow runs, owned worktrees and Design |
 | [Workspace and conversations](GUIDE.md) | Chat, history, review, navigation, models and effort |
 | [Connect coding agents](CODING_AGENTS.md) | Opt-in Copilot, Kiro V3, Gemini, OpenCode and custom ACP setup in builds with the connection command |
@@ -21,6 +22,7 @@ Cleetus is an agentic development environment: a Code - OSS editor with Claude a
 | [Tools and integrations](TOOLS.md) | MCP assignment, local/container/hosted tooling and PR checks |
 | [Work tracking](WORK_TRACKING.md) | GitHub Issues, Jira, custom tracker APIs and agent ownership |
 | [Local service](SERVICE.md) | Background jobs, agent tools, recovery and host boundaries |
+| [Encrypted headless CLI](HEADLESS_CLI.md) | Optional private D-Bus/keyring system service and safe code updates |
 | [Licensing and distribution](LICENSES.md) | Apache components, free personal/commercial IDE preview terms and provider costs |
 | [Troubleshooting](TROUBLESHOOTING.md) | Installation, account, preview, service and update problems |
 

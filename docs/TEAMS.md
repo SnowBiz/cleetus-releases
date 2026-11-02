@@ -282,3 +282,48 @@ Each of the 33 distinct prebuilt roles has its own Cleetus portrait, and unrecog
 Completed, cancelled, failed and interrupted runs keep their output and messages, read-only. Work owned by a stopped coordinator becomes **interrupted**, and queued handoffs are cancelled rather than replayed. Saved history never means an agent process was reattached.
 
 [Tasks](TASKS.md) · [Encrypted LAN collaboration](COLLABORATION.md) · [Tools, MCP and approvals](TOOLS.md)
+
+## Set a dispatch count limit
+
+In the native IDE, open a task or agent workspace and choose **Dispatch limits**.
+Choose the project, all projects in this local profile, or an existing task, team,
+workflow or session. Enable a count, then select **Review and save limit** and
+approve the exact change in Cleetus. Limits start disabled; opening the view does
+not start work or create a policy.
+
+Cleetus reserves capacity before each controlled Core send/action attempt. Shared
+limits apply together, so a full team or project limit prevents another admitted
+turn. Counts survive restart and changes to a limit. Disabling a limit retains
+its recorded count; turns made while disabled are outside that count.
+
+**This is a local dispatch count, not a spending or token cap.** Provider internal
+calls, other provider entry points and typing directly in a native terminal are
+outside it. Token and money coverage stay unavailable. Normal execution and tool
+permissions still apply.
+
+An interrupted or uncertain attempt remains counted. Inspect its reservation
+without repeating work automatically; cancellation does not mean it was free.
+There is no automatic reset or refund. Missing/corrupt required state blocks new
+controlled turns and preserves the records for review. The computer owner can
+raise or disable a local limit; this is not managed organization policy.
+
+## Read provider usage
+
+An agent workspace shows **Provider cost unavailable** until that adapter reports
+a valid cost. A genuine reported zero appears as **Provider cost $0.000**. Open
+**Usage details** to see which token, cost and result-turn fields were reported,
+the adapter source and when Cleetus received them. The shared chat header uses
+the same distinction.
+
+Claude SDK shows **SDK session estimate** instead of provider cost. It uses the
+SDK’s local price table and the latest cumulative value for the current SDK
+session. Resuming that session does not add its earlier total again. An explicit
+new SDK session starts a new estimate scope; a missing, decreasing or invalid
+report becomes unavailable. SDK result tokens cover the main loop and exclude
+subagent tokens. See [Anthropic’s cost-tracking guide](https://code.claude.com/docs/en/agent-sdk/cost-tracking).
+
+These are partial reports or SDK estimates, not your total bill: subscription fees,
+infrastructure charges and unreported work are excluded. Tokens do not imply a
+price. Terminal agents and providers without a meter remain unavailable. Existing
+saved totals without provenance stay unverified; invalid or reset counters also
+remain unavailable. Usage details do not enforce a spending cap.
