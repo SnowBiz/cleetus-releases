@@ -140,3 +140,26 @@ are removed from the address bar, and the page loads no external assets or track
 
 _Layout shown with a local test callback. Browser receipt is separate from the
 app’s completed identity verification._
+
+
+## Advisory Mac engine inventory
+
+A signed-in Mac with an existing owner-validated phone identity can sync its
+nonsecret engine inventory and last-known location. Account sign-in and cloud
+metadata do not pair a phone or grant command access. The phone still verifies
+its locally accepted TLS pin and host identity before authenticating. An address
+record does not prove that the listener is online.
+
+Only actual registered, configured or locally discovered engines are reported.
+Registration alone does not establish provider sign-in or readiness. Known cached
+sign-out or a supported typed native authentication failure can update the
+advisory state; generic task failures are not treated as authentication failures.
+A remote credential revocation cannot be detected instantly without a new
+provider observation. No inventory poll starts a provider or sign-in check.
+
+Project-scoped model catalogs do not become device-wide choices. Model and effort
+selection for an action still comes from its current project on the Mac.
+Unchanged inventories send no update or notification. One eligible Cleetus window
+per profile reports changes; others show that the owning window handles sync.
+The account screen reports pending, offline, size-limit and unconfirmed states.
+Uncertain account updates are read-reconciled rather than automatically replayed.
