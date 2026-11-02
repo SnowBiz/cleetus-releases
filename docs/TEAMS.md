@@ -1,6 +1,6 @@
 # Agent teams
 
-**Available now:** Cleetus IDE 0.2.0 and extension 1.12.1 are published. See [installation and release notes](INSTALL.md) for downloads, provider setup and capability limits. IDE and extension releases remain independent.
+See [installation and release notes](INSTALL.md) for current downloads, provider setup and capability limits. IDE and extension releases remain independent.
 
 Prebuilt teams give a shared goal to agents with defined roles, detailed system
 prompts, and an execution plan. They use the same configured engines as ordinary
@@ -47,6 +47,44 @@ recovery](TOOLS.md#workflow-execution-and-recovery).
 | Lean pair                 | Pipeline   | Codex implementer → Claude reviewer, Low effort                                     | Small, well-defined changes                     |
 
 These are starting points. Every role, prompt, engine, model, effort and MCP assignment is editable before launch, and a security audit is a code investigation, not a certification.
+
+## Choose an individual specialist
+
+The shared catalog contains **54 roles**. The original 40 remain available, along
+with these 14 specialists. In team setup, search **Find a catalog role**, then
+apply a role to the current draft member. **Add role** creates another member;
+it does not start an agent. Native IDE setup supports up to eight members.
+
+| Specialist | Purpose |
+| --- | --- |
+| Crew Lead | Coordinate bounded assignments, dependencies, verification and evidence-backed delivery. |
+| Product Analyst | Turn product goals into a buildable brief with observable acceptance criteria and complete user states. |
+| Implementation Engineer | Implement complete features across existing layers with compatibility, failure recovery and focused verification. |
+| iOS Engineer | Build iOS and iPadOS behavior with lifecycle, concurrency, offline recovery and native accessibility. |
+| Android Engineer | Build Android behavior with lifecycle-aware state, process recreation, permissions and accessibility. |
+| Cross-Platform Mobile Engineer | Implement shared mobile behavior while preserving each native platform boundary and verification. |
+| macOS Engineer | Build macOS behavior with native windows, permissions, process ownership and lifecycle recovery. |
+| Integration Engineer | Integrate changes across interfaces, schemas and migrations while preserving concurrent work and compatibility. |
+| Mobile / End-to-End QA | Verify complete mobile journeys, interruption, reconnect, permissions and recovery with reproducible evidence. |
+| Performance Engineer | Measure real bottlenecks, make bounded performance improvements and verify regressions with evidence. |
+| Reliability Engineer | Improve failure recovery, idempotency, observability and operational reliability without weakening safety. |
+| Release Engineer | Prepare reproducible release artifacts, compatibility checks and rollback evidence within explicit publication authority. |
+| Accessibility Specialist | Inspect and improve accessible interaction, semantics, navigation and assistive-technology behavior. |
+| AI / Agent Engineer | Build agent behavior using explicit tool, prompt, context, approval and evaluation boundaries. |
+
+Selecting a catalog role replaces that draft member's name, task and instructions.
+Your engine and model choices stay selected. Review the prompt before saving;
+editing a draft never silently rewrites existing saved teams or their overrides.
+An advisory model/effort recommendation is separate from the discovered model
+list. It cannot make a model available, grant provider access or override an
+explicit selection. Refresh the actual provider catalog when a model is missing.
+
+The matching iPhone app offers the same catalog in **Create team → Add role** and
+**Start agent → Cleetus role**. Open a member's details to review its exact prompt,
+model and effort. The Mac validates the known role and complete configuration
+before launch. An older host continues using its advertised catalog; update both
+clients to see all 54 roles. Creating a configured team remains separate from
+starting it, and role text never grants additional tools or permissions.
 
 ## Create and start a team
 
