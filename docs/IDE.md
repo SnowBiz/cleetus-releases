@@ -19,6 +19,17 @@ The screenshots show the earlier Cleetus IDE 0.1.0 interface with an isolated sa
 
 ## Install and open your project
 
+With Homebrew on an Apple Silicon Mac:
+
+```sh
+brew tap snowbiz/cleetus https://github.com/SnowBiz/cleetus-releases
+brew install --cask snowbiz/cleetus/cleetus
+```
+
+Homebrew's supported OS/toolchain requirements can exceed the application's
+macOS 12 minimum. The signed DMG option below remains available.
+
+
 Open the [public releases listing](https://github.com/SnowBiz/cleetus-releases/releases) and choose the latest stable Apple Silicon IDE whose notes include the current native Claude Code connection. Download its DMG and `SHA256SUMS` from that release, compare the full checksum, open the DMG, and drag **Cleetus.app** to **Applications**. Launch Cleetus and open your project folder. You do not need a separate VS Code installation.
 
 The covered Preview License allows free personal and commercial use; already-granted preview and Apache rights remain unchanged. Native Claude Code uses your own installed CLI and native sign-in, not the SDK runtime. Codex and supported ACP agents use their documented executables. The SDK runtime is only for optional Claude API/cloud access; consumer Claude subscription sign-in through it is not offered. Provider accounts and model charges remain separate. Use Node.js 22+ and npm where your chosen runtime requires them, then follow [complete installation and engine setup](INSTALL.md).

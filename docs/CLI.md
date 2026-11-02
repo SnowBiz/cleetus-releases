@@ -15,8 +15,31 @@ Use the version and filename on that release, and verify it against its
 
 The `.tgz` npm package and `-node22.tar.gz` portable archive contain the same
 reviewed JavaScript tree. **Neither contains Node.js or a standalone native
-executable.** Install Node.js 22 or newer and npm first. The release workflow
-validates Linux x64; other environments are previews until separately accepted.
+executable.** For direct downloads, install Node.js 22 or newer and npm first; Homebrew
+installs its own Node dependency. Linux x64 has a release CI gate, and the public
+Linux ARM64 package and guided systemd setup have separate fixture acceptance.
+macOS CLI remains a preview.
+
+### Install with Homebrew
+
+With [Homebrew](https://brew.sh/) installed:
+
+```sh
+brew tap snowbiz/cleetus https://github.com/SnowBiz/cleetus-releases
+brew install snowbiz/cleetus/cleetus-cli
+cleetus --workspace /absolute/project
+```
+
+Homebrew installs Node 22 and the available CLI tools. On Linux, Cleetus offers
+one local setup wizard when a working keyring is missing. Review any required
+official OS packages and protected host installation; starting the host is a
+separate approval. You can open that wizard directly with
+`cleetus setup --workspace /absolute/project`.
+
+Use `brew upgrade snowbiz/cleetus/cleetus-cli` for the terminal client. A protected
+background host pins its own reviewed installation and needs a separate explicit
+update; [Advanced](ADVANCED_LINUX.md) describes that procedure. Account sign-in,
+provider CLIs, models and phone/LAN access are separate choices.
 
 ### Install and open your workspace
 
@@ -31,12 +54,9 @@ cleetus --workspace /absolute/project
 npm installs the frozen TypeScript and Playwright Core libraries. It does not
 install a browser, coding agent, model or provider SDK.
 
-**CLI 0.2.0 and later:** on Linux, the first terminal launch offers setup if a
-working keyring is missing. You can also run `cleetus setup --workspace
-/absolute/project`. Review the official OS prerequisites and protected host
-installation once; starting the host is a separate approval. This future guide
-requires a stable release that contains the wizard, and does not announce that
-release. Older builds must use their matching release instructions.
+CLI 0.2.0 or newer offers the Linux setup wizard from the first terminal launch
+or `cleetus setup --workspace /absolute/project`. Older builds must use their
+matching release instructions.
 
 A Linux desktop can use its unlocked Secret Service. A supported Ubuntu/Debian
 server can use the [guided protected host](HEADLESS_CLI.md). There is no plaintext

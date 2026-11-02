@@ -1,8 +1,7 @@
 # Set up a Linux host
 
-The guided setup described here requires **Cleetus CLI 0.2.0 or later**. Until a
-stable release includes it, follow the guide matching your downloaded release;
-this page does not announce its availability.
+Use **Cleetus CLI 0.2.0 or later** for this guided path. Older builds need the
+instructions matching their release.
 
 Install the verified CLI package as described in the [CLI guide](CLI.md), then
 run as your ordinary account in an attached terminal:
@@ -69,9 +68,13 @@ separate explicit operation that preserves its profile and encrypted credential.
 
 ## Validation status
 
-The underlying encrypted service has been exercised with real Linux systemd,
-private Secret Service, restart persistence, attached sign-in and Simulator
-pairing. The new 0.2.0 guided installer has passed fixture and source review;
-privileged disposable installation and published-artifact acceptance remain
-pending. Those checks are required before recommending this new installation
-path as accepted. Provider/model and physical-phone acceptance are separate.
+CLI 0.2.0's published Linux ARM64 package passed guided setup in a disposable
+systemd host: real sudo and terminal approval, signed OS package installation,
+separately approved service start, owned application readiness, and private
+Secret Service storage preserved across a clean restart. The public Homebrew
+formula also passed installation, catalog checks and credential-adapter tests.
+
+Attached account sign-in and Simulator pairing have separate host acceptance.
+macOS CLI remains a preview; provider/model and physical-phone acceptance are
+separate from these installation checks. The cask was audited and its signed
+installer inspected without replacing an existing app.

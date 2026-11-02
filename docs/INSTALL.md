@@ -10,6 +10,33 @@ update channels; installing one doesn't require the other.
 
 For a terminal workspace or a headless Linux host, follow the separate [Cleetus CLI guide](CLI.md). CLI packages require Node.js 22+ and have their own `cli-v` release channel; they do not include an editor or a Node runtime.
 
+## Install with Homebrew
+
+```sh
+brew tap snowbiz/cleetus https://github.com/SnowBiz/cleetus-releases
+```
+
+For the terminal CLI on macOS or Linux:
+
+```sh
+brew install snowbiz/cleetus/cleetus-cli
+cleetus --workspace /absolute/project
+```
+
+For Cleetus IDE on an Apple Silicon Mac:
+
+```sh
+brew install --cask snowbiz/cleetus/cleetus
+```
+
+Cleetus IDE requires macOS 12 or newer; Homebrew's own supported OS/toolchain
+requirements may be newer. The signed DMG remains a separate installation option.
+CLI Linux setup reviews OS prerequisites and protected service startup once;
+[CLI](CLI.md) covers the few-command path, with manual procedures under
+[Advanced](ADVANCED_LINUX.md). Providers, accounts and models are installed and
+authorized separately. Brew upgrade updates the client/app; a pinned protected
+CLI host needs its own explicitly reviewed update.
+
 ## Install Cleetus IDE for Apple Silicon
 
 Use an Apple Silicon Mac with macOS 12 or newer.

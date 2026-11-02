@@ -70,6 +70,22 @@ transcripts and team history are excluded from this sync.
 
 ## Install
 
+### Install with Homebrew
+
+```sh
+brew tap snowbiz/cleetus https://github.com/SnowBiz/cleetus-releases
+brew install snowbiz/cleetus/cleetus-cli
+cleetus --workspace /absolute/project
+```
+
+For Cleetus IDE on an Apple Silicon Mac, use
+`brew install --cask snowbiz/cleetus/cleetus`. Homebrew installs the CLI's Node
+and available tools. Linux first launch offers one reviewed setup wizard when
+needed; service start, accounts, providers and phone/LAN access remain separate
+choices. A Brew upgrade updates the client; a pinned background host needs its
+own explicit update. See the CLI guide and Advanced Linux reference.
+
+
 **Cleetus IDE:** choose the latest stable Apple Silicon IDE in the [public releases listing](https://github.com/SnowBiz/cleetus-releases/releases) whose notes describe the current native Claude Code connection. Download its DMG and `SHA256SUMS` from the same release, verify the checksum, open the DMG and drag **Cleetus.app** to **Applications**. Launch Cleetus and open your project. The editor is included.
 
 **VS Code extension:** choose the latest stable universal VSIX in the [release listing](https://github.com/SnowBiz/cleetus-releases/releases), choose notes that include current native Claude Code setup and verify its `SHA256SUMS` entry, then choose **Extensions → Install from VSIX…** in VS Code. Its release and update channel is independent from the IDE.
