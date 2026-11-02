@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "products": {
+    "cli": {
+      "version": "0.2.0",
+      "tag": "cli-v0.2.0",
+      "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.0/cleetus-cli-0.2.0.tgz",
+      "sha256": "aba88bb1eb1c154f1d1af93005d8832b47db05be0fffa7c8c5446294c736ac0c",
+      "setupHelperSHA256": "450790f60ffee6ac6082faaea19c957afe7594d7aa905e55a41c2a3fb1efdf6c"
+    },
+    "ide": {
+      "version": "0.2.3",
+      "tag": "ide-v0.2.3-macos-arm64",
+      "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.2.3-macos-arm64/cleetus-ide-0.2.3-macos-arm64.dmg",
+      "sha256": "7b78383e373bcd77998bad5be934c5dc0cd5316eea534d46e34e6aa3c3fd96b2"
+    }
+  },
+  "files": {
+    "Formula/cleetus-cli.rb": "743a44fecfe2114c40f569cd6aeaab8ad5fe2735ee210277a868b26356e7e3fe",
+    "Casks/cleetus.rb": "ab4fd7cce36c27b42419fd04d3958bd4d93a4b1290a0cdc0a791f68f7df96073"
+  }
+}
