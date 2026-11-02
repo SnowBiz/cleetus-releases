@@ -234,4 +234,4 @@ A saved PID is evidence, not permission to kill an unrelated process.
 Keep profile directories private and retain them across updates. Sharing a package
 is not sharing its local credentials, workspace, paired-device grants or account.
 See [security boundaries](SECURITY_MODEL.md), [phone control](PHONE_CONTROL.md),
-[teams](TEAMS.md) and the [Apache license](licenses/Apache-2.0.txt).
+[teams](TEAMS.md) and the [Apache license](https://github.com/SnowBiz/cleetus-releases/blob/main/docs/licenses/Apache-2.0.txt).
