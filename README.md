@@ -8,7 +8,7 @@ This is the public download and documentation home for Cleetus. Development sour
 
 **[Find Cleetus releases](https://github.com/SnowBiz/cleetus-releases/releases) · [Install and update](docs/INSTALL.md) · [Guides](docs/README.md) · [cleetus.dev](https://cleetus.dev)**
 
-**Available now:** [Cleetus IDE 0.2.0](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.2.0-macos-arm64) for macOS Apple Silicon and the independent [VS Code extension 1.12.1](https://github.com/SnowBiz/cleetus-releases/releases/tag/v1.12.1). The Mac installer is signed and notarized; both releases include checksums.
+**Available releases:** choose the latest stable IDE or CLI in the [public releases listing](https://github.com/SnowBiz/cleetus-releases/releases), or the independent [latest extension release](https://github.com/SnowBiz/cleetus-releases/releases/latest). Each product has its own version, checksums and update channel.
 
 | Product | Choose an accepted build |
 | --- | --- |

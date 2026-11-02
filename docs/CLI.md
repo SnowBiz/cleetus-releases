@@ -18,51 +18,33 @@ reviewed JavaScript tree. **Neither contains Node.js or a standalone native
 executable.** Install Node.js 22 or newer and npm first. The release workflow
 validates Linux x64; other environments are previews until separately accepted.
 
-### Install the npm package
+### Install and open your workspace
 
-After downloading the `.tgz`, replace `X.Y.Z` below with its actual version:
-
-```sh
-npm install -g ./cleetus-cli-X.Y.Z.tgz
-cleetus --version
-cleetus --help
-```
-
-npm installs the pinned TypeScript and Playwright Core libraries declared by the
-package. It does not install Claude, Codex, a browser or a provider SDK.
-
-### Use the portable JavaScript archive
-
-Extract `cleetus-cli-X.Y.Z-node22.tar.gz` into a new version-specific folder.
-Its top-level directory is `package`. Install its pinned public libraries before
-using Design or advanced features:
+After downloading and verifying the `.tgz`, replace `X.Y.Z` with its actual
+version. Install as your ordinary account:
 
 ```sh
-cd package
-npm ci --omit=dev --ignore-scripts
-./bin/cleetus --help
-./bin/cleetus --workspace /absolute/project --profile ~/.cleetus/cli
+npm install -g --ignore-scripts ./cleetus-cli-X.Y.Z.tgz
+cleetus --workspace /absolute/project
 ```
 
-Keep the package directory intact: worker, credential and systemd helpers resolve
-relative to that installation. The ordinary CLI and user service need no administrator access. The optional
-encrypted headless system service requires an explicit administrator install.
+npm installs the frozen TypeScript and Playwright Core libraries. It does not
+install a browser, coding agent, model or provider SDK.
 
-## Prepare the host
+**CLI 0.2.0 and later:** on Linux, the first terminal launch offers setup if a
+working keyring is missing. You can also run `cleetus setup --workspace
+/absolute/project`. Review the official OS prerequisites and protected host
+installation once; starting the host is a separate approval. This future guide
+requires a stable release that contains the wizard, and does not announce that
+release. Older builds must use their matching release instructions.
 
-- **Linux x64:** install `libsecret-tools`, a user D-Bus/Secret Service with an
-  unlocked keyring, and Node.js 22+. Native terminal agents also need `tmux`.
-  Background service commands require a systemd **user** manager.
-- **macOS preview:** macOS Keychain and Apple Command Line Tools (`xcrun swiftc`)
-  are required for the credential helper. A native consent prompt may appear.
-- **Windows:** not a supported CLI host yet; the release is not a Windows binary.
+A Linux desktop can use its unlocked Secret Service. A supported Ubuntu/Debian
+server can use the [guided protected host](HEADLESS_CLI.md). There is no plaintext
+fallback. macOS preview uses Keychain and Apple Command Line Tools; Windows is
+not a supported CLI host. Node.js and provider requirements remain separate.
 
-There is no plaintext credential fallback. An interactive Linux desktop can use
-its unlocked user Secret Service. For a server without a desktop login, the
-optional [encrypted headless service](HEADLESS_CLI.md) provisions a separate
-private keyring using a random host-encrypted systemd credential. It runs as your
-existing non-root user; installation and startup are explicit administrator
-actions. It does not reuse your Cleetus, Linux or provider account password.
+For portable archives, manual system/user units, updates and recovery, see
+[Advanced](ADVANCED_LINUX.md).
 
 Install coding agents through their own official instructions and sign in there.
 Provider access, subscription restrictions, model/API charges and engine consent
@@ -192,42 +174,16 @@ there is no automatic cloud fallback.
 
 ## Run a Linux background host
 
-```sh
-cleetus service install --workspace /absolute/project --profile ~/.cleetus/cli
-cleetus service start --workspace /absolute/project --profile ~/.cleetus/cli
-cleetus service status --workspace /absolute/project --profile ~/.cleetus/cli
-cleetus service logs --workspace /absolute/project --profile ~/.cleetus/cli
-```
-
-Install writes an owned user unit but does not start it. Start explicitly enables
-and launches that unit. It pins the installation, Node executable, project and
-profile; another terminal attaches to the profile’s private local socket.
-
-Use `--attach` on a TUI or sign-in command when you want only the existing host:
-
-```sh
-cleetus --attach --workspace /absolute/project --profile ~/.cleetus/cli
-```
-
-`status` and `request` always attach without starting a host. Managed encrypted
-headless profiles automatically use the same attach-only behavior, even without
-the flag. Clients wait up to ten seconds for application readiness and verify
-the profile owner and exact workspace before sending work. If the host remains
-unavailable, they report that outcome without opening another credential store.
-Starting a stopped service remains an explicit operator action. An ordinary
-fresh interactive TUI or sign-in can still start its own local host when no
-service or managed profile exists; `cleetus run` is explicit manual host startup.
+Use [Linux host setup](HEADLESS_CLI.md). The wizard reviews installation and
+startup separately, then normal terminal launches attach to the saved owned host.
+`cleetus setup status --workspace /absolute/project --json` reads setup evidence.
+An unavailable or uncertain host does not cause a replacement credential store
+or automatic installation replay.
 
 Headless work needs an attached owner terminal or an authorized paired phone for
-approvals. No approval surface means deny. Phone Control and encrypted LAN
-listeners require their own owner review; installation does not open a listener.
-Native Claude sign-in, trust or unsupported prompts still need direct SSH/tmux;
-Cleetus never types consent or reads the raw native terminal transcript.
-
-Enabling a Phone Control listener does not change the host firewall. Review a
-narrow rule for the trusted client's private address, private interface and exact
-listener port; never treat an open port or familiar IP as a trusted pairing. See
-[headless host reachability and pairing](HEADLESS_CLI.md#let-your-trusted-device-reach-the-host).
+approvals. Missing approvals deny execution. Phone/LAN listeners need separate
+review and do not change firewall rules. Native provider consent still belongs
+to its own supported terminal flow. [Advanced](ADVANCED_LINUX.md)
 
 ### What has been exercised
 
@@ -240,14 +196,13 @@ delivery. Each provider still needs its own supported setup and validation.
 
 ## Update without losing your profile
 
-Stop running tasks and the user service before replacing package files. Download
-and verify the next CLI release, then install it or extract it into a new folder.
-If its Node/script path changes, uninstall the old managed unit and explicitly
-install/start the new one. Uninstall preserves the profile and trust data.
-Do not overwrite a live installation and assume its workers reloaded safely.
+Stop active work before changing the installation. Updates are explicit and must
+preserve the existing profile, trust data and encrypted credential. The protected
+system host and ordinary user service have different update procedures.
+[Advanced](ADVANCED_LINUX.md#update-without-replacing-the-keyring-credential)
 
-CLI releases do not change the IDE/extension’s latest release or updater channel.
-Current CLI updates are explicit; no background download or auto-install is claimed.
+CLI releases have their own channel; they do not update the IDE or extension.
+No background download or automatic CLI installation is claimed.
 
 ## Recovery and security
 

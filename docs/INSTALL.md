@@ -1,6 +1,6 @@
 # Install and update Cleetus
 
-**Available now:** [Cleetus IDE 0.2.0 for Apple Silicon](https://github.com/SnowBiz/cleetus-releases/releases/tag/ide-v0.2.0-macos-arm64) and the independent [VS Code extension 1.12.1](https://github.com/SnowBiz/cleetus-releases/releases/tag/v1.12.1). The Mac installer is signed and notarized; both releases include checksums.
+**Available releases:** choose the latest stable IDE or CLI in the [public releases listing](https://github.com/SnowBiz/cleetus-releases/releases), or the independent [latest extension release](https://github.com/SnowBiz/cleetus-releases/releases/latest). Each product has its own version, checksums and update channel.
 
 _Read this guide on [cleetus.dev](https://cleetus.dev/docs/install/)._
 
@@ -22,7 +22,7 @@ Use an Apple Silicon Mac with macOS 12 or newer.
 For a new setup, choose a release whose notes include the current native Claude
 Code connection described in [Coding-agent connections](CODING_AGENTS.md).
 Older SDK subscription-flow builds are retired from the recommended install
-path. Use IDE 0.2.0 or extension 1.12.1 for the current native Claude Code flow.
+path. Choose current release notes that describe the native Claude Code flow.
 
 When replacing an unsigned development app, macOS may request authorization for Cleetus’s existing Keychain item. Complete that system prompt locally to finish startup.
 
