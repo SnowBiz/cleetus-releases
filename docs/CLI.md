@@ -27,6 +27,7 @@ With [Homebrew](https://brew.sh/) installed:
 ```sh
 brew tap snowbiz/cleetus https://github.com/SnowBiz/cleetus-releases
 brew install snowbiz/cleetus/cleetus-cli
+cleetus setup --workspace /absolute/project
 cleetus --workspace /absolute/project
 ```
 
@@ -192,6 +193,55 @@ An installed server or visible model list does not prove a completed inference.
 Provider sign-in and local model server resources remain your responsibility;
 there is no automatic cloud fallback.
 
+## Keep a Mac available for iPhone control
+
+In a build containing the macOS host adapter, `cleetus setup --workspace
+/absolute/project` reviews a per-user LaunchAgent and its exact executable,
+workspace and profile paths. Installation and startup have separate local owner
+reviews. The agent runs the same Cleetus Application/Core as the terminal; no
+IDE process is required. Setup enables no phone, LAN, VPN or Relay listener and
+changes no firewall rules.
+
+Keep this macOS account logged in with its login Keychain unlocked. Apple Command
+Line Tools are required by the existing Keychain helper. This is a user agent,
+not a pre-login system daemon. Sleep, logout, a locked keychain or an unavailable
+user session can interrupt availability. A disconnected phone cannot establish
+which of those happened; inspect local service status and logs.
+
+After setup, `cleetus` attaches to the saved host. Run `cleetus signin` for the
+existing device-code flow, choose **Native Claude Code and SSH terminal setup**,
+**Codex account** or **Server-local Ollama / LM Studio model engine**, then use
+**iPhone pairing and control** to review a private listener and obtain the
+existing pairing invitation. Each engine keeps its own sign-in and consent.
+Authorize exact phone host-review scopes locally if the phone should approve
+initial execution while the terminal is closed. Closing the terminal leaves the
+LaunchAgent running. An unavailable approval still denies work.
+
+Inspect the explicit service lifecycle without an IDE:
+
+```sh
+cleetus service status --json
+cleetus service logs
+cleetus service stop
+cleetus service start
+```
+
+Status distinguishes an observed running job, a confirmed unloaded/stopped job,
+and unknown manager state; application readiness is reported separately. Read
+errors do not silently start a foreground replacement. Service logs stay in the
+private profile's `logs` directory. Uninstall removes the managed LaunchAgent and
+its service manifest while preserving account credentials, phone trust, sessions
+and logs:
+
+```sh
+cleetus service uninstall
+```
+
+The macOS adapter has fixture lifecycle, attachment and plist-parser validation.
+A real persistent Mac installation, reboot/logout recovery, physical-phone access
+and provider inference require separate live acceptance. Windows service support
+is explicitly unavailable.
+
 ## Run a Linux background host
 
 Use [Linux host setup](HEADLESS_CLI.md). The wizard reviews installation and
@@ -220,6 +270,22 @@ Stop active work before changing the installation. Updates are explicit and must
 preserve the existing profile, trust data and encrypted credential. The protected
 system host and ordinary user service have different update procedures.
 [Advanced](ADVANCED_LINUX.md#update-without-replacing-the-keyring-credential)
+
+For a macOS LaunchAgent, stop active work and the service first, upgrade the
+terminal package, then inspect the new exact paths before an explicit update:
+
+```sh
+cleetus service stop
+brew upgrade snowbiz/cleetus/cleetus-cli
+cleetus service plan --workspace /absolute/project --json
+cleetus service update --workspace /absolute/project
+cleetus service start
+```
+
+The update preserves the profile path, computer identity and approved workspace;
+it does not start the agent or re-pair the phone. Unknown manager state or changed
+managed files require local inspection before another action. Keep the original
+profile and Keychain items; a new profile represents another host identity.
 
 CLI releases have their own channel; they do not update the IDE or extension.
 No background download or automatic CLI installation is claimed.

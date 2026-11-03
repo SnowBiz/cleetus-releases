@@ -44,6 +44,18 @@ may be loaded from that profile. See [Codex account selection](CLI.md#choose-the
 
 ## Let your trusted device reach the host
 
+On Linux, open **iPhone pairing and control → Linux discovery setup and network
+readiness**. The optional guided action reviews the OS discovery packages before
+requesting administrator permission. It can also refresh discovery for an already
+approved listener without changing its certificate, paired phones or history.
+Installing the OS packages may immediately start local mDNS advertising.
+
+`cleetus phone-discovery status` is read-only; `cleetus phone-discovery setup`
+opens the same local owner review. This action does not change your firewall.
+A registered discovery service and a reachable HTTPS listener are separate checks.
+A physical iPhone has its own network address; a rule allowing only your Mac
+allows the Simulator on that Mac, not the phone.
+
 Enable Phone Control only after reviewing its interface, port and approval scope.
 Pair using the displayed code and TLS fingerprint. Enabling a listener does not
 change your firewall. A saved pairing preserves identity; an IP address alone

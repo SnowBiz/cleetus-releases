@@ -105,6 +105,43 @@ fallback, credential copy or launch replay. See the
 [Codex account selection guide](CLI.md#choose-the-codex-account-for-new-conversations)
 for the full selection and recovery steps.
 
+## Linux Phone Control discovery
+
+Use the ordinary Phone Control discovery menu or `cleetus phone-discovery setup`
+for an explicit local review. Ubuntu/Debian discovery uses the root-owned OS
+`avahi-utils` and `avahi-daemon` packages. The headless credential installer does
+not silently install or activate this optional network service. A Homebrew CLI
+still uses the OS system-bus daemon for this protected-host path.
+
+For administrator-managed machines, the guided package action is exactly:
+
+```sh
+sudo -- /usr/bin/apt-get install --yes --no-install-recommends avahi-utils avahi-daemon
+```
+
+Installing these official OS packages may immediately start mDNS advertising.
+If the packages are already installed but the daemon is inactive, starting it is
+a separate explicit review (`sudo -- /usr/bin/systemctl start avahi-daemon.service`).
+The wizard never adds firewall rules, enables Phone Control, rotates its
+certificate, resets pairing, or signs in an account. Unknown prerequisite writes
+are retained in the local journal and are not automatically repeated. Read
+`cleetus phone-discovery status` and OS package/service metadata before recovery;
+do not delete an uncertain journal to retry it.
+
+After prerequisites are ready, **Refresh discovery** republishes only the existing
+approved listener. Linux discovery becomes available only after Avahi acknowledges
+registration, not merely because its process exists. On a Mac, an administrator
+can browse `_cleetus-phone._tcp` using `dns-sd -B _cleetus-phone._tcp local.` and
+resolve the exact instance using `dns-sd -L "INSTANCE" _cleetus-phone._tcp local.`.
+Discovery TXT data contains public host identity and certificate fingerprint,
+not an invitation or credential. Compare the exact host identity/port/fingerprint;
+discovery does not grant trust or execution permission.
+
+Local multicast/client-isolation rules can block discovery independently of TCP.
+Use the exact reviewed endpoint and TLS fingerprint for manual pairing when
+multicast is unavailable; never broaden an entire LAN or disable a firewall just
+to make a host appear. The next section covers the separate HTTPS client rule.
+
 ## Let your trusted device reach the host
 
 Enabling Phone Control starts the approved listener; it **does not allow traffic
