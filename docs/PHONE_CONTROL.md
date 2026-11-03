@@ -1,7 +1,7 @@
 # Phone control
 
-Phone control connects a compatible Cleetus phone client to the application
-running on your Mac. It is optional and off until you enable it. Desktop-to-
+Phone control connects a compatible Cleetus phone client to a running Cleetus
+host on macOS or Linux. It is optional and off until you enable it. Desktop-to-
 desktop [agent collaboration](COLLABORATION.md) is a separate paired workflow;
 Cleetus account sign-in is separate from both kinds of device pairing.
 
@@ -29,8 +29,15 @@ Cleetus account sign-in is separate from both kinds of device pairing.
 
 macOS and iOS may ask for Local Network permission. Allow it only when you intend
 to use pairing. Guest Wi-Fi isolation, firewalls, VPNs and network changes can
-block the connection. Cleetus does not change firewall rules or create a public
-relay. IPv6-only networks and away-from-home relays are not supported here.
+block the connection. Cleetus does not change firewall rules. Direct connections
+can use an approved private LAN or routed VPN interface when both devices have
+a working route. Bonjour discovery stays local to its network; account discovery
+supplies location updates across networks. IPv6-only listeners are not supported.
+
+Managed Relay is a separate, permissioned private-preview capability for eligible
+members. Signing in or discovering a computer does not establish Relay trust.
+Relay availability, allowance and actual connection acceptance are checked
+separately; a saved computer is not proof that it is online.
 
 ## What a paired phone can do
 
@@ -77,7 +84,7 @@ certificate covers the assigned private interfaces and is checked for validity;
 a changed interface or expired certificate can require an explicit owner review.
 There is no silent certificate renewal that changes a phone's trusted identity.
 With follow-interface approval, Cleetus checks the selected interface locally
-every ten seconds and can rebind its unchanged certified `.local` endpoint and
+every second, with a bounded fallback after a stopped listener, and can rebind its unchanged certified endpoint and
 port after a private DHCP address change. It does not rotate keys or rewrite the
 approval during a move. Missing or ambiguous addresses, a changed local name, an
 invalid certificate or an occupied saved port leave control off for review.
@@ -85,6 +92,33 @@ Earlier exact-IP approvals keep their original scope; a DHCP change requires
 owner review before enabling follow-interface mode. Accepted pairing credentials
 remain separate from short-lived sessions; compatible clients can renew an
 expired session without pairing again.
+
+## Network changes and account sync
+
+Updated hosts publish a changed approved route to your signed-in account. A
+compatible phone refreshes that metadata and uses its existing pairing to verify
+the host again. The certificate fingerprint and host identity remain unchanged;
+an address change never authorizes a different computer. Unchanged reports do not
+rewrite the account or generate another change notification.
+
+Version 2 discovery keeps the transport address separate from the exact name
+verified in the saved certificate. This lets a host retain its certificate while
+moving to an approved VPN address. Both the certificate name and the phone's
+locally saved certificate fingerprint are checked before pairing authentication.
+Older clients retain their original verification behavior and need an update to
+use these routes.
+
+If an approved interface disappears, the host withdraws its routes rather than
+advertising another interface without permission. When that same approved
+interface returns, it publishes the new route. A silent notification asks the
+phone to fetch current metadata; it contains no address, credential or command.
+Push delivery is best-effort, so foreground refresh remains available.
+
+Only hosts with an approved listener advertise an inbound route. An iPhone
+controller receives host updates; it does not advertise a nonexistent server or
+copy pairing secrets to your account. Account sign-in and Phone Control approval
+are separate. **Automatic Phone control stayed off** means the saved listener
+could not be restored safely; review its interface, port and identity on the host.
 
 ## Optional generic alerts
 
