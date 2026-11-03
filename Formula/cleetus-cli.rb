@@ -1,8 +1,8 @@
 class CleetusCli < Formula
   desc "Terminal workspace and headless host for your own coding agents"
   homepage "https://cleetus.app/"
-  url "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.1/cleetus-cli-0.2.1.tgz"
-  sha256 "de0235f97b10e1676dac958b5a8dde1e1609904982bae5063d63352e0f80f706"
+  url "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.2/cleetus-cli-0.2.2.tgz"
+  sha256 "9189534c1e74ebd222f2daca33ca41fac153bc22c2d085fdb28a56a137cc0eca"
   license "Apache-2.0"
 
   depends_on "node@22"
@@ -35,7 +35,7 @@ class CleetusCli < Formula
       distribution: "homebrew",
       pins:         {
         version:       version.to_s,
-        archiveSHA256: "de0235f97b10e1676dac958b5a8dde1e1609904982bae5063d63352e0f80f706",
+        archiveSHA256: "9189534c1e74ebd222f2daca33ca41fac153bc22c2d085fdb28a56a137cc0eca",
         helperSHA256:  "450790f60ffee6ac6082faaea19c957afe7594d7aa905e55a41c2a3fb1efdf6c",
       },
     )
@@ -67,7 +67,7 @@ class CleetusCli < Formula
   end
 
   test do
-    assert_equal "Cleetus CLI 0.2.1", shell_output("#{bin}/cleetus --version").strip
+    assert_equal "Cleetus CLI 0.2.2", shell_output("#{bin}/cleetus --version").strip
     assert_match "Cleetus", shell_output("#{bin}/cleetus --help")
     roles = JSON.parse(shell_output("#{bin}/cleetus roles --json"))
     assert_equal 54, roles.fetch("roleCatalog").length
