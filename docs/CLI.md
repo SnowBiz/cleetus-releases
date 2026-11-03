@@ -301,3 +301,17 @@ Keep profile directories private and retain them across updates. Sharing a packa
 is not sharing its local credentials, workspace, paired-device grants or account.
 See [security boundaries](SECURITY_MODEL.md), [phone control](PHONE_CONTROL.md),
 [teams](TEAMS.md) and the [Apache license](https://github.com/SnowBiz/cleetus-releases/blob/main/docs/licenses/Apache-2.0.txt).
+
+## Choose a routed LAN or VPN interface
+
+In the local Phone menu, select **Enable on one routed LAN / VPN interface**
+when your host supports it. Review the one interface, address and port before
+allowing the listener. Exact IP is the default. Following address changes also
+requires a stable hostname already covered by the saved certificate.
+
+This supports private IPv4 and the shared IPv4 range used by some routed
+networks. It does not approve every interface, open a firewall or trust a device
+from discovery. Existing pairings and the certificate stay intact; missing or
+incompatible identity material requires review. Only the actual approved route
+is advertised. Managed Relay remains a separate private-preview capability;
+the public base CLI does not contain Native RTC.
