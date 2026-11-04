@@ -344,11 +344,21 @@ review within the existing consent period. Status and disable work without an
 interactive terminal. Add `--json` for machine-readable results; use
 `observation-export security` only when inspecting advanced security bindings.
 
-Export requires a compatible trusted host component, current Cleetus sign-in,
-an existing approved installation key, organization metadata permission and the
-server collection switch. A plain host without that signer reports unavailable.
-Setup does not create keys or enable Remote. Use the normal installation-key
-approval flow; local activity consent never authorizes reporting.
+Export requires current Cleetus CLI device sign-in, secure credential storage,
+an approved reporting identity, organization metadata permission and the server
+collection switch. Setup reuses a compatible existing approved installation key.
+Otherwise it offers a separate host review to create a metadata-only reporting
+key. Compare its full fingerprint on your signed-in website under **Devices →
+Reporting identities**, approve it there, and rerun setup or refresh. This does
+not enable Remote or authorize export: organization enrollment approval and a
+separate local export-consent review still follow.
+
+An uncertain registration is checked with **refresh** only; setup cannot silently
+register another key. A confirmed revoked or expired identity can be replaced
+only after prior export scopes have stopped and cleanup is confirmed. Unresolved
+server revocation or receipts can block replacement; the host preserves that
+uncertainty. Server routes and collection must be available in your deployment.
+Local activity consent never authorizes reporting.
 
 Reporting contains future turn status, permission outcomes, partial usage and
 owned-worker lifecycle metadata. It excludes prompts, outputs, tool inputs,

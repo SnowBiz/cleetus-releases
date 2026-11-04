@@ -40,8 +40,11 @@ does not approve its own collection.
 Organization reporting requires all of the following:
 
 1. Sign in to Cleetus using the normal account flow.
-2. Register this installation and have its complete key fingerprint approved in
-   the Cleetus account portal.
+2. Choose **Check reporting identity**. If this installation has no approved key,
+   choose **Create reporting identity** and review the host confirmation. Open
+   **Review key on Cleetus website**, compare the complete fingerprint under
+   **Devices → Reporting identities**, and approve it from your own account.
+   Return to Cleetus and choose **Check reporting identity** again.
 3. Have an organization administrator permit metadata reporting and create a
    named reporting workspace in **Observability**.
 4. In **Activity & diagnostics**, choose **Set up reporting**, then select the
@@ -56,7 +59,14 @@ consent is queued. Local diagnostics can remain off while separately approved
 organization reporting is on. The workspace displays a reporting indicator
 while reporting is active, paused or awaiting a delivery result.
 
-If setup is unavailable, check account sign-in, installation approval,
+This metadata-only identity grants no execution, phone-pairing or Relay access.
+The normal public CLI offers the same review during `cleetus observation export
+setup`; follow its instructions, approve the fingerprint, and run setup again.
+An already approved compatible installation key can be reused without creating
+another key. An uncertain registration is checked by its original status rather
+than submitted again.
+
+If setup is unavailable, check account sign-in, reporting identity approval,
 organization policy and server availability. Membership, phone pairing and
 Remote access do not grant reporting consent.
 
@@ -70,7 +80,7 @@ access.
 
 | Status | What to do |
 | --- | --- |
-| Waiting for installation review | Ask an organization administrator to compare and approve the full fingerprint. |
+| Waiting for installation review | Compare and approve your complete reporting fingerprint in your account’s Reporting identities view. Organization enrollment is a separate administrator review. |
 | Reporting on | New eligible metadata can be delivered to the shown workspace. |
 | Reporting paused | Check account, policy and consent status before resuming. |
 | Reporting action needs reconciliation | Check the original status or receipt. Cleetus does not repeat an uncertain enrollment, renewal, revocation or upload. |
