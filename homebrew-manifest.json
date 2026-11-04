@@ -9,14 +9,14 @@
       "setupHelperSHA256": "450790f60ffee6ac6082faaea19c957afe7594d7aa905e55a41c2a3fb1efdf6c"
     },
     "ide": {
-      "version": "0.2.3",
-      "tag": "ide-v0.2.3-macos-arm64",
-      "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.2.3-macos-arm64/cleetus-ide-0.2.3-macos-arm64.dmg",
-      "sha256": "7b78383e373bcd77998bad5be934c5dc0cd5316eea534d46e34e6aa3c3fd96b2"
+      "version": "0.2.7",
+      "tag": "ide-v0.2.7-macos-arm64",
+      "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.2.7-macos-arm64/cleetus-ide-0.2.7-macos-arm64.dmg",
+      "sha256": "ed8a711191170a74cc8502c2d8220ca0a914fb59742bbca069afec5b08558e29"
     }
   },
   "files": {
     "Formula/cleetus-cli.rb": "f534e6f06141e8b88fdb6c634b881322290a67e152badfa1890ca4837d67562a",
-    "Casks/cleetus.rb": "ab4fd7cce36c27b42419fd04d3958bd4d93a4b1290a0cdc0a791f68f7df96073"
+    "Casks/cleetus.rb": "61730187c2e803bd09efe94113c7b5eb7ed43b0116a5a9522cef136fcecaa1ab"
   }
 }

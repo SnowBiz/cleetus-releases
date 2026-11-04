@@ -1,6 +1,6 @@
 cask "cleetus" do
-  version "0.2.3"
-  sha256 "7b78383e373bcd77998bad5be934c5dc0cd5316eea534d46e34e6aa3c3fd96b2"
+  version "0.2.7"
+  sha256 "ed8a711191170a74cc8502c2d8220ca0a914fb59742bbca069afec5b08558e29"
 
   url "https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v#{version}-macos-arm64/cleetus-ide-#{version}-macos-arm64.dmg"
   name "Cleetus"
