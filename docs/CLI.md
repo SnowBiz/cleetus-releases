@@ -315,3 +315,46 @@ from discovery. Existing pairings and the certificate stay intact; missing or
 incompatible identity material requires review. Only the actual approved route
 is advertised. Managed Relay remains a separate private-preview capability;
 the public base CLI does not contain Native RTC.
+
+## Workspace activity metadata
+
+Local activity and organization reporting have separate controls. Both start off.
+Local activity keeps a bounded metadata history in application memory:
+
+```sh
+cleetus observation status --workspace /absolute/project
+cleetus observation on --workspace /absolute/project
+cleetus observation off --workspace /absolute/project
+```
+
+Compatible hosts also expose **Workspace metadata export** in the TUI:
+
+```sh
+cleetus observation-export setup --workspace /absolute/project
+cleetus observation-export status --workspace /absolute/project
+cleetus observation-export refresh --workspace /absolute/project
+cleetus observation-export disable --workspace /absolute/project
+```
+
+These commands attach to an existing host. Setup and refresh require an attached
+terminal for a separate local consent review. Setup offers organization and
+workspace names; it does not ask you to paste IDs. Organization approval is also
+required. Restarting the host requires **refresh** and another local resume
+review within the existing consent period. Status and disable work without an
+interactive terminal. Add `--json` for machine-readable results; use
+`observation-export security` only when inspecting advanced security bindings.
+
+Export requires a compatible trusted host component, current Cleetus sign-in,
+an existing approved installation key, organization metadata permission and the
+server collection switch. A plain host without that signer reports unavailable.
+Setup does not create keys or enable Remote. Use the normal installation-key
+approval flow; local activity consent never authorizes reporting.
+
+Reporting contains future turn status, permission outcomes, partial usage and
+owned-worker lifecycle metadata. It excludes prompts, outputs, tool inputs,
+file paths and hidden reasoning. Queued metadata is encrypted and bounded;
+server retention is 24 hours. Consent lasts at most 24 hours. Status distinguishes
+reporting, waiting for approval, paused and unknown receipts. An unknown receipt
+does not trigger a resend. Disable stops local capture immediately and erases its
+pending queue; **Stopping** or **Receipt unknown** means cleanup or server
+revocation still needs confirmation. Signing out does not prevent local cleanup.

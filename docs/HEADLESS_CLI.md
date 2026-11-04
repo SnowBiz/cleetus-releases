@@ -90,3 +90,20 @@ Attached account sign-in and Simulator pairing have separate host acceptance.
 macOS CLI remains a preview; provider/model and physical-phone acceptance are
 separate from these installation checks. The cask was audited and its signed
 installer inspected without replacing an existing app.
+
+## Optional workspace metadata
+
+The running host keeps local activity and organization export off until separate
+reviews. Attach a terminal and use `cleetus observation on` for local memory-only
+metadata, or `cleetus observation-export setup` for the named organization and
+workspace picker on a compatible host. Export also needs current sign-in, an
+existing approved installation key, organization permission, server collection
+and browser organization approval. Setup never enables Remote or creates a key.
+
+`cleetus observation-export status --json` reads host-local status. After a host
+restart, `cleetus observation-export refresh` needs an attached terminal and a
+fresh local resume review within the existing consent period. Use
+`cleetus observation-export disable` without an interactive terminal to stop
+capture and erase the scoped pending queue. A stopping or unknown state requires
+review; it is not confirmation that the server revoked its grant. See the
+[CLI guide](CLI.md#workspace-activity-metadata) for boundaries and commands.

@@ -60,3 +60,7 @@ Cleetus is an agentic development environment: a Code - OSS editor with Claude a
 New here? [Install Cleetus](INSTALL.md), then take the [IDE tour](IDE.md). Stuck? See [troubleshooting](TROUBLESHOOTING.md). Licensing is in [licenses](LICENSES.md).
 
 These guides are also published at [cleetus.dev](https://cleetus.dev/docs/). The native captures show an isolated CleetusGuide01 sample project with ready, unstarted members; no providers were started for them, and they don't demonstrate live account work or a physical two-computer LAN session.
+
+## Activity and organization reporting
+
+[Activity & diagnostics](OBSERVABILITY.md) explains local metadata, separate organization consent, installation approval, retention and reporting controls. Availability depends on your installed release and organization policy.
