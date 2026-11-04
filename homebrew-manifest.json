@@ -2,10 +2,10 @@
   "version": 1,
   "products": {
     "cli": {
-      "version": "0.2.3",
-      "tag": "cli-v0.2.3",
-      "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.3/cleetus-cli-0.2.3.tgz",
-      "sha256": "2dd30e9e12f0449ee45ba6c0df8551dde38e5b328983cc2704601f9a70264b69",
+      "version": "0.2.5",
+      "tag": "cli-v0.2.5",
+      "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.5/cleetus-cli-0.2.5.tgz",
+      "sha256": "f584397b920e10f208b4a5d09f77a8344ef9ca9895c729015438ba040380222e",
       "setupHelperSHA256": "450790f60ffee6ac6082faaea19c957afe7594d7aa905e55a41c2a3fb1efdf6c"
     },
     "ide": {
@@ -16,7 +16,7 @@
     }
   },
   "files": {
-    "Formula/cleetus-cli.rb": "8ff3c3edf96002d2ece7052cc448e84480490213b12d4fdbc07010af71d03d77",
+    "Formula/cleetus-cli.rb": "f534e6f06141e8b88fdb6c634b881322290a67e152badfa1890ca4837d67562a",
     "Casks/cleetus.rb": "ab4fd7cce36c27b42419fd04d3958bd4d93a4b1290a0cdc0a791f68f7df96073"
   }
 }
