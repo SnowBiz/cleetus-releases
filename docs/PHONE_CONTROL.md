@@ -67,6 +67,50 @@ Pair only a device you trust with the work in this window.
 - A retry is a new explicit request. Saved image metadata cannot silently recreate
   missing image input; choose replacement input through a supported desktop flow.
 
+## Choose where phone reviews appear
+
+Pairing does not automatically send initial agent, team or task reviews to your
+phone. This setup flow requires extension 1.12.9 or an IDE 0.2.7 build that includes
+**Phone review setup & status**. Extension and IDE updates are released
+independently; check the installed host version if the entry is missing. Setup
+requires a listening Phone Control host, a v2
+paired phone, an opened project and working local host approval.
+
+1. On the host, run **Cleetus: Phone Control**, then choose **Phone review setup &
+   status**. **Saved review setup** is a read-only inspection; **Why a phone Inbox
+   can be empty** explains any missing prerequisite.
+2. Choose **Configure one phone and project…**. Select the exact paired-phone ID
+   and one opened project. Check the ID rather than assuming that the newest or
+   similarly named device is the intended phone.
+3. Select only the required kinds: an initial conversation, a published-role
+   conversation, template-team creation, a configured-team start, a team
+   conversation turn or a task start. Available kinds come from the host. Other
+   phone/project scopes are retained.
+4. Choose **Review this complete policy locally on the host**. This opens a
+   mandatory local review of the full phone, project and action-kind policy.
+   Inspect every scope and allow it only if it matches your choices. The setup
+   policy itself cannot be approved from the phone.
+5. Wait for confirmed save/readback, then inspect **Saved review setup**. Cancel,
+   denial, unavailable approval or an unconfirmed save must not be treated as
+   enabled phone review access.
+
+This grants access to review the listed actions, not permission to execute them
+automatically. Every later action still needs its own exact review. Provider
+sign-in, provider-native permission and operating-system consent remain on the
+host. A headless host uses its normal [local review configuration](HEADLESS_CLI.md);
+this guided picker belongs to an editor window.
+
+The save is bound to the policy revision you reviewed. If another window changes
+or revokes scopes before the save completes, the stale save is refused rather
+than overwriting that change. Reopen the setup and inspect the current records.
+Phone revocation, listener changes or a changed/replaced opened project can also
+invalidate a selection or pending review. If a save's outcome is uncertain,
+inspect the saved policy before requesting another change.
+
+An empty phone Inbox is not proof that a start succeeded, failed or is waiting
+for phone approval. A review may still be local, may have expired, or may not
+have been created. Check the original action receipt and the host's actual work.
+
 ## Disable, revoke and reconnect
 
 Run **Cleetus: Phone Control** again to disable the listener or revoke a paired
@@ -108,6 +152,17 @@ locally saved certificate fingerprint are checked before pairing authentication.
 Older clients retain their original verification behavior and need an update to
 use these routes.
 
+**Synced hosts** is your account directory, separate from this phone's saved
+pairings. A Linux host can appear there before it is paired on this iPhone. Its
+account row or discovery report does not establish local trust, online status or
+execution permission. Follow the normal pairing/identity review before controlling
+it; never import trust merely because an address came from your account.
+
+If an expected host is missing, check whether the account and directory are
+verified, cached or unavailable. An unavailable directory is not an empty verified
+list. On the host, check the approved listener and published route. Keep existing
+pairings while investigating; removing them does not repair account discovery.
+
 If an approved interface disappears, the host withdraws its routes rather than
 advertising another interface without permission. When that same approved
 interface returns, it publishes the new route. A silent notification asks the
@@ -134,6 +189,28 @@ Disable, unpair or notification revocation stops further local admissions; an
 already admitted or queued generic alert may still arrive. Account engine-change
 notifications use a separate account-service path.
 
+## Direct routes and optional Remote fallback
+
+With automatic reconnection enabled, compatible phone clients try the trusted
+direct LAN or VPN route first, then may use a separately configured Remote route.
+Keep these checks separate:
+
+- **Account eligibility and allowance:** the account service may permit managed
+  Relay use within its current allowance. This does not enable a host runtime or
+  approve any device or workspace.
+- **Local Remote runtime:** Remote must be explicitly enabled on the host. A
+  ready/listening status means it can receive connection signaling; it does not
+  establish a connected peer or successful RPC.
+- **Device and action authority:** approve the exact installation identities and
+  separately review the device pairing and exact workspace/action grant. Direct
+  Phone Control pairing alone does not grant Remote access.
+
+A disabled local runtime, unavailable account service, exhausted allowance or
+missing grant can each prevent fallback. Remote transport may negotiate a direct
+peer path or a managed Relay path; a ready indicator is not proof that Relay was
+used. Check the actual connection result. Do not change identities, revoke a
+working pairing or broaden grants merely to clear a connection error.
+
 ## Recovery and limits
 
 Every command has an operation ID and sequence. Cleetus writes a durable intent
@@ -142,6 +219,30 @@ a pending receipt while the Mac waits for a local approval. Wait for that review
 and read the same operation's outcome; closing the phone does not undo Mac work. After interruption or a
 lost response, inspect the operation and actual work on the Mac. **Unknown** means
 reconcile the outcome; it never means automatically repeat the command.
+
+Compatible clients can show negotiated lifecycle facts for an asynchronous agent
+start. Older clients and historical receipts may have less detail.
+
+| Lifecycle fact | What it establishes |
+| --- | --- |
+| Admitted | The host recorded the request. This is not proof that an agent started. |
+| Awaiting native approval | The initial review is waiting in the host's native approval flow. Check that host. |
+| Awaiting phone review | The host actually created an eligible phone review. Open the phone Inbox and inspect its exact content. |
+| Starting | The initial review passed, but the start outcome is not yet confirmed. |
+| Applied / started | The host confirmed the start was applied. Inspect the actual session or task for subsequent progress. |
+| Proven rejection before start | A trusted initial review proved that execution did not start, for example because approval was declined, expired, unavailable or cancelled. |
+| Unknown | Execution cannot be established. Read the original receipt and inspect the host; never replay it automatically. |
+
+An interrupted admission or later exception does not prove rejection. New
+lifecycle detail cannot retroactively turn a historical unknown receipt into a
+safe retry, and an approval is not proof that an engine produced a response.
+
+Phone clients with compact contextual status link to connection/action details.
+**Read original action receipt** reads the same operation on its original
+host; reconnect to that host if needed. **Stop waiting on this phone** only stops
+the local wait and does not cancel or undo host work. Confirm that you inspected
+an uncertain outcome only after checking it on the host. An unknown receipt stays
+available in the Inbox/details even when there is no phone approval card.
 
 Snapshots, transcript pages, pending reviews, connections and the operation
 journal are bounded. Missing information is not proof of success. A full journal,
