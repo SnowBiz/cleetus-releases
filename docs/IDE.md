@@ -18,30 +18,31 @@ Open [cleetus.dev](https://cleetus.dev/) and choose **Sign in** in the header.
 After signing in, your account portal provides **Launch in browser**. You can
 also open [the browser workbench](https://cleetus.dev/ide/) directly.
 
-The currently deployed 0.1.0 preview provides Herd, Plan, Design and Code views,
-an in-browser Code - OSS editor, file import, explicit **Save copy**, and a
-constrained HTML preview. Scratch files stay in the current tab until you save
-a copy. Save important work before closing or refreshing the tab.
+The deployed **0.2.0 browser preview** provides Herd, Plan, Design and Code
+views, an in-browser Code - OSS editor, file import, explicit **Save copy**, a
+constrained HTML preview and permission-based local folders in supported
+browsers. Scratch files and unsaved changes stay in the current tab; save
+important work before closing or refreshing it.
 
-Browser editing runs on your device. Running an agent or host tool requires a
-separately configured, authorized Cleetus development host; signing in to the
-website alone does not grant access to a computer. The current preview can show
-**Account connection unavailable** while that browser connection service is not
-configured. This does not mean your website account or membership is invalid.
-Provider credentials and execution remain on the development host.
+Open **Account → Sign in** inside the workbench to connect its separate browser
+session. Sign-in opens a new window and preserves the original tab’s unsaved
+work. Allow that sign-in window if your browser blocks it. Your organization’s
+managed browser settings apply after sign-in and can restrict local folder
+read/write, GitHub repositories and exports. The browser asks permission before
+opening or saving files in a local directory; importing a file and **Save copy**
+remain the supported alternatives where folder access is unavailable.
 
-The reviewed 0.2.0 candidate adds **Account → Sign in**, organization-managed
-browser settings and permission-based local folders in supported browsers.
-Sign-in uses a separate window and preserves the original tab’s unsaved work.
-These features become available when that independent preview is published and
-its account service is enabled; account sign-in alone still does not start a
-remote agent. Browser support and organization restrictions can limit local
-folder read/write, repository access and exports.
+Browser editing runs on your device. **Remote agent execution and the live
+GitHub repository connection remain unavailable in this preview.** Those services
+need their own configured and authorized connection; signing in alone does not
+grant access to a computer or start an agent. Provider credentials and execution
+remain on the development host. A host connection being unavailable does not
+mean your Cleetus account or membership is invalid.
 
 The browser preview is separate from the native IDE and the maintained VS Code
 extension. Available connections and folder capabilities depend on the deployed
 preview version, browser permissions and any effective organization policy.
-See its [independent release notes](https://github.com/SnowBiz/cleetus-releases/releases/tag/web-v0.1.0)
+See its [independent release notes](https://github.com/SnowBiz/cleetus-releases/releases/tag/web-v0.2.0)
 for the accepted preview scope.
 
 Choose current release notes describing the native Claude Code flow. Older SDK subscription-flow builds
