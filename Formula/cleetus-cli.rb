@@ -30,6 +30,14 @@ class CleetusCli < Formula
     depends_on "libsecret"
   end
 
+  def skip_clean?(path)
+    if OS.linux? && Hardware::CPU.intel?
+      return false if path.each_filename.any? { |part| part == "." || part == ".." }
+      return true if prefix.directory? && path == prefix.realpath/"libexec/linux-host"
+    end
+    super
+  end
+
   def install
     ENV.prepend_path "PATH", formula_opt_bin("node@22")
     node_version = Utils.safe_popen_read("node", "--version")
