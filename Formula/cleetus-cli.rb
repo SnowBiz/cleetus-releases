@@ -7,6 +7,7 @@ class CleetusCli < Formula
 
   on_linux do
     on_intel do
+      skip_clean "libexec/linux-host"
       resource "cleetus-linux-host-preview" do
         url "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.6/cleetus-cli-linux-host-preview-0.2.6.tar.gz"
         sha256 "6b165966e26a7277a032144d2bfee3b5d0d49fd18e3e462413b1ad57ca9ae044"
