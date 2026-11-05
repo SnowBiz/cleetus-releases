@@ -69,6 +69,28 @@ service. It does not use your Cleetus, Linux or provider password. Profile,
 pairing identity and keyring data persist across restarts. Root and the selected
 OS user remain in the local trust boundary; this is not full-disk encryption.
 
+## Linux Host Preview and Remote fallback
+
+When a release includes the separate Linux Host Preview companion, the same
+Homebrew formula selects it on Linux x86_64. The Apache CLI archive remains an
+independent product; installing that base alone does not provide Remote fallback.
+The companion has its own Preview License and uses a pinned sandboxed browser
+resource downloaded directly from the official Playwright CDN. It does not use
+an arbitrary browser path, a user browser cache or an unsandboxed fallback.
+
+Upgrading Brew does not change a running protected service. To update an existing
+host, run `cleetus setup --workspace /absolute/project` in an attached terminal.
+The Preview wizard first reviews staging a new verified root-owned version, then
+asks separately to stop, update and start the existing host. Its user, workspace,
+profile, data directory and encrypted keyring credential stay in place. The
+wizard refuses to repeat an administrator action with an unknown acknowledgement.
+
+Remote remains off until its normal owner review, current account/device
+approval and exact phone scope permit it. A successful install is not evidence
+of an authenticated Relay connection. The Preview distribution requires its own
+release and controlled installation acceptance; earlier base-CLI validation does
+not establish that acceptance.
+
 ## Updates and recovery
 
 Do not replace files in a running installation or delete receipts to retry an

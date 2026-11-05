@@ -9,6 +9,7 @@ Cleetus is an agentic development environment: a Code - OSS editor with Claude a
 | [Cleetus account](ACCOUNTS.md) | Sign in, manage membership and understand verified features |
 | [Membership and saved settings](MEMBERSHIP.md) | Candidate Scout, Wrangler and Foreman resources, access checks and nonsecret cloud preferences |
 | [Install and update](INSTALL.md) | Install the Apple Silicon IDE or a verified VSIX, set up separate engines, and update |
+| [Personal account-host setup](ACCOUNT_HOST.md) | Candidate one-owner passkey enrollment, exact local review, status and offline stop; browser execution transport unavailable |
 | [Cleetus CLI](CLI.md) | Terminal workspace, Linux headless host, installation, secure storage and service operations |
 | [Cleetus IDE and Studio](IDE.md) | Native editor and Studio, goals/tasks, teams, workflow runs, owned worktrees and Design |
 | [Workspace and conversations](GUIDE.md) | Chat, history, review, navigation, models and effort |

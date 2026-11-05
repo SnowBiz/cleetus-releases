@@ -368,3 +368,13 @@ reporting, waiting for approval, paused and unknown receipts. An unknown receipt
 does not trigger a resend. Disable stops local capture immediately and erases its
 pending queue; **Stopping** or **Receipt unknown** means cleanup or server
 revocation still needs confirmation. Signing out does not prevent local cleanup.
+
+## Personal account-host candidate
+
+Builds containing `cleetus account-host setup|status|refresh|disable` can enroll
+one personal host through separate key and passkey reviews. Commands attach to
+the running host; setup and refresh require an interactive terminal. Browser
+execution transport and additional-user isolation are unavailable in this slice.
+See [Personal account-host setup](ACCOUNT_HOST.md) for the exact workflow and
+unknown-outcome recovery limits. This does not enable phone, reporting or Relay
+authority.
