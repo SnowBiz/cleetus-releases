@@ -1,9 +1,22 @@
 class CleetusCli < Formula
   desc "Terminal workspace and headless host for your own coding agents"
   homepage "https://cleetus.app/"
-  url "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.5/cleetus-cli-0.2.5.tgz"
-  sha256 "f584397b920e10f208b4a5d09f77a8344ef9ca9895c729015438ba040380222e"
-  license "Apache-2.0"
+  url "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.6/cleetus-cli-0.2.6.tgz"
+  sha256 "d1110fb066afd2fb9f9a22b5f83ae67c25a1b4b9dc7d30cd47deb0cc58661321"
+  license all_of: ["Apache-2.0", :cannot_represent]
+
+  on_linux do
+    on_intel do
+      resource "cleetus-linux-host-preview" do
+        url "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.6/cleetus-cli-linux-host-preview-0.2.6.tar.gz"
+        sha256 "6b165966e26a7277a032144d2bfee3b5d0d49fd18e3e462413b1ad57ca9ae044"
+      end
+      resource "cleetus-linux-browser" do
+        url "https://cdn.playwright.dev/builds/cft/156.0.8078.4/linux64/chrome-linux64.zip"
+        sha256 "43fd31766c7533a02dda2ded5ad50c2f861cd5400be7509c0abad71129f79d79"
+      end
+    end
+  end
 
   depends_on "node@22"
   depends_on "openssl@3"
@@ -35,8 +48,8 @@ class CleetusCli < Formula
       distribution: "homebrew",
       pins:         {
         version:       version.to_s,
-        archiveSHA256: "f584397b920e10f208b4a5d09f77a8344ef9ca9895c729015438ba040380222e",
-        helperSHA256:  "450790f60ffee6ac6082faaea19c957afe7594d7aa905e55a41c2a3fb1efdf6c",
+        archiveSHA256: "d1110fb066afd2fb9f9a22b5f83ae67c25a1b4b9dc7d30cd47deb0cc58661321",
+        helperSHA256:  "7875ff37e54494a5722d490e62ab325937f82ccbe38b81ef75ad38e96b2c47ba",
       },
     )
     if OS.linux?
@@ -52,22 +65,41 @@ class CleetusCli < Formula
         version: 1, distribution: "homebrew", prefix: HOMEBREW_PREFIX.to_s, tools: tools,
       )
     end
+    entry = libexec/"bin/cleetus"
+    if OS.linux? && Hardware::CPU.intel?
+      resource("cleetus-linux-host-preview").stage { (libexec/"linux-host").install Dir["*"] }
+      resource("cleetus-linux-browser").stage { (libexec/"linux-host/browser").install Dir["*"] }
+      (libexec/"linux-host").find do |file|
+        odie "Linked Preview resource denied" if file.symlink?
+        mode = file.directory? || (file.stat.mode & 0111).positive? ? 0755 : 0644
+        chmod mode, file
+      end
+      cp libexec/"cleetus-homebrew.json", libexec/"linux-host/base/cleetus-homebrew.json"
+      host_setup = JSON.parse((libexec/"cleetus-setup.json").read)
+      host_setup["version"] = 2
+      host_setup["pins"].merge!({"hostArchiveSHA256" => "6b165966e26a7277a032144d2bfee3b5d0d49fd18e3e462413b1ad57ca9ae044", "hostManifestSHA256" => "54defeb4feac57a6c988ffe41f05765d1adf7afcc2ae32245b86189a71723802", "browserManifestSHA256" => "8f4aa809bc414bbddebde4c86935e027fc785ab8438150b1a6d9ac4f37600220"})
+      (libexec/"linux-host/base/cleetus-setup.json").write JSON.generate(host_setup)
+      entry = libexec/"linux-host/cleetus-host.mjs"
+      system formula_opt_bin("node@22")/"node", entry, "--version"
+    end
     runtime_path = [
       formula_opt_bin("node@22"), formula_opt_bin("openssl@3"), formula_opt_bin("tmux"), "$PATH"
     ].join(File::PATH_SEPARATOR)
-    (bin/"cleetus").write_env_script libexec/"bin/cleetus", PATH: runtime_path
+    (bin/"cleetus").write_env_script entry, PATH: runtime_path
   end
 
   def caveats
     <<~EOS
-      Coding agents, model servers and browser binaries are installed separately.
+      Linux x86_64 includes the separate Cleetus Linux Host Preview and a pinned browser.
+      Other platforms use the independent Apache CLI. Coding agents install separately.
+      Remote stays off until explicit enablement and normal account/key approval.
       Sign-in, phone/LAN access and headless services require explicit setup.
       On Linux, OS Secret Service/D-Bus prerequisites are required for credentials.
     EOS
   end
 
   test do
-    assert_equal "Cleetus CLI 0.2.5", shell_output("#{bin}/cleetus --version").strip
+    assert_match "0.2.6", shell_output("#{bin}/cleetus --version").strip
     assert_match "Cleetus", shell_output("#{bin}/cleetus --help")
     roles = JSON.parse(shell_output("#{bin}/cleetus roles --json"))
     assert_equal 54, roles.fetch("roleCatalog").length
