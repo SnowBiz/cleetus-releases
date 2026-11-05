@@ -75,10 +75,12 @@ class CleetusCli < Formula
         chmod mode, file
       end
       cp libexec/"cleetus-homebrew.json", libexec/"linux-host/base/cleetus-homebrew.json"
+      chmod 0644, libexec/"linux-host/base/cleetus-homebrew.json"
       host_setup = JSON.parse((libexec/"cleetus-setup.json").read)
       host_setup["version"] = 2
       host_setup["pins"].merge!({"hostArchiveSHA256" => "6b165966e26a7277a032144d2bfee3b5d0d49fd18e3e462413b1ad57ca9ae044", "hostManifestSHA256" => "54defeb4feac57a6c988ffe41f05765d1adf7afcc2ae32245b86189a71723802", "browserManifestSHA256" => "8f4aa809bc414bbddebde4c86935e027fc785ab8438150b1a6d9ac4f37600220"})
       (libexec/"linux-host/base/cleetus-setup.json").write JSON.generate(host_setup)
+      chmod 0644, libexec/"linux-host/base/cleetus-setup.json"
       entry = libexec/"linux-host/cleetus-host.mjs"
       system formula_opt_bin("node@22")/"node", entry, "--version"
     end

@@ -29,7 +29,7 @@
     }
   },
   "files": {
-    "Formula/cleetus-cli.rb": "7f0d3c4e318b3e56c925172ee699bf9c30e44e4dbf40c25bbf48c147b8250d18",
+    "Formula/cleetus-cli.rb": "601e3e80fdb79290683c59323db6329716a53ddf1e109fa473ad0a10f9b4ae7d",
     "Casks/cleetus.rb": "61730187c2e803bd09efe94113c7b5eb7ed43b0116a5a9522cef136fcecaa1ab"
   }
 }
