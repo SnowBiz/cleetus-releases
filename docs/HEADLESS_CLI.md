@@ -42,6 +42,14 @@ To reuse the host's existing Codex account, use the local **Codex account** menu
 and review its native profile. Settings, instructions, plugins and MCP servers
 may be loaded from that profile. See [Codex account selection](CLI.md#choose-the-codex-account-for-new-conversations).
 
+## Connect from the browser or current iPhone preview
+
+For the newer registered-computer route, use [account-host setup](ACCOUNT_HOST.md).
+It requires an explicitly reviewed registration and workspace assignment;
+installing this service or signing in does not grant remote access. Current
+registered-computer connections use direct WebRTC. Existing Phone control and
+Remote/Relay remain separate connection paths with their own capabilities.
+
 ## Let your trusted device reach the host
 
 On Linux, open **iPhone pairing and control → Linux discovery setup and network

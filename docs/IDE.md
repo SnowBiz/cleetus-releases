@@ -18,32 +18,40 @@ Open [cleetus.dev](https://cleetus.dev/) and choose **Sign in** in the header.
 After signing in, your account portal provides **Launch in browser**. You can
 also open [the browser workbench](https://cleetus.dev/ide/) directly.
 
-The deployed **0.2.0 browser preview** provides Herd, Plan, Design and Code
-views, an in-browser Code - OSS editor, file import, explicit **Save copy**, a
-constrained HTML preview and permission-based local folders in supported
-browsers. Scratch files and unsaved changes stay in the current tab; save
-important work before closing or refreshing it.
+The deployed **0.3.0 browser preview** opens with Cleetus sign-in and provides
+Herd, Plan, Design and Code views. It includes an in-browser Code - OSS editor,
+file import, explicit **Save copy**, a constrained HTML preview and
+permission-based local folders in supported browsers. Scratch files and unsaved
+changes stay in the current tab; save important work before closing or refreshing.
 
-Open **Account → Sign in** inside the workbench to connect its separate browser
-session. Sign-in opens a new window and preserves the original tab’s unsaved
-work. Allow that sign-in window if your browser blocks it. Your organization’s
-managed browser settings apply after sign-in and can restrict local folder
-read/write, GitHub repositories and exports. The browser asks permission before
-opening or saving files in a local directory; importing a file and **Save copy**
-remain the supported alternatives where folder access is unavailable.
+The workbench has a separate browser account session. Sign-in opens a new
+window; allow that window if your browser blocks it. Your organization's managed
+browser settings can restrict local folder access, GitHub repository drafts and
+exports. A browser asks permission before using a local directory. File import
+and **Save copy** remain alternatives when folder access is unavailable.
 
-Browser editing runs on your device. **Remote agent execution and the live
-GitHub repository connection remain unavailable in this preview.** Those services
-need their own configured and authorized connection; signing in alone does not
-grant access to a computer or start an agent. Provider credentials and execution
-remain on the development host. A host connection being unavailable does not
-mean your Cleetus account or membership is invalid.
+Browser editing runs on your device. To run an agent, register a compatible
+Cleetus development host, explicitly enable its remote access and approve the
+workspace and allowed actions. You can then select an authorized computer in the
+workbench and prepare a scoped role launch. Sign-in or a saved computer entry
+alone is not permission to execute, nor proof that the computer is reachable.
+Provider credentials, native consent and execution remain on that host.
 
-The browser preview is separate from the native IDE and the maintained VS Code
-extension. Available connections and folder capabilities depend on the deployed
-preview version, browser permissions and any effective organization policy.
-See its [independent release notes](https://github.com/SnowBiz/cleetus-releases/releases/tag/web-v0.2.0)
-for the accepted preview scope.
+The registered-computer connection currently uses encrypted direct WebRTC.
+Supported status and transcript snapshots refresh about every three seconds
+while active; continuous token streaming is not offered. Team chat and paid
+Relay remain on the existing Phone control and Remote paths and are not yet
+available on the registered-computer route. A host must advertise the required
+capability in an accepted build. An unavailable connection does not mean your
+website account or membership is invalid. Reconnect reads the state of an
+uncertain action instead of automatically sending it again.
+
+The browser preview has its own release channel, separate from the native IDE,
+CLI and maintained VS Code extension. Available connections, folder features and
+repository drafts depend on the deployed version, browser permissions and
+managed policy. See the [Web 0.3.0 release notes](https://github.com/SnowBiz/cleetus-releases/releases/tag/web-v0.3.0)
+and [product guide](https://cleetus.dev/docs/products/) for the current scope. Organization
+multi-user execution, SSO and SCIM are not generally available.
 
 Choose current release notes describing the native Claude Code flow. Older SDK subscription-flow builds
 are retired from the recommended setup path. See [installation](INSTALL.md) for

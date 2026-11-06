@@ -1,5 +1,12 @@
 # Phone control
 
+This guide describes the earlier Phone control pairing route. Current internal
+iPhone builds can also use a compatible [registered computer](ACCOUNT_HOST.md).
+That newer direct WebRTC route uses supported status/transcript snapshots and
+does not yet include this route's team chat or paid Relay. Follow the guide for
+the connection you selected; permissions and capabilities do not transfer
+between them automatically.
+
 Phone control connects a compatible Cleetus phone client to a running Cleetus
 host on macOS or Linux. It is optional and off until you enable it. Desktop-to-
 desktop [agent collaboration](COLLABORATION.md) is a separate paired workflow;

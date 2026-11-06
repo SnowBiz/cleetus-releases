@@ -1,87 +1,109 @@
-# Personal account-host setup
+# Connect a registered computer
 
-This development candidate adds explicit personal host enrollment to the CLI.
-**Browser execution transport is not connected in this build.** Completing setup
-does not make the browser editor able to run agents yet. Availability also
-requires the corresponding server feature to be enabled; a local build does not
-enable it. This is separate from existing [phone control](PHONE_CONTROL.md),
-Relay and [metadata reporting](OBSERVABILITY.md).
+Use a compatible published Cleetus host to connect from the browser workbench or
+the invitation-only iPhone companion. Remote access starts off. Account sign-in,
+host registration, a workspace assignment and an authenticated connection are
+separate steps; a saved computer entry is not permission to execute.
 
-The current runtime supports one personal owner. Additional people and
-organization execution are unavailable. A second process running as the same
-OS user does not provide multiuser isolation.
+The supported Linux x64 path uses the published CLI and its separately licensed
+Linux Host Preview. Choose a Mac IDE release whose notes explicitly advertise
+the required connection; a phone or browser update does not upgrade an older
+host. Existing [Phone control pairing](PHONE_CONTROL.md), Remote/Relay and
+[metadata reporting](OBSERVABILITY.md) retain their own setup and permissions.
 
-## Start a pending enrollment
+## Review and save a host
 
-Use a supported host with secure credentials, a running Cleetus host and normal
-Cleetus account sign-in. These commands attach to that existing host; they do not
-install a service or open a new network listener.
+First install and start your existing supported host, prepare its secure
+credential store, and sign in to Cleetus. Coding agents still require their own
+installation and native sign-in. Use an attached owner terminal, including a
+normal SSH terminal, for local trust review.
 
 ```sh
 cleetus signin
 cleetus account-host setup --workspace /absolute/project
+cleetus account-host trust-setup --workspace /absolute/project
 ```
 
-Setup requires an interactive terminal, including a normal SSH terminal. Choose
-a public host label, a public workspace label, and read-only access or agent
-start/stop access. Labels are shown to your signed-in account; do not put private
-paths or secrets in them. The TUI also has **Personal account-host · separate
-passkey trust**.
+Follow the local prompts. Choose nonsecret host and workspace labels; never put
+private paths or secrets in public labels. Review the host identity, account,
+workspace and maximum allowed actions before saving. If an earlier pending
+personal enrollment already exists, inspect it with `status` and `refresh`
+instead of replacing it. The existing TUI has the same account-host controls.
 
-Review creation of a separate host-purpose key and the exact pending enrollment.
-The key stays in this host profile's secure credential store. This step grants no
-execution authority and does not reuse a reporting key, phone pairing or Relay
-grant. Setup displays the fixed signed-in platform site and enrollment request.
+The saved registration uses a separate host-purpose key in the software secure
+credential store. It does not reuse phone pairing, Relay or reporting authority.
+This is software-key identity, not hardware attestation or proof that a host is
+unspoofable. The OS account and machine administrators remain in the host's trust
+boundary.
 
-Sign in at the displayed `/ide/` site and use its pending-host passkey flow when
-that deployment offers it. Website sign-in alone cannot trust the passkey for
-this host. Synced passkeys and cross-device passkey authentication are distinct
-from pairing every browser with a phone.
+Choose **My personal account** for personal host access. An organization scope
+requires current administrator authority and the separately supported tenant
+execution boundary. Selecting an organization is not evidence of multiuser
+isolation; shared organization execution is not generally available.
 
-## Review the exact passkey and workspace
+## Assign, then connect
 
-After creating the pending passkey, run:
+Open your signed-in Cleetus account's computer settings. Review the personal
+workspace assignment and allowed actions within the host's local ceiling. Then
+open [the browser workbench](https://cleetus.dev/ide/), or select a compatible
+registered computer in the current internal iPhone build, using the same account.
+Confirm an authenticated connected state before requesting work.
 
-```sh
-cleetus account-host refresh --workspace /absolute/project
-```
+Registration does not start a session or open a public listener. A current host,
+service enablement, approved build and reachable direct network path are still
+required. A host does not advertise native iPhone support merely because it can
+serve a browser. Missing or stale capability stays unavailable.
 
-The local review shows the account, complete passkey public-key fingerprint,
-credential hash, host fingerprint, public workspace label and allowed actions.
-Compare the full fingerprint and approve only the intended account and passkey.
-The review pins this passkey anchor to this physical workspace and personal host.
-Provider-native login and permission prompts remain local.
+The registered-computer route currently uses encrypted direct WebRTC. Supported
+status and transcript snapshots refresh about every three seconds while active.
+This is not continuous token streaming. Team chat and paid Relay are still on
+the earlier Phone control and Remote paths and are not yet migrated here.
 
-A finalized host checks current server authority before accepting a short-lived
-session. A positive acceptance response alone is insufficient: the host must
-confirm the exact signed lease through its own server sync. Lost responses are
-reconciled by status; unknown mutations and agent commands are never replayed.
+Review the selected role's complete prompt, engine, model, effort and workspace
+before a permitted launch. Provider-native and operating-system consent remain
+local. Missing approval capability denies protected actions. A launch being
+admitted is not proof that the requested task succeeded.
 
-## Status, stop and restart recovery
+## Status and safe recovery
 
 ```sh
 cleetus account-host status --workspace /absolute/project --json
+cleetus account-host trust-status --workspace /absolute/project --json
+cleetus account-host trust-sync --workspace /absolute/project
+```
+
+Status reads the existing local setup. Sync refreshes the current assignment;
+it does not replace an unknown operation. A saved computer that is offline or
+has no current authenticated session remains unavailable. Preserve the host key,
+profile, workspace and original action receipts across updates and restarts.
+
+For an uncertain registration result, read the original outcome:
+
+```sh
+cleetus account-host trust-reconcile --workspace /absolute/project
+```
+
+CLI 0.2.9 adds explicit recovery after the original pending enrollment is proven
+expired. Review a fifteen-minute extension, then separately review registration:
+
+```sh
+cleetus account-host trust-renew --workspace /absolute/project
+cleetus account-host trust-setup --workspace /absolute/project
+```
+
+If the renewal result is uncertain, use `trust-renew-reconcile` for that original
+request. An applied original receipt takes precedence. Each rejected original
+supports one applied renewal; this flow cannot reset an active registration or
+existing legacy grant. Do not delete state, create a replacement identity or
+repeat an unknown command to force progress.
+
+## Stop access
+
+```sh
 cleetus account-host disable --workspace /absolute/project
 ```
 
-Status is local and does not sign in or refresh credentials. After restart,
-`refresh` requires another exact local review before resuming the saved policy.
-An uncertain enrollment or finalization remains attached to its original request;
-`setup` does not silently replace it. Account switching hides the previous
-account's host details and stops its captured execution authority.
-
-Disable stops this host locally without waiting for the server. **Server host
-revocation is unavailable in this slice**; the command does not claim to revoke
-the server record or passkey. To resume the same saved setup, use `refresh` and
-review it again. A different owner or workspace enrollment, host policy editing,
-additional principals, file actions and browser execution remain separate work.
-Do not delete state or retry an unknown command to force progress.
-
-A new CLI sign-in can create a different device grant. The saved enrollment is
-bound to its original grant and cannot silently transfer to the new one. This
-candidate does not offer enrollment replacement or passkey recovery; a denied
-binding stays unavailable. Recent command receipts use a bounded cache while a durable admission cursor
-continues to reject old operations. An older outcome may become
-`retired-unknown`; that never permits replay. A new sequence is a new deliberate
-action, not recovery of an uncertain one. Storage faults pause admission for
-review instead of resetting command history.
+Disable stops this host's account access locally. Inspect the account's saved
+assignment and revocation controls separately; a local stop is not a claim that
+all server records or earlier phone pairings were revoked. Keep provider sign-in,
+phone pairing and other independent permissions separate when reviewing access.

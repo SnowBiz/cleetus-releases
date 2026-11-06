@@ -369,12 +369,17 @@ does not trigger a resend. Disable stops local capture immediately and erases it
 pending queue; **Stopping** or **Receipt unknown** means cleanup or server
 revocation still needs confirmation. Signing out does not prevent local cleanup.
 
-## Personal account-host candidate
+## Connect a registered computer
 
-Builds containing `cleetus account-host setup|status|refresh|disable` can enroll
-one personal host through separate key and passkey reviews. Commands attach to
-the running host; setup and refresh require an interactive terminal. Browser
-execution transport and additional-user isolation are unavailable in this slice.
-See [Personal account-host setup](ACCOUNT_HOST.md) for the exact workflow and
-unknown-outcome recovery limits. This does not enable phone, reporting or Relay
-authority.
+Current supported Linux x64 host releases can save an account registration for
+explicit browser and compatible internal iPhone access. Remote starts off.
+Host registration, workspace assignment, authenticated connection and protected
+run approval remain separate. Provider sign-in and native consent stay local.
+
+Use `cleetus account-host setup` and `trust-setup` in an attached owner terminal,
+then follow [registered-computer setup](ACCOUNT_HOST.md) for the exact review,
+connection-specific capabilities and CLI 0.2.9 expired-enrollment recovery. The
+registered-computer route currently uses direct WebRTC and supported snapshots;
+team chat and paid Relay remain on the earlier Phone control and Remote paths.
+Organization multi-user execution is not generally available. The Apache CLI
+package and separate Linux Host Preview keep their independent licenses.
