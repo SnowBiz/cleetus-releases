@@ -107,3 +107,54 @@ Inspect dispatch history next to the run it started. Disable or remove an automa
 | A workflow             | A repeatable multi-step plan with dependencies, a journal per run and optional automation |
 
 [Tasks](TASKS.md) · [Agent teams](TEAMS.md) · [Design](DESIGN.md)
+
+## Compose deterministic steps, agents and human review
+
+Choose **Build DAG** to add nodes, select an action from the live catalog, edit
+its JSON input and list dependency IDs. Inspect each action's owner, declared
+kind, contracts and retry declaration. **Advanced JSON** remains available.
+Saving is separate from execution and never starts a provider.
+
+The built-in `design-extract` uses the existing isolated Design service;
+`agent-task` creates an owned Core session with existing provider/tool approvals;
+`human-review` requests a separate host review of displayed dependency evidence.
+A human-review node does not accept task work, publish or authorize deployment.
+Missing or declined approval fails that node and blocks dependents.
+
+Enabled trusted plugins can add owner-namespaced actions to the same runtime and
+canvas. The saved node pins the owner's version, entry identity and contract
+revision. A missing or changed action must be reviewed and saved again before a
+new dispatch. An admitted run never substitutes a reloaded plugin handler.
+
+Typed outputs can supply top-level inputs through explicit bindings:
+
+```json
+{
+  "id": "agent",
+  "action": "agent-task",
+  "dependsOn": ["inspect"],
+  "input": {"engine":"codex", "prompt":"Verify the recorded source evidence."},
+  "inputFrom": {"title":{"step":"inspect", "path":["name"]}}
+}
+```
+
+Here `inspect` must be a declared dependency and its successful result must have
+`outputs.name`. Missing output paths fail before the dependent action executes.
+Agent dependency reports remain untrusted evidence, not instructions or proof.
+No event-payload interpolation or expression evaluator is introduced.
+
+An `agent-task` may also carry `catalogSelection` with the exact current
+`version`, `source`, `revision`, `definitionHash` and `roleID` from the agent
+library. Raw role-instruction overrides are rejected. Dispatch refreshes and
+resolves that reference, then requests a separate complete host review of the
+role instructions, task and execution choices before creating the owned session.
+A changed catalog or account fails the step; reload and review its reference
+before a separately approved run. The workflow definition retains the reference,
+not a copy of the resolved role instructions.
+
+Definitions with plugin revision pins or typed bindings use storage version 2.
+The first such save preserves the version-1 definition bytes in a
+revision-named backup. Legacy-only definitions stay version 1 until that feature
+is used. Version-1 clients refuse newer storage; use a compatible client, and
+review the preserved backup before any deliberate rollback. Interrupted runs
+are never replayed by upgrading or restoring storage.
