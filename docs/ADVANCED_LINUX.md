@@ -271,3 +271,36 @@ For user units whose executable paths change, explicitly uninstall and reinstall
 the unit; uninstall preserves profile and trust data. For encrypted system units,
 use the update procedure above instead. Preserve uncertain operation receipts;
 read-only reconciliation and owner review must precede another mutation.
+
+## Recover an expired account host registration
+
+Use the current CLI and keep the same profile, workspace and host key. Never
+remove trust files or repeat an action whose outcome is unknown.
+
+```sh
+cleetus account-host trust-reconcile --workspace /absolute/project
+```
+
+If that returns the definitive `registration-expired` decision for an unregistered
+host, review a renewal of its pending enrollment in an attached terminal:
+
+```sh
+cleetus account-host trust-renew --workspace /absolute/project
+cleetus account-host trust-setup --workspace /absolute/project
+```
+
+Renewal keeps the existing host identity and workspace. It extends only the
+pending enrollment for fifteen minutes; the following registration has its own
+review and does not widen saved permissions. Enabled registrations and existing
+legacy grants cannot be renewed through this recovery path.
+
+If the renewal response is lost, read its original result:
+
+```sh
+cleetus account-host trust-renew-reconcile --workspace /absolute/project
+```
+
+An unknown result stays blocked. A definitive expired renewal can be followed by
+a new reviewed renewal. Each rejected registration can support only one applied
+renewal; old decisions cannot be reused to extend access repeatedly. Provider
+sign-in, operating-system consent and execution permissions remain separate.
