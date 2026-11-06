@@ -2,16 +2,16 @@
   "version": 1,
   "products": {
     "cli": {
-      "version": "0.2.6",
-      "tag": "cli-v0.2.6",
-      "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.6/cleetus-cli-0.2.6.tgz",
-      "sha256": "d1110fb066afd2fb9f9a22b5f83ae67c25a1b4b9dc7d30cd47deb0cc58661321",
+      "version": "0.2.7",
+      "tag": "cli-v0.2.7",
+      "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.7/cleetus-cli-0.2.7.tgz",
+      "sha256": "109faab0eb805330565bdb2dd166e90c2ec47947347820e8d077db9a5be2c878",
       "setupHelperSHA256": "7875ff37e54494a5722d490e62ab325937f82ccbe38b81ef75ad38e96b2c47ba",
       "linuxHost": {
         "version": 1,
-        "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.6/cleetus-cli-linux-host-preview-0.2.6.tar.gz",
-        "sha256": "6b165966e26a7277a032144d2bfee3b5d0d49fd18e3e462413b1ad57ca9ae044",
-        "hostManifestSHA256": "54defeb4feac57a6c988ffe41f05765d1adf7afcc2ae32245b86189a71723802",
+        "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.7/cleetus-cli-linux-host-preview-0.2.7.tar.gz",
+        "sha256": "1c939589a511c3b265d48c2e162928b3207a2074465236f7ad53bfe95d587522",
+        "hostManifestSHA256": "5d6445742fbce0ee19e1419dd28cca39a29f3fd1f4c6365ba600def94017aa42",
         "browserManifestSHA256": "8f4aa809bc414bbddebde4c86935e027fc785ab8438150b1a6d9ac4f37600220",
         "browser": {
           "url": "https://cdn.playwright.dev/builds/cft/156.0.8078.4/linux64/chrome-linux64.zip",
@@ -29,7 +29,7 @@
     }
   },
   "files": {
-    "Formula/cleetus-cli.rb": "7ea04820c423a93be4b71426f89427cd3da5fb21d8752c48fc71890f1d03022d",
+    "Formula/cleetus-cli.rb": "42f6ef440ec4ad5cebaab5a54dcdc2940b5770c9b346937f6af561d9c852ab14",
     "Casks/cleetus.rb": "61730187c2e803bd09efe94113c7b5eb7ed43b0116a5a9522cef136fcecaa1ab"
   }
 }
