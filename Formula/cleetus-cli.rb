@@ -1,16 +1,16 @@
 class CleetusCli < Formula
   desc "Terminal workspace and headless host for your own coding agents"
   homepage "https://cleetus.app/"
-  url "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.8/cleetus-cli-0.2.8.tgz"
-  sha256 "d2d0670feafa583d171e1329ddd97bde8e963b0a276c1caa54c789b4d7c235bd"
+  url "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.9/cleetus-cli-0.2.9.tgz"
+  sha256 "bdb0cc786d6d191e68d61718307ce5776f74615bd83fcb2f61de8bb16b390c0d"
   license all_of: ["Apache-2.0", :cannot_represent]
 
   on_linux do
     on_intel do
       skip_clean "libexec/linux-host"
       resource "cleetus-linux-host-preview" do
-        url "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.8/cleetus-cli-linux-host-preview-0.2.8.tar.gz"
-        sha256 "74c21951b41ed34b75cb6af2fc2b328caacbde28dda602b526c36020b72a81ba"
+        url "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.9/cleetus-cli-linux-host-preview-0.2.9.tar.gz"
+        sha256 "4df8ccbfed09cfb796c67ef55b90e19d12c1ed487cc85d77d58bba136caba2ad"
       end
       resource "cleetus-linux-browser" do
         url "https://cdn.playwright.dev/builds/cft/156.0.8078.4/linux64/chrome-linux64.zip"
@@ -57,7 +57,7 @@ class CleetusCli < Formula
       distribution: "homebrew",
       pins:         {
         version:       version.to_s,
-        archiveSHA256: "d2d0670feafa583d171e1329ddd97bde8e963b0a276c1caa54c789b4d7c235bd",
+        archiveSHA256: "bdb0cc786d6d191e68d61718307ce5776f74615bd83fcb2f61de8bb16b390c0d",
         helperSHA256:  "7875ff37e54494a5722d490e62ab325937f82ccbe38b81ef75ad38e96b2c47ba",
       },
     )
@@ -87,7 +87,7 @@ class CleetusCli < Formula
       chmod 0644, libexec/"linux-host/base/cleetus-homebrew.json"
       host_setup = JSON.parse((libexec/"cleetus-setup.json").read)
       host_setup["version"] = 2
-      host_setup["pins"].merge!({"hostArchiveSHA256" => "74c21951b41ed34b75cb6af2fc2b328caacbde28dda602b526c36020b72a81ba", "hostManifestSHA256" => "0c370b7b90d18d08ba1f748d2f9d578b07e95b87ba38a1e73adeba5952dd7c97", "browserManifestSHA256" => "8f4aa809bc414bbddebde4c86935e027fc785ab8438150b1a6d9ac4f37600220"})
+      host_setup["pins"].merge!({"hostArchiveSHA256" => "4df8ccbfed09cfb796c67ef55b90e19d12c1ed487cc85d77d58bba136caba2ad", "hostManifestSHA256" => "9ad0144e23af5b142d68894e13a75b6c1ca298becbef8cad92a16e35889260ee", "browserManifestSHA256" => "8f4aa809bc414bbddebde4c86935e027fc785ab8438150b1a6d9ac4f37600220"})
       (libexec/"linux-host/base/cleetus-setup.json").write JSON.generate(host_setup)
       chmod 0644, libexec/"linux-host/base/cleetus-setup.json"
       entry = libexec/"linux-host/cleetus-host.mjs"
@@ -110,7 +110,7 @@ class CleetusCli < Formula
   end
 
   test do
-    assert_match "0.2.8", shell_output("#{bin}/cleetus --version").strip
+    assert_match "0.2.9", shell_output("#{bin}/cleetus --version").strip
     assert_match "Cleetus", shell_output("#{bin}/cleetus --help")
     roles = JSON.parse(shell_output("#{bin}/cleetus roles --json"))
     assert_equal 54, roles.fetch("roleCatalog").length
