@@ -2,16 +2,16 @@
   "version": 1,
   "products": {
     "cli": {
-      "version": "0.2.10",
-      "tag": "cli-v0.2.10",
-      "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.10/cleetus-cli-0.2.10.tgz",
-      "sha256": "bf8b653e336e015a042c746a80a91d5fbead989593fbacd4a39c23a7e48dece0",
+      "version": "0.2.14",
+      "tag": "cli-v0.2.14",
+      "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.14/cleetus-cli-0.2.14.tgz",
+      "sha256": "6a7b77017792612c09fe686dea2018e275d758e46d8a42c227ebd2b5487c4906",
       "setupHelperSHA256": "7875ff37e54494a5722d490e62ab325937f82ccbe38b81ef75ad38e96b2c47ba",
       "linuxHost": {
         "version": 1,
-        "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.10/cleetus-cli-linux-host-preview-0.2.10.tar.gz",
-        "sha256": "75b6c30d8bd8a43ff9d38e90b6dcb9709e8b2c9cb5e4e3dfabf0ec875fd53e75",
-        "hostManifestSHA256": "6e8afaef56644f9336a60d1b2b620fb3c01ad281978302f0506b6fb40d34062f",
+        "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/cli-v0.2.14/cleetus-cli-linux-host-preview-0.2.14.tar.gz",
+        "sha256": "0502cfac1d68ee198858189c6f8f431f390d55f8c78143ecf850afa4a9293796",
+        "hostManifestSHA256": "5111ec2ce88bd67ed2e88efee2c7cce8f13aab5e5903fe66771522541f22f24c",
         "browserManifestSHA256": "8f4aa809bc414bbddebde4c86935e027fc785ab8438150b1a6d9ac4f37600220",
         "browser": {
           "url": "https://cdn.playwright.dev/builds/cft/156.0.8078.4/linux64/chrome-linux64.zip",
@@ -22,14 +22,14 @@
       }
     },
     "ide": {
-      "version": "0.2.7",
-      "tag": "ide-v0.2.7-macos-arm64",
-      "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.2.7-macos-arm64/cleetus-ide-0.2.7-macos-arm64.dmg",
-      "sha256": "ed8a711191170a74cc8502c2d8220ca0a914fb59742bbca069afec5b08558e29"
+      "version": "0.2.12",
+      "tag": "ide-v0.2.12-macos-arm64",
+      "url": "https://github.com/SnowBiz/cleetus-releases/releases/download/ide-v0.2.12-macos-arm64/cleetus-ide-0.2.12-macos-arm64.dmg",
+      "sha256": "dfdd776a539767b510a396691244754955c9ac12c65edb409d5e880ca135aae3"
     }
   },
   "files": {
-    "Formula/cleetus-cli.rb": "7f38e6d461e5b036c44c26393a37f843c1b84ad812e2c0106c2afcbd538b5961",
-    "Casks/cleetus.rb": "61730187c2e803bd09efe94113c7b5eb7ed43b0116a5a9522cef136fcecaa1ab"
+    "Formula/cleetus-cli.rb": "f2e827af2a8659b49542365e61c13510f8d2c8fa619fa39d09445cff3d7ea358",
+    "Casks/cleetus.rb": "c8e2ce6f868a9b5e1c28c0fd58bde243f61c27a0d902a79e4d4e9a3bed36a7ef"
   }
 }
