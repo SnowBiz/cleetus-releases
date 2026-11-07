@@ -190,7 +190,7 @@ Full guide: [Tasks](TASKS.md)
 
 ![Native saved workflow definition on its pan and zoom canvas](screenshots/ide-native-workflows.png)
 
-Open **Workflows** and choose a recipe for feature work, investigation, review, documentation, tests or deployment preparation. Enter a bounded goal and model/effort, then create the saved DAG. **Advanced JSON** supports explicit steps with unique IDs, supported actions, input and `dependsOn` lists. Use **agent-task** for an engine request or **design-extract** for Design extraction.
+Open **Workflows** and choose a recipe for feature work, investigation, review, documentation, tests or deployment preparation. Enter a bounded goal and model/effort, then create the saved DAG. **Advanced JSON** supports explicit steps with unique IDs, supported actions, input and `dependsOn` lists. Use **agent-task** for an engine request, **command** for a separately approved local command or script, or **design-extract** for Design extraction. **Build DAG** provides executable, argument, directory and script fields for command nodes. See the [workflow guide](WORKFLOWS.md) for host support and execution limits.
 
 The canvas displays the real definition and actual selected-run states. Drag to pan, use **+**/**−** to zoom, **100%** for actual size or **Fit** to see the graph. Independent steps can run in parallel; dependencies wait for predecessors. Choose **Run workflow** and approve its displayed steps, then inspect the run journal separately from the definition.
 
