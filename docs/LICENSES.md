@@ -4,19 +4,21 @@ Cleetus combines proprietary product components with separately licensed open-so
 
 ## Free commercial use; paid features
 
-The [feature-based proprietary license, version 1.1](licenses/IDE-PREVIEW-LICENSE.txt), permits ongoing personal and commercial use of features identified as Free, including work for an employer or customers. A company does not owe a software fee merely because its employees use Free Features. Paid licenses apply to explicitly identified premium or enterprise features, editions or services and their disclosed limits.
+The [feature-based proprietary license, version 1.2](licenses/IDE-PREVIEW-LICENSE.txt), permits ongoing personal and commercial use of features identified as Free, including work for an employer or customers. A company does not owe a software fee merely because its employees use Free Features. Paid licenses apply to explicitly identified premium or enterprise features, editions or services and their disclosed limits.
 
 Temporary premium access follows its offer; when no period is stated, it can end with at least 30 days' notice. It is not a permanent premium grant and never automatically creates a paid subscription. No retroactive fee applies to previously authorized use. Availability and billing terms in an actual offer control; this document does not open paid checkout or promise an unshipped capability.
+
+## Editions and feature limits
+
+Scout — Free Forever permits personal and commercial use of its identified Free Features, subject to the feature and resource limits in its applicable offer. Company size and revenue do not by themselves require a paid license for those features.
+
+Wrangler — Paid and Foreman — Enterprise are the paid offering tiers. Their actual features, limits, availability, term and price must be stated in an accepted offer. Planned features are not promised as available, and this licensing guide does not open checkout or grant paid entitlements.
 
 ## Protecting the product
 
 Proprietary Cleetus components may not be modified, repackaged, redistributed, resold, sublicensed or offered as a hosted service without the required written permission. Authorized installation, backup copies, internal deployment and documented settings, APIs and extensions remain permitted within applicable entitlements. Existing open-source rights and non-waivable legal rights are preserved.
 
 These restrictions concern Cleetus itself. They do not impose ownership or redistribution restrictions on your own projects or code merely because you use Cleetus. Provider terms and licenses for material independently included in your project still apply.
-
-## Founder use
-
-The [Founder Use Grant for Alan Snow](licenses/FOUNDER-USE-GRANT.txt) permits his personal and commercial use of official current and future proprietary Cleetus software, including paid software features, on authorized personal, employer, customer or cloud devices without Cleetus software-seat fees. It does not grant coworkers free paid seats, unlimited hosted/model usage, access to another account, or an exemption from employer policies and employment IP agreements.
 
 ## Existing and third-party licenses
 
