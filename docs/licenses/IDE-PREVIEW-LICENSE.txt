@@ -1,81 +1,146 @@
 Cleetus IDE Preview License
-Version 1.0 — October 30, 2026
-Copyright (c) 2026 SnowBiz.
+Proprietary software — feature-based Free and paid editions
+Version 1.1 — November 7, 2026
+Copyright (c) 2026 AdaptiveBase LLC. All rights reserved in proprietary portions.
 
-1. Scope
+1. Scope and existing rights
 
-This license applies only to proprietary portions of Cleetus IDE builds that
-expressly identify this license in their accompanying notices (the Software).
-The Licensor is SnowBiz. It does not
-replace the Apache License 2.0 for Cleetus code or releases already provided
-under that license, or replace any third-party or open-source license.
+AdaptiveBase LLC (the Licensor) provides this license for proprietary portions of official
+Cleetus software expressly identified with this license in their accompanying
+notices (the Software). The distribution identifier "Cleetus IDE Preview License"
+is retained for compatibility with existing installers and companion packages.
+This license grants no access to private development repositories or a
+separate right to proprietary source distribution.
 
-2. Free personal and commercial use
+Separately identified Apache-2.0, MIT and other open-source or third-party
+components retain their own licenses, including any modification or distribution
+rights those licenses grant. Their licenses control for those components.
+Existing recipients retain only rights that applicable law or an applicable
+earlier license requires AdaptiveBase LLC to honor for their previously received
+copies. This section creates no additional grandfathering, renewal, extension or
+permanent preview entitlement, and grants no right to future builds, updates,
+Paid Features or hosted services beyond those required rights.
 
-The Licensor grants you a worldwide, non-exclusive, no-charge license to install
-and use the Software for personal and commercial purposes, including development
-for your employer or customers. An organization may make the Software available
-to its authorized personnel for these purposes and keep reasonable installation
-and backup copies. No paid subscription or per-seat fee is required for the
-covered preview build. This grant is perpetual for the build you received,
-subject to compliance with this license.
+2. Free edition: personal and commercial use
 
-3. Ownership and limits
+Subject to these terms, AdaptiveBase LLC grants a worldwide, non-exclusive license to
+install and use the Software's features expressly
+identified as Free in the applicable edition or offer (Free Features) without a
+Cleetus software license fee for personal, workplace and commercial purposes,
+including work for an employer or customers. Company size, revenue and the fact
+that work is commercial do not by themselves require a paid license for Free
+Features. This Free permission continues subject to these terms; it is limited
+to Free Features and does not license every feature present in an installer.
 
-The Software is licensed, not sold. Rights in its proprietary portions remain
-with their respective owners. This license does not grant access to proprietary
-source code, a right to sublicense or publicly redistribute those portions, or
-a right to use Cleetus names or logos to imply endorsement. You may not remove
-applicable copyright, license, or attribution notices. These limits do not
-restrict rights granted by an applicable open-source license or rights that
-applicable law does not allow the Licensor to restrict.
+You may make reasonable installation and backup copies and deploy official,
+unmodified builds internally to authorized users, with each user's paid-feature
+access governed by their applicable entitlement. Use of documented settings,
+APIs, extensions and your own agents or workflows is permitted within the
+applicable feature entitlement and is not modification of the Software itself.
 
-You retain your rights in your projects, data, and other materials. This license
-does not transfer those materials to the Licensor.
+3. Paid features and temporary previews
 
-4. Future versions, services, and third-party costs
+Features, editions and services expressly identified as premium, paid or
+enterprise (Paid Features) require the applicable valid entitlement. The offer
+or separately agreed order identifies the licensed features, users, organization,
+usage limits, term and price. Software containing Paid Feature code does not by
+itself grant free or perpetual rights to use those features. Free commercial use
+does not require buying Paid Features.
 
-Future versions, editions, support, or hosted services may be offered under
-different terms or for a fee. Such terms apply only when you separately obtain
-or agree to them. They do not impose a retroactive fee on use of a preview build
-already granted under this license. No future update, support period, hosting,
-or continued availability of an external service is promised.
+Temporary or promotional access to Paid Features lasts for the period stated in
+the offer. If no period is stated, AdaptiveBase LLC may end that promotional access with
+at least 30 days' notice. Temporary access does not create a perpetual Paid
+Feature license, automatically create a paid subscription or authorize automatic
+charges. A paid purchase requires a separately accepted offer or order. When
+temporary or paid access ends, stop using the affected Paid Features; eligible
+Free Features remain available under section 2. Rights required to be honored
+under section 1 remain subject to that section.
 
-Engine subscriptions, model/API usage, cloud accounts, and other third-party
-services are separate. Their providers' licenses, access rules, and charges
-remain applicable. The Software does not grant or resell access to them.
+New editions and feature sets may have different terms or pricing when separately
+obtained. No retroactive software fee is imposed for previously authorized use.
+Updates, support, service availability and a particular future feature set are
+not promised unless a separate agreement expressly provides them.
 
-5. Open-source and third-party components
+4. Ownership, modification and redistribution restrictions
 
-Components identified as open source or third-party software remain governed
-by their respective licenses and notices. Where this license conflicts with
-rights granted by such a license, that component's license controls. Preserve
-the accompanying LICENSE, NOTICE, and third-party attribution materials. This
-license does not withdraw rights previously granted under Apache-2.0.
+The Software is licensed, not sold. AdaptiveBase LLC and its licensors retain their rights
+in the Software and its proprietary code, designs, documentation and branding.
+Except for section 2's permitted copies, a separate written permission from
+AdaptiveBase LLC, rights granted by an applicable open-source license, or rights that
+applicable law does not allow this agreement to restrict, you must not:
 
-6. Termination
+- modify, adapt, translate or create derivative works of proprietary Software;
+- redistribute, publish, mirror, repackage, sublicense, rent, resell or otherwise
+  supply proprietary Software or Paid Feature access to third parties;
+- operate proprietary Cleetus as a hosted service or service bureau for third
+  parties without a separate license that expressly permits that offering;
+- share license entitlements to give unlicensed users access to Paid Features;
+- bypass feature, license or usage controls or remove applicable copyright,
+  license, attribution or ownership notices; or
+- use Cleetus names or logos to imply sponsorship or endorsement without consent.
 
-Your license to the proprietary portions terminates if you materially breach
-these terms and do not remedy the breach within 30 days after written notice
-from the Licensor. On termination, stop using and delete those proprietary
-portions. Rights you hold under separate open-source licenses are unaffected.
+These restrictions cover Cleetus itself. They do not restrict your own projects,
+code, agents, workflows or other work merely because you create or use them with
+Cleetus. AdaptiveBase LLC claims no ownership of your or your employer's project materials
+through this license. Rights and licenses independently applicable to material
+included in a project remain applicable.
 
-7. Warranty and liability
+5. Founder software-use grant
 
-To the extent permitted by applicable law, the Software is provided "AS IS"
-and "AS AVAILABLE," without warranties of merchantability, fitness for a
-particular purpose, title, or non-infringement. Preview software may contain
-errors. You are responsible for reviewing and testing changes to your projects.
+AdaptiveBase LLC grants Cleetus founder Alan Snow a personal, worldwide, perpetual,
+royalty-free license to use official current and future proprietary Cleetus
+software, including Paid Features, for personal and commercial work without
+Cleetus software license or seat fees. He may use it on personal, employer,
+customer and cloud devices he is authorized to operate, and on behalf of any
+employer or customer. An employer or customer owes no Cleetus software license
+fee solely for that founder use. This grant survives changes in employment,
+company affiliation and Cleetus pricing and binds AdaptiveBase LLC's successors in title.
 
-To the extent permitted by applicable law, the Licensor and contributors are
-not liable for indirect, incidental, special, consequential, or punitive damages,
-or loss of profits, data, or business arising from use or inability to use the
-Software. These terms do not exclude liability or consumer rights that cannot
-lawfully be excluded or limited.
+The grant is personal and does not provide independent licenses to coworkers or
+other users, transfer proprietary source ownership, permit redistribution or
+resale, promise unlimited hosting or model usage, or waive third-party charges.
+It does not override an employer's policies, employment IP agreements, security
+approvals or access controls. A separate Founder Use Grant records this same
+permission for workplace review; it does not grant broader rights.
 
-8. Acceptance
+6. Services, third parties and safe use
 
-By installing or using proprietary Software expressly distributed under this
-license, you accept these terms. If you do not accept them, do not install or
-use those proprietary portions. Applicable open-source license rights remain
-available independently.
+Hosted services and subscriptions may have separate terms and charges, disclosed
+in their offers. Coding-agent subscriptions, model/API usage and other third-party
+services remain governed by their providers' terms and costs. A Cleetus license
+provides no third-party account, credential or provider entitlement.
+
+Use only devices, projects and data you are authorized to access. You are
+responsible for your instructions, approvals and reviewing generated changes.
+Software licensing grants no security privilege or access to another person's
+account, organization or data. Preserve all applicable third-party notices.
+
+7. Termination
+
+Rights to proprietary Software terminate if you materially breach these terms
+and fail to remedy the breach within 30 days after written notice from AdaptiveBase LLC.
+On termination, stop using and delete the affected proprietary Software. Expiry
+of a Paid Feature entitlement is governed by section 3. Termination does not
+transfer your project ownership or remove rights under separate open-source
+licenses. Nothing authorizes deleting or taking ownership of your projects.
+
+8. Warranty and liability
+
+To the extent permitted by applicable law, the Software is provided "AS IS" and
+"AS AVAILABLE," without warranties of merchantability, fitness for a particular
+purpose, title or non-infringement. Preview features may contain errors. Support,
+service levels and indemnities apply only if separately agreed in writing.
+
+To the extent permitted by applicable law, AdaptiveBase LLC and contributors are not liable
+for indirect, incidental, special, consequential or punitive damages, or loss of
+profits, data or business arising from use or inability to use the Software.
+These terms do not exclude liability or consumer rights that cannot lawfully be
+excluded or limited.
+
+9. Acceptance and applicable component terms
+
+Installing or using proprietary Software expressly offered under version 1.1
+constitutes acceptance of these terms. If you do not accept them, do not use
+those proprietary portions. Applicable open-source rights remain independent.
+The license and notices supplied with a particular component or previously
+received build identify the rights applicable to it.

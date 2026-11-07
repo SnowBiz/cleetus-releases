@@ -1,0 +1,30 @@
+Cleetus Founder Use Grant — Alan Snow
+Version 1.0 — November 7, 2026
+Licensor: AdaptiveBase LLC
+
+AdaptiveBase LLC grants Cleetus founder Alan Snow a personal, worldwide, perpetual,
+royalty-free license to use official current and future proprietary Cleetus
+software, including paid software features, for personal and commercial work
+without Cleetus software license or seat fees.
+
+He may use Cleetus on personal, employer, customer and cloud devices he is
+authorized to operate and on behalf of any employer or customer. An employer or
+customer owes no Cleetus software license fee solely for that founder use.
+The grant survives changes in employment, company affiliation and Cleetus pricing
+and binds AdaptiveBase LLC's successors in title.
+
+This is a personal use grant. It does not give coworkers or other users their own
+paid licenses, transfer ownership of proprietary source, permit redistribution
+or resale, promise unlimited hosted services or model usage, or waive provider
+and other third-party costs. It does not override employer policies, employment
+IP agreements, security approvals or access controls.
+
+The grant covers Cleetus software licensing only. It does not grant AdaptiveBase LLC or
+anyone else ownership of an employer's, customer's or founder's projects. Earlier
+Apache-2.0 and other open-source grants and third-party notices remain applicable.
+The remaining applicable Cleetus software license terms, including ownership,
+restrictions, breach termination and non-waivable rights, continue to apply.
+
+This document records section 5 of the Cleetus IDE Preview License version 1.1
+(feature-based proprietary license) and does not expand that section. No payment
+or business-seat purchase is required solely for the founder's authorized use.
