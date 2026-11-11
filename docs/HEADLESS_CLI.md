@@ -103,7 +103,11 @@ not establish that acceptance.
 
 Do not replace files in a running installation or delete receipts to retry an
 uncertain operation. Setup status reads existing evidence; an unknown install or
-start is not automatically repeated. A completed setup is reused without
+start is not automatically repeated. `cleetus setup status --workspace /absolute/project`
+reports a retained start attempt separately from installation. `manager_confirmed`
+means the service manager acknowledged that attempt; current Application readiness
+remains unknown until attachment succeeds. Status preserves the recorded evidence.
+A completed setup is reused without
 replacing its keyring credential. Updating an existing protected host is a
 separate explicit operation that preserves its profile and encrypted credential.
 [Advanced](ADVANCED_LINUX.md#update-without-replacing-the-keyring-credential)
