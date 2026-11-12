@@ -14,7 +14,7 @@ This is the public download and documentation home for Cleetus. Development sour
 | --- | --- |
 | **Cleetus IDE** | In the [public releases listing](https://github.com/SnowBiz/cleetus-releases/releases), choose the latest stable macOS Apple Silicon IDE whose notes include the current native Claude Code connection. Download its DMG and `SHA256SUMS` from that same release. The complete editor replaces VS Code. |
 | **Cleetus CLI** | Choose the independent `cli-v` channel and follow the [CLI guide](docs/CLI.md). JavaScript package for Node.js 22+; no embedded runtime or editor. |
-| **Cleetus VS Code extension** | Choose the latest stable universal VSIX whose notes include current native Claude Code setup, with matching `SHA256SUMS` in the [release listing](https://github.com/SnowBiz/cleetus-releases/releases). Maintained and released independently for ordinary VS Code. |
+| **Cleetus VS Code extension** | Choose the latest stable universal VSIX whose notes include current native Claude Code setup, with matching `SHA256SUMS` in the [release listing](https://github.com/SnowBiz/cleetus-releases/releases). Maintained and released independently for ordinary VS Code. [Keep VS Code and add Cleetus](docs/VSCODE.md). |
 
 Older SDK subscription-flow builds are retired from the recommended install
 path. Use the current releases above for native Claude Code setup.

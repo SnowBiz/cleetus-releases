@@ -1,5 +1,7 @@
 # How Cleetus works
 
+[Use Cleetus in VS Code](VSCODE.md): keep your editor and add native Cleetus project, agent, crew and task views.
+
 _Read this guide on [cleetus.dev](https://cleetus.dev/docs/)._
 
 Cleetus is an agentic development environment: a Code - OSS editor with Claude and Codex agents, reviewable tasks and a design studio built in. These guides explain each feature the way you'd want a colleague to: what it does, how it works underneath, and exactly what it will and won't do on your behalf.

@@ -1,5 +1,16 @@
 # Work tracking and PR evidence
 
+## Jira and the Cleetus task board
+
+In the native Cleetus IDE, open **Tasks → Import from Jira** to review an issue from an existing host connection. Select its Cleetus task type and parent, then approve the import. The new task is pending and retains its original Jira source; importing never starts an agent or copies Jira completion into Cleetus approval. The same Jira issue cannot be imported twice into the same local project, even through another connection to that site.
+
+Select a linked task and choose **Review Jira issue** to read its current workflow. Updates and available transitions require a separate exact host review. Editing only a title preserves the Jira rich description; explicitly replacing description text writes a plain-text ADF document for Cloud. Required transition fields that this client cannot supply must be completed in Jira. Jira remains authoritative for its permissions and concurrent workflow changes.
+
+A timeout can leave a write outcome unknown. **Review unresolved writes** shows durable receipts; inspect the exact issue in Jira before acknowledging reconciliation. Cleetus does not retry the original write or treat acknowledgement as evidence of success. An actively running pending request cannot be reconciled away. The receipt history is bounded to 512 records and stops further writes when full.
+
+These controls are local-host capabilities. Web/iPhone Jira management and company OAuth onboarding are not yet available. Existing local secure-token connections remain distinct from the planned distributable OAuth integration; never send tokens in conversations or task descriptions.
+
+
 _Read this guide on [cleetus.dev](https://cleetus.dev/docs/work-tracking/)._
 
 Connect GitHub Issues, Jira or your own tracker, turn an issue into a task brief for a conversation or team, and see a pull request's checks, reviews and merge evidence for its exact head commit. Agents get the same access through engine-neutral tools, including atomic, fenced claims when your tracker supports them.

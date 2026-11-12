@@ -141,3 +141,11 @@ fresh local resume review within the existing consent period. Use
 capture and erase the scoped pending queue. A stopping or unknown state requires
 review; it is not confirmation that the server revoked its grant. See the
 [CLI guide](CLI.md#workspace-activity-metadata) for boundaries and commands.
+
+### Renew a saved computer's account login
+
+New device-code sign-ins offer 1, 7 (default), 30, 60 or 90 days of device authorization, or Until revoked with explicit extra consent on the approval page. This does not extend OAuth tokens or their refresh lifetime. You may still need to sign in again.
+
+After a fresh same-account sign-in, `cleetus account-host device-replace` requests a normal local review before replacing a still-authorized v2 computer login. The review identifies the old authorization to revoke and the exact new lifetime. It preserves the saved computer key, registration and permissions. The command requires an attached physical terminal and refuses shared or unverifiable dependencies. Legacy or expired authorizations use the separate explicit `device-rebind` recovery when eligible.
+
+If replacement reports an unknown outcome, inspect only the original operation with `cleetus account-host device-replace-reconcile`. Do not repeat replacement or create a second operation to guess its outcome. After another same-account sign-in, a fresh authorized device can inspect the original result using the same saved computer key. Inspection preserves the original request and target; it never adopts the reader as the computer login. An expired request with no effect can settle only against its unchanged original registration and permissions. A newer registration produces historical evidence or a conflict instead of restoring an older binding. Once the outcome is settled, replacing the login again requires a new explicit review.
