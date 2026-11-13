@@ -4,7 +4,7 @@ _Read this guide on [cleetus.dev](https://cleetus.dev/docs/previews/)._
 
 Cleetus previews render the implementation your product ships, not a drawing of it. Adapters translate the shared design-library contract into each platform's runtime: a browser sandbox for web source, and real Xcode builds in Simulator for iOS and watchOS.
 
-![Source on the left, the live preview of the same component on the right, and the agent team docked](screenshots/ide-native-editor.png)
+![Source in the editor with Agent Command and the agent team docked](screenshots/ide-native-editor.png)
 
 ## Preview the file you're editing
 

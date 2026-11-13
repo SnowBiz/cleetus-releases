@@ -6,7 +6,7 @@ _Read this guide on [cleetus.dev](https://cleetus.dev/docs/design/)._
 
 Cleetus Design is a studio for the interfaces your agents actually build. It keeps a design system in your repository (tokens, components with contracts and stories, pages, assets and rules), renders the real source live, and turns a refinement into a focused brief an agent can act on.
 
-![Design reviewing a page from live source at phone and desktop widths, with design guidance alongside](screenshots/ide-native-design.png)
+![Cleetus Design overview in the native IDE: extract a design system from the code you already ship](screenshots/ide-native-design.png)
 
 ## How it fits together
 

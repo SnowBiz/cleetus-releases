@@ -4,7 +4,7 @@ _Read this guide on [cleetus.dev](https://cleetus.dev/docs/review/)._
 
 Review & Ship is where agent changes become code you're willing to merge. It gives each task its own **owned worktree**, shows the tracked diff against a recorded base, and only removes checkouts it can prove are clean.
 
-![Review & Ship: an owned worktree, its changed files and a unified diff](screenshots/detail-review-diff.png)
+![Review & Ship: an owned worktree, its changed files and a side-by-side diff](screenshots/detail-review-diff.png)
 
 ## The flow
 

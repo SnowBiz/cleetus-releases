@@ -59,6 +59,14 @@ configuration without starting agents. A supported solo-role launch uses the
 reviewed catalog instructions and preserves the exact approved prompt for resume.
 Pair only a device you trust with the work in this window.
 
+![iPhone Agents tab in the offline demo: agent chats, with the demo and connection status labelled](screenshots/iphone-agents.png)
+
+![iPhone Tasks tab in the offline demo with task filters and counts](screenshots/iphone-tasks.png)
+
+![iPhone Hosts and pairing screen with Connect host, Scan QR code and nearby hosts](screenshots/iphone-hosts-pairing.png)
+
+These iPhone captures come from the labelled offline demo. Its sample records are examples; no work is running and no action executes.
+
 - Starts identify an actual registered engine. The phone v1 `recipe` field is a
   compatibility alias for an engine launch, not a workflow definition. New
   clients can use the separate engine list.

@@ -14,7 +14,7 @@ Cleetus schedules team members, carries their messages and handoffs, and stops
 when a limit is reached. Each member has its own model, effort and MCP
 assignments; Claude, Codex and supported connected ACP agents can participate.
 
-![The orbital Teams view: a tech lead supervising a planner, implementer, reviewer and tester](screenshots/detail-teams-topology.png)
+![The Crew topology: a tech lead supervising a planner, implementer, reviewer and tester](screenshots/detail-teams-topology.png)
 
 A mixed team is scheduled by Cleetus, with explicit member identities, reports,
 messages and handoffs. In native Studio, workflow recipes can instead create a
@@ -102,7 +102,7 @@ Use **Refresh agent models** (or the named member’s refresh control) to discov
 
 ![Current extraction team setup; all specialist prompts remain editable](screenshots/extraction-team.png)
 
-![Create team: template, execution mode, effort, delivery limit and each agent's role, provider, model, effort and assigned task](screenshots/detail-team-create-roles.png)
+![Create team: template, team name, goal, execution mode, effort and delivery limit](screenshots/detail-team-create-roles.png)
 
 1. **Teams → + New team**, then choose a template or start blank.
 2. Write a concrete goal with the behaviour you want, its scope, constraints and acceptance checks.

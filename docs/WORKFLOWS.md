@@ -6,7 +6,7 @@ A workflow is a saved, reusable plan: a directed acyclic graph of steps with dep
 
 ![The definition is a DAG; each run keeps a journal of step states](images/diagram-workflows.png)
 
-![A saved workflow definition on the pan-and-zoom canvas](screenshots/ide-native-workflows.png)
+![A saved workflow definition and its dependency graph in the native IDE](screenshots/ide-native-workflows.png)
 
 ## Create a workflow
 

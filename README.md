@@ -19,7 +19,7 @@ This is the public download and documentation home for Cleetus. Development sour
 Older SDK subscription-flow builds are retired from the recommended install
 path. Use the current releases above for native Claude Code setup.
 
-![Cleetus IDE with source, a live preview and the agent team](docs/screenshots/ide-native-editor.png)
+![Cleetus IDE with source, Agent Command and the agent team](docs/screenshots/ide-native-editor.png)
 
 ## Build with a crew
 

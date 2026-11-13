@@ -30,12 +30,22 @@ browser settings can restrict local folder access, GitHub repository drafts and
 exports. A browser asks permission before using a local directory. File import
 and **Save copy** remain alternatives when folder access is unavailable.
 
+![Browser workbench Home with a connected computer, the project list and the crew roles](screenshots/web-workbench-home.png)
+
+![Browser workbench Crew view with live conversation updates from a connected computer](screenshots/web-workbench-crew-live.png)
+
+Both browser captures use a fictional sample project and a local test host.
+
 Browser editing runs on your device. To run an agent, register a compatible
 Cleetus development host, explicitly enable its remote access and approve the
 workspace and allowed actions. You can then select an authorized computer in the
 workbench and prepare a scoped role launch. Sign-in or a saved computer entry
 alone is not permission to execute, nor proof that the computer is reachable.
 Provider credentials, native consent and execution remain on that host.
+
+![Browser workbench Tasks with the Run panel: engine, owned worktree and an optional time-limited read-only grant](screenshots/web-workbench-tasks-run.png)
+
+![Browser workbench Tools and extensions page listing credit pools with spend, data handling and caps](screenshots/web-workbench-credit-pools.png)
 
 The registered-computer connection currently uses encrypted direct WebRTC.
 Supported status and transcript snapshots refresh about every three seconds
@@ -80,7 +90,7 @@ In builds with **Cleetus: Connect coding agents**, run that command or choose **
 
 ## Open the source and preview workspace
 
-![Native editor with source, live preview and agent docks](screenshots/ide-native-editor.png)
+![Native editor with source, the workflow strip, Agent Command and the agent team dock](screenshots/ide-native-editor.png)
 
 Open a project folder, then run **Cleetus: Open Development Workspace**. Explorer and the compact Agent Team dock sit on the left; the native source editor and registered live preview share the center; Agent Command stays on the right. The branded command bar and labeled action rail provide access to the editor, Agent Command, Teams, Tasks, Workflows, Review and Design. **More** retains other editor views, including debugging. The native preview includes the pinned open-source JavaScript/Node debugger: set a source breakpoint, choose a Node launch configuration in Run and Debug, and inspect variables, stacks and expressions. Other languages require their compatible debug extensions.
 
@@ -96,7 +106,7 @@ The IDE has its own application identity, settings, extension directories and pr
 
 ## Give Agent Command a goal
 
-![Native Agent Command with an unsubmitted brief, queued plan and ready team](screenshots/ide-native-agent-command.png)
+![Native Agent Command with an empty brief, model and effort choices, the current task and a team template preview](screenshots/ide-native-agent-command.png)
 
 The central Agent Command brings the goal composer, plan, selected team, recorded sessions, tasks, activity and reported files together. Its cards reflect saved local state. Requested models are configuration; provider-reported execution metadata remains unknown until reported. Cost and activity are not inferred from a template or a ready team.
 
@@ -150,9 +160,9 @@ Full guide: [Agent Command and conversations](GUIDE.md)
 
 ## Give a team a bounded goal
 
-![Native orbital Teams view with five ready, unstarted members](screenshots/ide-native-teams.png)
+![Native Crew view: a template preview of a tech lead supervising a planner, implementer, reviewer and tester](screenshots/ide-native-teams.png)
 
-![Themed prebuilt team catalog](screenshots/ide-native-team-template-menu.png)
+![Prebuilt team catalog: software development team, design squad, code review squad and bug hunt](screenshots/ide-native-team-template-menu.png)
 
 [Review the creation dialog](screenshots/ide-native-team-create.png) · [See a ready Design squad](screenshots/ide-native-design-squad.png). Creating a team leaves its agents stopped; **Start team** is a separate action.
 
@@ -171,7 +181,7 @@ Full guide: [Agent teams](TEAMS.md) · [LAN collaboration](COLLABORATION.md)
 
 ## Keep tasks reviewable
 
-![Native Tasks board and inspector with pending local tasks](screenshots/ide-native-tasks.png)
+![Native Tasks board with To do, In progress, Review and Done columns](screenshots/ide-native-tasks.png)
 
 Use **+ New goal** or **+ New task** to record a title, description, acceptance criteria and parent. Select a card to inspect its ownership, execution and report. The board separates pending, running, review and completed work.
 
@@ -188,7 +198,7 @@ Full guide: [Tasks](TASKS.md)
 
 ## Define a workflow, then inspect its runs
 
-![Native saved workflow definition on its pan and zoom canvas](screenshots/ide-native-workflows.png)
+![Native Workflows page with a saved definition and its dependency graph](screenshots/ide-native-workflows.png)
 
 Open **Workflows** and choose a recipe for feature work, investigation, review, documentation, tests or deployment preparation. Enter a bounded goal and model/effort, then create the saved DAG. **Advanced JSON** supports explicit steps with unique IDs, supported actions, input and `dependsOn` lists. Use **agent-task** for an engine request, **command** for a separately approved local command or script, or **design-extract** for Design extraction. **Build DAG** provides executable, argument, directory and script fields for command nodes. See the [workflow guide](WORKFLOWS.md) for host support and execution limits.
 
@@ -249,7 +259,7 @@ Full guide: [Workflows and automation](WORKFLOWS.md)
 
 ## Review the actual changes
 
-![Native Review with an actual local owned-checkout change and unified diff](screenshots/ide-native-review.png)
+![Native Review & Ship with an owned worktree, its changed files and a side-by-side diff](screenshots/ide-native-review.png)
 
 **Review & Ship → Owned worktrees → + New worktree** creates a checkout and branch from committed HEAD after approval. Associate it with an existing task. Uncommitted primary-checkout changes stay there. Worktrees isolate checkout files, not operating-system permissions; normal engine approvals still apply.
 
@@ -270,7 +280,7 @@ Full guide: [Review & Ship](REVIEW.md) · [PR evidence](WORK_TRACKING.md#pull-re
 
 ## Refine a source-linked component in Design
 
-![Native Design page review with live desktop and phone source previews](screenshots/ide-native-design.png)
+![Native Design overview with the extraction call to action and the extraction team](screenshots/ide-native-design.png)
 
 Open **Design** for the component library, interactive source canvas, linked code/fixture panels and component properties. Select a registered component, inspect its implementation and fixtures, and change its exposed controls to exercise the real preview. The inspector uses registered component metadata and supported props; discovery alone does not establish a successful render.
 
