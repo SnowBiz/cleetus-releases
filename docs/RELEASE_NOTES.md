@@ -1,3 +1,68 @@
+# Cleetus 1.12.15
+
+Codex model lists now stay with the current verified account and provider process.
+Delayed account replies cannot restore a retired catalog. Engine startup,
+cancellation and cleanup retain the original request's outcome and failure context.
+
+Optional startup timing diagnostics are off by default. When explicitly enabled,
+they provide bounded startup summaries without changing execution permissions.
+
+Existing account setup, approvals, provider requirements, saved-session formats
+and the Apache license remain in force. These fixes do not establish equivalent
+startup performance across providers or isolation modes.
+
+# Cleetus IDE 0.2.31
+
+Development preview with corrected registered-computer recovery. After an
+uncertain heartbeat response, the controller reads current connection status
+within the original accepted window. It synchronizes confirmed authority with
+the Host before reporting a healthy connection. Unknown renewals are not resent,
+and unchanged status reads do not extend the connection window.
+
+Shared engine startup, cancellation and cleanup retain original outcomes.
+Codex catalogs stay bound to the current verified account and provider process.
+Optional startup timing diagnostics remain off by default.
+
+Account registration, provider setup and existing access approvals are still
+required. Saved data, licenses and third-party notices remain in force. Native
+launch, paired-device connectivity and sustained performance require their own
+acceptance checks; no signing, installation or release status is implied here.
+
+# Cleetus CLI 0.2.36
+
+The Linux Host Preview honors supplied request deadlines when returning terminal
+closing messages, improving compatibility with updated registered clients,
+including iPhone clients. Updated clients can reconcile an uncertain heartbeat
+through current connection status and Host synchronization instead of replaying
+the renewal. Existing authorization and approval scopes remain enforced.
+
+Codex catalogs stay with the current verified account and provider process.
+Engine startup, cancellation and cleanup preserve original outcomes. Configured
+Host launchers retain the selected Claude profile for session and metadata
+processes; unsupported profile grants refuse startup.
+
+Optional startup timing diagnostics are off by default. Existing sessions and
+saved data retain their formats. The Apache CLI and separately licensed Linux
+Host Preview keep their existing licenses and third-party notices. Paired-device
+and sustained connection acceptance remain separate from these source changes.
+
+# Cleetus Web 0.3.23
+
+Browser connections can send their initial offer after an observed
+server-reflexive ICE candidate settles, without waiting for all gathering to
+finish. Existing fallback waits remain when no usable candidate is observed.
+
+An uncertain heartbeat is reconciled through current connection status within
+the original accepted window, then synchronized with the Host. Unknown renewals
+are not replayed, and unchanged reads do not extend authority. Updated Hosts
+honor client request deadlines when returning terminal closing messages.
+
+Updated Host model catalogs follow the current verified account and provider
+process. Optional startup timing diagnostics are off by default. Existing
+sign-in, access grants, provider requirements, saved data, licenses and notices
+remain in force. These changes do not establish physical-device, native or
+cross-network performance acceptance.
+
 # Cleetus 1.12.14
 
 Codex turns now report an unexpected provider-process exit after a start
