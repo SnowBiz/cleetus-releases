@@ -187,4 +187,4 @@ After a revoke, the computer shows the approval link again if you want to use it
 
 - Something not working: [Troubleshooting](TROUBLESHOOTING.md). Common questions: [FAQ](FAQ.md).
 - Tell us about a bug or an idea: in the iPhone app open **You**, then **Help & support**, then **Help and feedback**. On the computer run `cleetus-core feedback`. You can add a diagnostics report; you see exactly what it contains before it is sent, and it never includes your code, prompts or conversations.
-- Email [support@cleetus.app](mailto:support@cleetus.app).
+- Email [support@adaptivebase.app](mailto:support@adaptivebase.app).

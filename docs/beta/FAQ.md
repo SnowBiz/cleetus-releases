@@ -46,7 +46,7 @@ Not in Beta 1. The phone and the computer must be on the same network (or the sa
 
 ## Do I need an account?
 
-Yes. The beta is by invitation. The invitation email walks you through the beta agreement and your account. The computer and the phone use the same account. If the invitation has not arrived, check your spam folder, then email [support@cleetus.app](mailto:support@cleetus.app).
+Yes. The beta is by invitation. The invitation email walks you through the beta agreement and your account. The computer and the phone use the same account. If the invitation has not arrived, check your spam folder, then email [support@adaptivebase.app](mailto:support@adaptivebase.app).
 
 ## How do I get the iPhone app?
 
@@ -60,11 +60,11 @@ Crash reports are off unless you turn them on, and they leave your device only i
 
 ## How do I delete my data?
 
-Email [support@cleetus.app](mailto:support@cleetus.app) from your account address. To remove a computer first, see revoke in Getting started, step 8.
+Email [support@adaptivebase.app](mailto:support@adaptivebase.app) from your account address. To remove a computer first, see revoke in Getting started, step 8.
 
 ## How do I report a bug?
 
-iPhone app: **You**, **Help & support**, **Help and feedback**. Computer: `cleetus-core feedback`. Or email [support@cleetus.app](mailto:support@cleetus.app). Say what you did, what you expected and what happened. Add diagnostics if it is a crash or something that will not start.
+iPhone app: **You**, **Help & support**, **Help and feedback**. Computer: `cleetus-core feedback`. Or email [support@adaptivebase.app](mailto:support@adaptivebase.app). Say what you did, what you expected and what happened. Add diagnostics if it is a crash or something that will not start.
 
 ## Why are the downloads public but the source private?
 

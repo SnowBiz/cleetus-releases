@@ -38,6 +38,6 @@ What Beta 1 does not do yet, so nothing surprises you. This list is kept up to d
 
 ## Help and data
 
-- Support is one email address, [support@cleetus.app](mailto:support@cleetus.app), plus in-app and command-line feedback. There is no status page; this list and the release notes are it.
+- Support is one email address, [support@adaptivebase.app](mailto:support@adaptivebase.app), plus in-app and command-line feedback. There is no status page; this list and the release notes are it.
 - Account deletion and data export are handled by email for now.
 - Beta software can lose a task in the middle of an update or crash. Core records what it was doing and never repeats an action on its own after a restart; if a task shows as unknown, check the repository before you retry.
