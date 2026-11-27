@@ -6,6 +6,8 @@ Cleetus is an agentic development environment: a Code - OSS editor with your own
 
 This is the public download and documentation home for Cleetus. Development source is maintained separately; you don't need source access to install a release.
 
+**Cleetus Core beta (Mac and Linux, with the iPhone app):** start with [Getting started with Cleetus Core](docs/beta/GETTING-STARTED.md). It is a separate product from the IDE and CLI below.
+
 **[Find Cleetus releases](https://github.com/SnowBiz/cleetus-releases/releases) · [Install and update](docs/INSTALL.md) · [Guides](docs/README.md) · [cleetus.dev](https://cleetus.dev)**
 
 **Available releases:** choose the latest stable IDE or CLI in the [public releases listing](https://github.com/SnowBiz/cleetus-releases/releases), or the independent [latest extension release](https://github.com/SnowBiz/cleetus-releases/releases/latest). Each product has its own version, checksums and update channel.

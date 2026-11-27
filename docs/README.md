@@ -8,6 +8,7 @@ Cleetus is an agentic development environment: a Code - OSS editor with Claude a
 
 | Guide | What it covers |
 | --- | --- |
+| [Cleetus Core beta](beta/GETTING-STARTED.md) | A separate product: install Core on Mac or Linux, connect the iPhone app and run tasks. Also [troubleshooting](beta/TROUBLESHOOTING.md), [FAQ](beta/FAQ.md) and [known limits](beta/KNOWN-LIMITS.md) |
 | [Cleetus account](ACCOUNTS.md) | Sign in, manage membership and understand verified features |
 | [Membership and saved settings](MEMBERSHIP.md) | Candidate Scout, Wrangler and Foreman resources, access checks and nonsecret cloud preferences |
 | [Install and update](INSTALL.md) | Install the Apple Silicon IDE or a verified VSIX, set up separate engines, and update |
